@@ -1,0 +1,8 @@
+prefix=/home/ros/bach/DWARVES/devel
+
+Name: capture_image
+Description: Description of capture_image
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
