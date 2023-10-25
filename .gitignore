@@ -1,0 +1,6 @@
+# ignore devel folder
+devel/
+# ignore build folder
+build/
+#ignore images folder
+images/
