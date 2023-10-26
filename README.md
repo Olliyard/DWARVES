@@ -16,3 +16,10 @@ The main parts of the system are as follows.
 * A ``camera`` which will capture images of the duckweed throughout the observation interval and store these for later access.
   
 Together, all these parts make up the foundations of DWARVES. It is essential that each element works together in unison, for the prototype to be a success.
+
+## Notes for the Raspberry Pi Zero W
+--
+The current user and password for the RPi to be used during testing stages will be as follows:
+Username: pi
+Password: raspberry
+ip: raspberrypi.local
