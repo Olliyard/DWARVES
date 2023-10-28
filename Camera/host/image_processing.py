@@ -44,8 +44,8 @@ while True:
     total_area = (smoothing_factor * total_area) + ((1 - smoothing_factor) * current_frame_area)
     total_area = round(total_area, 2)  # Round the area value to 2 decimal places
 
-    # Display the smoothed area with units (e.g., cm)
-    area_with_units = f"Green Area: {total_area} cm^2"  # You can change 'cm' to other units
+    # Display the smoothed area
+    area_with_units = f"Green Area: {total_area}"
     cv2.putText(frame, area_with_units, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
     # Display the processed frame
