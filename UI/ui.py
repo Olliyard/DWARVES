@@ -34,7 +34,7 @@ $$ |  $$ |$$$$  _$$$$ |$$  __$$ |$$  __$$<  \$$\$$  / $$  __|    \____$$\       
 $$ |  $$ |$$$  / \$$$ |$$ |  $$ |$$ |  $$ |  \$$$  /  $$ |      $$\   $$ |      $$ |  $$ |  $$ |  
 $$$$$$$  |$$  /   \$$ |$$ |  $$ |$$ |  $$ |   \$  /   $$$$$$$$\ \$$$$$$  |      \$$$$$$  |$$$$$$\ 
 \_______/ \__/     \__|\__|  \__|\__|  \__|    \_/    \________| \______/        \______/ \______|
-
+    Version 1.0
     """)
     print(f"{NC}")  # Reset color
 
@@ -46,9 +46,8 @@ def check_colonies():
         data = json.load(file)
         i = 1 # to skip the loading zone
         for colony in data:
-            if colony != 'loadingZone':
-                print(f"{i}. {colony}")
-                i += 1
+            print(f"{i}. {colony}")
+            i += 1
     print("0. Back to main menu")
 
 
@@ -147,84 +146,94 @@ def change_colony_settings(colony_name):
 # Function to insert a new colony
 def insert_new_colony():
     with open('settings.json', 'r') as file:
-        data = json.load(file)
-        # Check if the loading zone is occupied
-        loading_zone_occupied = data['loadingZone']['occupied']
+        with open('system.json', 'r') as system_file:
+            data = json.load(file)
+            system_file_data = json.load(system_file)
 
-        if loading_zone_occupied == False:
-            clear_screen()
-            print("The loading zone is empty. Enter a colony first.")
-            input("Press Enter to continue...")
-        # Check if no colonies are available
-        elif all(value['occupied'] for value in data.values() if value != data['loadingZone']):
-            clear_screen()
-            print("All colonies are occupied. Withdraw an old colony first.")
-            input("Press Enter to continue...")
-        else:
-            clear_screen()
-            print("Available non-occupied colonies:")
-            available_colonies = [key for key, value in data.items() if not value['occupied']]
-            for i, colony in enumerate(available_colonies, 1):
-                print(f"{i}. {colony}")
-            print("0. Back to main menu")
+            # Check if the loading zone is occupied
+            loading_zone_occupied = system_file_data['loadingZone']['occupied']
 
-            colony_choice = input("Enter the number of the colony to insert (or 0 to go back): ")
-            if colony_choice != '0':
-                colony_choice = int(colony_choice)
-                if 1 <= colony_choice <= len(available_colonies):
-                    colony_name = available_colonies[colony_choice - 1]
-                    data[colony_name]['occupied'] = True
-                    data[colony_name]['experiment_start_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            if loading_zone_occupied == False:
+                clear_screen()
+                print("The loading zone is empty. Enter a colony first.")
+                input("Press Enter to continue...")
+            # Check if no colonies are available
+            elif all(value['occupied'] for value in data.values()):
+                clear_screen()
+                print("All colonies are occupied. Withdraw an old colony first.")
+                input("Press Enter to continue...")
+            else:
+                clear_screen()
+                print("Available non-occupied colonies:")
+                available_colonies = [key for key, value in data.items() if not value['occupied']]
+                for i, colony in enumerate(available_colonies, 1):
+                    print(f"{i}. {colony}")
+                print("0. Back to main menu")
 
-                    data['loadingZone']['occupied'] = False                    
+                colony_choice = input("Enter the number of the colony to insert (or 0 to go back): ")
+                if colony_choice != '0':
+                    colony_choice = int(colony_choice)
+                    if 1 <= colony_choice <= len(available_colonies):
+                        colony_name = available_colonies[colony_choice - 1]
+                        data[colony_name]['occupied'] = True
+                        data[colony_name]['experiment_start_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-                    with open('settings.json', 'w') as outfile:
-                        json.dump(data, outfile, indent=4)
+                        system_file_data['loadingZone']['occupied'] = False                    
 
-                    clear_screen()
-                    print(f"Colony {colony_name} with ID: {data[colony_name]['id']} has been marked as occupied. Loading zone is now free.")
-                    input("Press Enter to continue...")
+                        with open('settings.json', 'w') as outfile:
+                            json.dump(data, outfile, indent=4)
+                        with open('system.json', 'w') as outfile:
+                            json.dump(system_file_data, outfile, indent=4)
+
+                        clear_screen()
+                        print(f"Colony {colony_name} with ID: {data[colony_name]['id']} has been marked as occupied. Loading zone is now free.")
+                        input("Press Enter to continue...")
 
 # Function to withdraw an old colony
 def withdraw_old_colony():
     with open('settings.json', 'r') as file:
-        data = json.load(file)
-        # Check if the loading zone is occupied
-        loading_zone_occupied = data['loadingZone']['occupied']
+        with open('system.json', 'r') as system_file:
+            data = json.load(file)
+            system_file_data = json.load(system_file)
 
-        if loading_zone_occupied:
-            clear_screen()
-            print("Loading zone is not empty. Remove the colony first.")
-            input("Press Enter to continue...")
-        # Check if no colonies are occupied
-        elif all(value['occupied'] == False for value in data.values() if value != data['loadingZone']):
-            clear_screen()
-            print("No colonies are occupied. Insert a colony first.")
-            input("Press Enter to continue...")
-        else:
-            clear_screen()
-            print("Occupied colonies:")
-            occupied_colonies = [key for key, value in data.items() if key != 'loadingZone' and value['occupied']]
-            for i, colony in enumerate(occupied_colonies, 1):
-                print(f"{i}. {colony}")
-            print("0. Back to main menu")
+            # Check if the loading zone is occupied
+            loading_zone_occupied = system_file_data['loadingZone']['occupied']
 
-            colony_choice = input("Enter the number of the colony to withdraw (or 0 to go back): ")
-            if colony_choice != '0':
-                colony_choice = int(colony_choice)
-                if 1 <= colony_choice <= len(occupied_colonies):
-                    colony_name = occupied_colonies[colony_choice - 1]
-                    data[colony_name]['occupied'] = False
-                    data[colony_name]['experiment_start_date'] = None
-                    
-                    data['loadingZone']['occupied'] = True
+            if loading_zone_occupied:
+                clear_screen()
+                print("Loading zone is not empty. Remove the colony first.")
+                input("Press Enter to continue...")
+            # Check if no colonies are occupied
+            elif all(value['occupied'] == False for value in data.values()):
+                clear_screen()
+                print("No colonies are occupied. Insert a colony first.")
+                input("Press Enter to continue...")
+            else:
+                clear_screen()
+                print("Occupied colonies:")
+                occupied_colonies = [key for key, value in data.items() if key != 'loadingZone' and value['occupied']]
+                for i, colony in enumerate(occupied_colonies, 1):
+                    print(f"{i}. {colony}")
+                print("0. Back to main menu")
 
-                    with open('settings.json', 'w') as outfile:
-                        json.dump(data, outfile, indent=4)
+                colony_choice = input("Enter the number of the colony to withdraw (or 0 to go back): ")
+                if colony_choice != '0':
+                    colony_choice = int(colony_choice)
+                    if 1 <= colony_choice <= len(occupied_colonies):
+                        colony_name = occupied_colonies[colony_choice - 1]
+                        data[colony_name]['occupied'] = False
+                        data[colony_name]['experiment_start_date'] = None
+                        
+                        system_file_data['loadingZone']['occupied'] = True
 
-                    clear_screen()
-                    print(f"Colony {colony_name} has been withdrawn and the loading zone is now occupied.")
-                    input("Press Enter to continue...")
+                        with open('settings.json', 'w') as outfile:
+                            json.dump(data, outfile, indent=4)
+                        with open('system.json', 'w') as outfile:
+                            json.dump(system_file_data, outfile, indent=4)
+
+                        clear_screen()
+                        print(f"Colony {colony_name} has been withdrawn and the loading zone is now occupied.")
+                        input("Press Enter to continue...")
 
 # Function to check and report colonies with out-of-bounds settings
 def check_out_of_bounds_settings():
@@ -270,7 +279,7 @@ def check_out_of_bounds_settings():
 
 def pause_resume_experiments():
     clear_screen()
-    with open('settings.json', 'r+') as file:
+    with open('system.json', 'r+') as file:
         data = json.load(file)
         if data['status']['paused']:
             data['status']['paused'] = False
@@ -287,7 +296,7 @@ def pause_resume_experiments():
 while True:
     clear_screen()
     # Open JSON file and check pause status. If paused, display a message
-    with open('settings.json', 'r') as file:
+    with open('system.json', 'r') as file:
         data = json.load(file)
         if data['status']['paused']:
             print(f"{RED}The experiments are paused.{NC}")
