@@ -1,6 +1,6 @@
 {
     "status": {
-        "paused": true
+        "paused": false
     },
     "loadingZone": {
         "occupied": false

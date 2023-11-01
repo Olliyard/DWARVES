@@ -44,7 +44,7 @@ def check_colonies():
     print("Checking colonies...")
     with open('settings.json', 'r') as file:
         data = json.load(file)
-        i = 1 # to skip the loading zone
+        i = 1 
         for colony in data:
             print(f"{i}. {colony}")
             i += 1
@@ -71,25 +71,27 @@ def change_colony_settings(colony_name):
             # Display daytime settings
             print(f"Daytime Settings:")
             print(f"1. Daytime temperature: {colony_data['daytime_temperature']} (Limit: {min_temperature}-{max_temperature}°C)")
-            print(f"2. Daytime light intensity: {colony_data['daytime_light_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
-            print(f"3. Daytime hours: {colony_data['daytime_hours']} (Limit: {min_daytime_hours}-{max_daytime_hours} hours)")
+            print(f"2. Daytime R light intensity: {colony_data['daytime_light_R_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
+            print(f"3. Daytime B light intensity: {colony_data['daytime_light_B_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
+            print(f"4. Daytime hours: {colony_data['daytime_hours']} (Limit: {min_daytime_hours}-{max_daytime_hours} hours)")
 
             # Display nighttime settings
             print(f"Nighttime Settings:")
-            print(f"4. Nighttime temperature: {colony_data['nighttime_temperature']} (Limit: {min_temperature}-{max_temperature}°C)")
-            print(f"5. Nighttime light intensity: {colony_data['nighttime_light_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
+            print(f"5. Nighttime temperature: {colony_data['nighttime_temperature']} (Limit: {min_temperature}-{max_temperature}°C)")
+            print(f"6. Nighttime R light intensity: {colony_data['nighttime_light_R_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
+            print(f"7. Nighttime B light intensity: {colony_data['nighttime_light_B_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
 
             # Display Observation interval setting
             print(f"Observation Settings:")
-            print(f"6. Observation interval: {colony_data['observation_interval']} (Limit: {min_observation_interval}-{max_observation_interval} hours)")
+            print(f"8. Observation interval: {colony_data['observation_interval']} (Limit: {min_observation_interval}-{max_observation_interval} hours)")
 
             print("0. Back to main menu")
             setting_choice = input("Enter the setting to change (or 0 to go back): ")
 
             if setting_choice == '0':
                 break
-            elif setting_choice in ['1', '2', '3', '4', '5', '6']:
-                new_value = input(f"Enter the new {'Daytime temperature' if setting_choice == '1' else 'Daytime light intensity' if setting_choice == '2' else 'Daytime hours' if setting_choice == '3' else 'Nighttime temperature' if setting_choice == '4' else 'Nighttime light intensity' if setting_choice == '5' else 'Observation interval'}: ")
+            elif setting_choice in ['1', '2', '3', '4', '5', '6', '7', '8']:
+                new_value = input("Enter the new value: ")
 
                 try:
                     new_value = int(new_value)
@@ -106,29 +108,41 @@ def change_colony_settings(colony_name):
                         input("Press Enter to continue...")
                 elif setting_choice == '2':
                     if min_light_intensity <= new_value <= max_light_intensity:
-                        colony_data['daytime_light_intensity'] = new_value
+                        colony_data['daytime_light_R_intensity'] = new_value
                     else:
                         print(f"Invalid input. Light intensity must be between {min_light_intensity} and {max_light_intensity}.")
                         input("Press Enter to continue...")
                 elif setting_choice == '3':
+                    if min_light_intensity <= new_value <= max_light_intensity:
+                        colony_data['daytime_light_B_intensity'] = new_value
+                    else:
+                        print(f"Invalid input. Light intensity must be between {min_light_intensity} and {max_light_intensity}.")
+                        input("Press Enter to continue...")
+                elif setting_choice == '4':
                     if min_daytime_hours <= new_value <= max_daytime_hours:
                         colony_data['daytime_hours'] = new_value
                     else:
                         print(f"Invalid input. Daytime hours must be between {min_daytime_hours} and {max_daytime_hours} hours.")
                         input("Press Enter to continue...")
-                elif setting_choice == '4':
+                elif setting_choice == '5':
                     if min_temperature <= new_value <= max_temperature:
                         colony_data['nighttime_temperature'] = new_value
                     else:
                         print(f"Invalid input. Temperature must be between {min_temperature} and {max_temperature}°C.")
                         input("Press Enter to continue...")
-                elif setting_choice == '5':
+                elif setting_choice == '6':
                     if min_light_intensity <= new_value <= max_light_intensity:
-                        colony_data['nighttime_light_intensity'] = new_value
+                        colony_data['nighttime_light_R_intensity'] = new_value
                     else:
                         print(f"Invalid input. Light intensity must be between {min_light_intensity} and {max_light_intensity}.")
                         input("Press Enter to continue...")
-                elif setting_choice == '6':
+                elif setting_choice == '7':
+                    if min_light_intensity <= new_value <= max_light_intensity:
+                        colony_data['nighttime_light_B_intensity'] = new_value
+                    else:
+                        print(f"Invalid input. Light intensity must be between {min_light_intensity} and {max_light_intensity}.")
+                        input("Press Enter to continue...")
+                elif setting_choice == '8':
                     if min_observation_interval <= new_value <= max_observation_interval:
                         colony_data['observation_interval'] = new_value
                     else:
@@ -255,12 +269,20 @@ def check_out_of_bounds_settings():
                     print(f"Colony {colony_name} has out-of-bounds nighttime temperature: {info['nighttime_temperature']} (Limit: {min_temperature}-{max_temperature}°C)")
                     out_of_bounds = True
 
-                if not (min_light_intensity <= info['daytime_light_intensity'] <= max_light_intensity):
-                    print(f"Colony {colony_name} has out-of-bounds daytime light intensity: {info['daytime_light_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
+                if not (min_light_intensity <= info['daytime_light_R_intensity'] <= max_light_intensity):
+                    print(f"Colony {colony_name} has out-of-bounds daytime light R intensity: {info['daytime_light_R_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
                     out_of_bounds = True
                 
-                if not (min_light_intensity <= info['nighttime_light_intensity'] <= max_light_intensity):
-                    print(f"Colony {colony_name} has out-of-bounds nighttime light intensity: {info['nighttime_light_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
+                if not (min_light_intensity <= info['daytime_light_B_intensity'] <= max_light_intensity):
+                    print(f"Colony {colony_name} has out-of-bounds daytime light B intensity: {info['daytime_light_B_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
+                    out_of_bounds = True
+                
+                if not (min_light_intensity <= info['nighttime_light_R_intensity'] <= max_light_intensity):
+                    print(f"Colony {colony_name} has out-of-bounds nighttime light R intensity: {info['nighttime_light_R_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
+                    out_of_bounds = True
+                
+                if not (min_light_intensity <= info['nighttime_light_B_intensity'] <= max_light_intensity):
+                    print(f"Colony {colony_name} has out-of-bounds nighttime light B intensity: {info['nighttime_light_B_intensity']} (Limit: {min_light_intensity}-{max_light_intensity})")
                     out_of_bounds = True
 
                 if not (min_daytime_hours <= info['daytime_hours'] <= max_daytime_hours):
