@@ -1,17 +1,20 @@
 {
+    "status": {
+        "paused": true
+    },
     "loadingZone": {
         "occupied": true
     },
     "colony1": {
         "id": "1x1",
-        "occupied": true,
+        "occupied": false,
         "daytime_hours": 16,
         "daytime_temperature": 20,
         "nighttime_temperature": 23,
         "daytime_light_intensity": 1,
         "nighttime_light_intensity": 0,
         "observation_interval": 1,
-        "experiment_start_date": "2023-0-31 14:53:19",
+        "experiment_start_date": null,
         "last_observation_date": "2023-0-24"
     },
     "colony2": {
@@ -28,14 +31,14 @@
     },
     "colony3": {
         "id": "1x3",
-        "occupied": false,
+        "occupied": true,
         "daytime_hours": 12,
         "daytime_temperature": 28,
         "nighttime_temperature": 22,
         "daytime_light_intensity": 1,
         "nighttime_light_intensity": 0,
         "observation_interval": 24,
-        "experiment_start_date": "2023-0-24",
+        "experiment_start_date": "2023-11-01 10:02:28",
         "last_observation_date": "2023-0-24"
     },
     "colony4": {

@@ -222,6 +222,7 @@ def withdraw_old_colony():
                     with open('settings.json', 'w') as outfile:
                         json.dump(data, outfile, indent=4)
 
+                    clear_screen()
                     print(f"Colony {colony_name} has been withdrawn and the loading zone is now occupied.")
                     input("Press Enter to continue...")
 
@@ -232,7 +233,7 @@ def check_out_of_bounds_settings():
     with open('settings.json', 'r') as file:
         data = json.load(file)
         for colony, info in data.items():
-            if colony != 'loadingZone':
+            if colony != 'loadingZone' and colony != 'status':
                 out_of_bounds = False  # Flag to track if any setting is out of bounds
                 colony_name = colony
 
@@ -267,15 +268,37 @@ def check_out_of_bounds_settings():
                     print(f"Colony {colony_name}: All settings are within bounds")
         input("Press Enter to continue...")
 
+def pause_resume_experiments():
+    clear_screen()
+    with open('settings.json', 'r+') as file:
+        data = json.load(file)
+        if data['status']['paused']:
+            data['status']['paused'] = False
+            print("Experiments have been resumed.")
+        else:
+            data['status']['paused'] = True
+            print("Experiments have been paused.")
+        file.seek(0)
+        file.truncate()
+        json.dump(data, file, indent=4)
+    input("Press Enter to continue...")
 
 # Main menu
 while True:
     clear_screen()
+    # Open JSON file and check pause status. If paused, display a message
+    with open('settings.json', 'r') as file:
+        data = json.load(file)
+        if data['status']['paused']:
+            print(f"{RED}The experiments are paused.{NC}")
+        else:
+            print(f"{GREEN}The experiments are running.{NC}")
     print("Options:")
     print("1. Check colonies")
     print("2. Insert New colony")
     print("3. Withdraw old Colony")
     print("4. Check Out-of-bounds Settings")
+    print("5. Pause/Resume experiments")
     print("0. Quit")
 
     choice = input("Enter your choice: ")
@@ -300,6 +323,8 @@ while True:
         withdraw_old_colony()
     elif choice == '4':
         check_out_of_bounds_settings()
+    elif choice == '5':
+        pause_resume_experiments()
     elif choice == '0':
         clear_screen()
         print("Goodbye!")
