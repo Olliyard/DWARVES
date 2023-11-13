@@ -5,7 +5,7 @@ Host: Main MCU simulated by laptop.
 * `image_transfer.py`: Transfer as specified image from the Pi to the host machine.
 
 RPi: Raspberry Pi / robot-controller.
-* `capture_image.py`: Is triggered remotely. Captures an image and saves it locally in the specified colony folder.
+* `capture_image.py`: IsC:\Users\yarsl\Desktop\DWARVES triggered remotely. Captures an image and saves it locally in the specified colony folder.
 
 ## Notes for Raspberry Pi Zero W
 ---
