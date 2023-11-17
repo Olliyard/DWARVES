@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ... -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Petri Dish Matrix</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- ... -->
+    <!-- Repeat the image 9 times in a 3x3 grid -->
+    <div class="grid-item">
+      <img src="PetriDish.png" alt="Petri Dish" onclick="showSettings(1)" />
+    </div>
+    <!-- Repeat the image 8 more times here ... -->
+
+    <!-- Modal for settings -->
+    <div id="settingsModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeSettings()">&times;</span>
+        <h2>Settings</h2>
+        <label for="dayNightCycleSlider">Day/Night Cycle (24 hour)</label>
+        <input
+          type="range"
+          id="dayNightCycleSlider"
+          min="1"
+          max="24"
+          step="1"
+          oninput="updateSetting('dayNightCycle', this.value)"
+        />
+        <input
+          type="text"
+          id="dayNightCycleValue"
+          placeholder="Enter value"
+          oninput="updateSlider('dayNightCycleSlider', this.value)"
+        />
+        <br /><br />
+        <label for="dayTemperatureRangeSlider"
+          >Day Temperature (15°C to 30°C)</label
+        >
+        <input
+          type="range"
+          id="dayTemperatureRangeSlider"
+          min="15"
+          max="30"
+          step="1"
+          oninput="updateSetting('dayTemperatureRange', this.value)"
+        />
+        <input
+          type="text"
+          id="dayTemperatureRangeValue"
+          placeholder="Enter value"
+          oninput="updateSlider('dayTemperatureRangeSlider', this.value)"
+        />
+        <br /><br />
+        <label for="nightTemperatureRangeSlider"
+          >Night Temperature (15°C to 30°C)</label
+        >
+        <input
+          type="range"
+          id="nightTemperatureRangeSlider"
+          min="15"
+          max="30"
+          step="1"
+          oninput="updateSetting('nightTemperatureRange', this.value)"
+        />
+        <input
+          type="text"
+          id="nightTemperatureRangeValue"
+          placeholder="Enter value"
+          oninput="updateSlider('nightTemperatureRangeSlider', this.value)"
+        />
+        <br /><br />
+        <label for="dayLightIntensitySlider"
+          >Day Light Intensity (0 to 1)</label
+        >
+        <input
+          type="range"
+          id="dayLightIntensitySlider"
+          min="0"
+          max="1"
+          step="0.01"
+          oninput="updateSetting('dayLightIntensity', this.value)"
+        />
+        <input
+          type="text"
+          id="dayLightIntensityValue"
+          placeholder="Enter value"
+          oninput="updateSlider('dayLightIntensitySlider', this.value)"
+        />
+        <br /><br />
+        <label for="nightLightIntensitySlider"
+          >Night Light Intensity (0 to 1)</label
+        >
+        <input
+          type="range"
+          id="nightLightIntensitySlider"
+          min="0"
+          max="1"
+          step="0.01"
+          oninput="updateSetting('nightLightIntensity', this.value)"
+        />
+        <input
+          type="text"
+          id="nightLightIntensityValue"
+          placeholder="Enter value"
+          oninput="updateSlider('nightLightIntensitySlider', this.value)"
+        />
+        <br /><br />
+        <label for="observationIntervalSlider"
+          >Observation Interval (1 to 24 hours)</label
+        >
+        <input
+          type="range"
+          id="observationIntervalSlider"
+          min="1"
+          max="24"
+          step="1"
+          oninput="updateSetting('observationInterval', this.value)"
+        />
+        <input
+          type="text"
+          id="observationIntervalValue"
+          placeholder="Enter value"
+          oninput="updateSlider('observationIntervalSlider', this.value)"
+        />
+        <br /><br />
+        <div id="information">
+          <h3>Information</h3>
+          <p>Petri Dish ID: <span id="petriDishID"></span></p>
+          <p>
+            Experiment Beginning Date: <span id="experimentBeginDate"></span>
+          </p>
+          <p>Last Observation Date: <span id="lastObservationDate"></span></p>
+          <p>Current Settings:</p>
+          <pre id="currentSettings"></pre>
+        </div>
+        <button onclick="updateSettings()">Update Settings</button>
+        <button onclick="discardChanges()">Discard Changes</button>
+      </div>
+    </div>
+  </body>
+</html>

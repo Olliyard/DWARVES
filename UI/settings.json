@@ -1,16 +1,16 @@
 {
     "colony1": {
         "id": "1x1",
-        "occupied": true,
+        "occupied": false,
         "daytime_hours": 16,
         "daytime_temperature": 22,
         "nighttime_temperature": 20,
-        "daytime_light_R_intensity": 0,
+        "daytime_light_R_intensity": 1,
         "nighttime_light_R_intensity": 1,
         "daytime_light_B_intensity": 0,
         "nighttime_light_B_intensity": 0,
-        "observation_interval": 24,
-        "experiment_start_date": "2023-11-01 10:25:54",
+        "observation_interval": 20,
+        "experiment_start_date": null,
         "last_observation_date": "2023-0-24"
     },
     "colony2": {
@@ -57,7 +57,7 @@
     },
     "colony5": {
         "id": "2x2",
-        "occupied": false,
+        "occupied": true,
         "daytime_hours": 12,
         "daytime_temperature": 28,
         "nighttime_temperature": 22,
@@ -66,7 +66,7 @@
         "daytime_light_B_intensity": 1,
         "nighttime_light_B_intensity": 0,
         "observation_interval": 24,
-        "experiment_start_date": null,
+        "experiment_start_date": "2023-11-14 10:53:04",
         "last_observation_date": "2023-0-24"
     },
     "colony6": {
