@@ -1,3 +1,6 @@
+import time
+print("Script started at:", time.strftime("%Y-%m-%d %H:%M:%S"))
+
 import cv2
 import numpy as np
 from picamera import PiCamera
@@ -8,7 +11,9 @@ import sys
 from datetime import datetime
 
 # Initialize the PiCamera
+print("Initializing camera...", time.strftime("%H:%M:%S"))
 camera = PiCamera()
+print("Done", time.strftime("%H:%M:%S"))
 
 # Set camera resolution (adjust as needed)
 camera.resolution = (640, 480)
@@ -46,11 +51,6 @@ def process_image(original_image, colonyID):
     # Generate an image with the green mask and intensity information
     result_image = original_image.copy()
     cv2.drawContours(result_image, contours, -1, (0, 255, 0), 2)
-
-    # Add text to the image
-    text = f"Colony ID: {colonyID}\nTotal Green Area: {total_green_area} pixels\nGreen Intensity Range: {sorted_intensities[0]:.2f} to {sorted_intensities[-1]:.2f}"
-    cv2.putText(result_image, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
-
     return result_image, total_green_area, green_intensities
 
 
@@ -63,23 +63,30 @@ def capture_and_process_image(colonyID):
     raw_capture = PiRGBArray(camera)
 
     # Place image in the array
+    print("Capturing image...")
     camera.capture(raw_capture, format="bgr")
     original_image = raw_capture.array
+    print("Image captured")
 
     # Process the captured image
     green = []
-    processed_image, size, color = process_image(original_image, colonyID)
 
+    print("Processing image...")
+    processed_image, size, color = process_image(original_image, colonyID)
+    print("Image processed")
     # Generate a timestamp for identifiable filenames
     timestamp = datetime.now().strftime("%Y%m%d%H%M")
 
     # Save images with colonyID and timestamp in the file name
+    print("Writing files to folder")
     cv2.imwrite(f'{folder_path}colony{colonyID}_{timestamp}_original.jpg', original_image)
     cv2.imwrite(f'{folder_path}colony{colonyID}_{timestamp}_processed.jpg', processed_image)
 
     with open(f'{folder_path}colony{colonyID}_{timestamp}_process_info.txt', 'w') as file:
         file.write(f"Total Green Area: {size} pixels\n")
         file.write(f"Green Intensities: {', '.join(map(str, color))}\n")
+
+    print("Files written successfully")
 
     return original_image, processed_image, size, color
 
