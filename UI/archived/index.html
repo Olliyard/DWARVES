@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-gap: 10px;
+      }
+
+      .petri-dish {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container" id="image-container"></div>
+    <div id="hover-info" class="hover-info">
+        <div id="colony-popup" class="colony-popup">
+            <h2>Colony Information</h2>
+            <div>
+                <label for="daytime_hours">Daytime Hours:</label>
+                <input type="text" id="daytime_hours">
+            </div>
+            <!-- Add similar fields for other colony properties here -->
+            <button id="save-changes">Save Changes</button>
+        </div>
+    </div>
+    <script src="functions.js"></script>
+    <script>
+      // Load JSON settings using the loadJSON function from functions.js
+      loadJSON("settings.json", (colonyData) => {
+        generateImageMatrix(colonyData);
+      });
+    </script>
+  </body>
+</html>

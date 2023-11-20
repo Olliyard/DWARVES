@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petri Dish Matrix</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="grid-container">
+        <!-- Repeat the image 9 times in a 3x3 grid -->
+        <div class="grid-item" onclick="showSettings(1)">
+            <img src="PetriDish.png" alt="Petri Dish">
+        </div>
+        <!-- Repeat the image 8 more times here ... -->
+    </div>
+
+    <!-- Modal for settings -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSettings()">&times;</span>
+            <h2>Settings</h2>
+            <label for="dayNightCycleSlider">Day/Night Cycle (24 hour)</label>
+            <input type="range" id="dayNightCycleSlider" min="1" max="24" step="1" oninput="updateSetting('dayNightCycle', this.value)">
+            <br><br>
+            <label for="temperatureRangeSlider">Temperature range (15°C to 30°C)</label>
+            <input type="range" id="temperatureRangeSlider" min="15" max="30" step="1" oninput="updateSetting('temperatureRange', this.value)">
+            <br><br>
+            <label for="lightIntensitySlider">Light Intensity (0 to 1)</label>
+            <input type="range" id="lightIntensitySlider" min="0" max="1" step="0.01" oninput="updateSetting('lightIntensity', this.value)">
+            <br><br>
+            <label for="observationIntervalSlider">Observation Interval (1 to 24 hours)</label>
+            <input type="range" id="observationIntervalSlider" min="1" max="24" step="1" oninput="updateSetting('observationInterval', this.value)">
+            <br><br>
+            <div id="information">
+                <h3>Information</h3>
+                <p>Petri Dish ID: <span id="petriDishID"></span></p>
+                <p>Experiment Beginning Date: <span id="experimentBeginDate"></span></p>
+                <p>Last Observation Date: <span id="lastObservationDate"></span></p>
+                <p>Current Settings:</p>
+                <pre id="currentSettings"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
