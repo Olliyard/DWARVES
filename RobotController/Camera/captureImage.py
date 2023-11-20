@@ -1,6 +1,3 @@
-import time
-print("Script started at:", time.strftime("%Y-%m-%d %H:%M:%S"))
-
 import cv2
 import numpy as np
 from picamera import PiCamera
@@ -11,18 +8,16 @@ import sys
 from datetime import datetime
 
 # Initialize the PiCamera
-print("Initializing camera...", time.strftime("%H:%M:%S"))
 camera = PiCamera()
-print("Done", time.strftime("%H:%M:%S"))
 
 # Set camera resolution (adjust as needed)
 camera.resolution = (640, 480)
 
 def process_image(original_image, colonyID):
-    # Convert the image to the HSV color space
+    # Convert the image to the HSV
     hsv_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2HSV)
 
-    # Define a range for green color in HSV (adjust later)
+    # Define a range for green color (adjust later)
     lower_green = np.array([20, 50, 50])
     upper_green = np.array([80, 255, 255])
 
