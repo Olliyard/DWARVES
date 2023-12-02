@@ -66,7 +66,7 @@ class CameraClass:
         # Process the captured image
         green = []
         print("Processing image...")
-        processed_image, size, color = process_image(original_image, msg.data)
+        processed_image, size, color = self.process_image(original_image, msg.data)
         print("Image processed")
 
         # Generate a timestamp for identifiable filenames
@@ -87,14 +87,15 @@ class CameraClass:
 
     def init():
         rospy.init_node('capture_capture', anonymous=True)
-        rospy.Subscriber("/capture_img", Int32, callback)
-        rospy.spin()
+        rospy.Subscriber("/capture_img", Int32, self.capture_callback)
 
         # Initialize the PiCamera
         self.camera = PiCamera()
 
         # Set camera resolution (adjust as needed)
         self.camera.resolution = (640, 480)
+
+        rospy.spin()
 
 if __name__ == '__main__':
     cam = CameraClass
