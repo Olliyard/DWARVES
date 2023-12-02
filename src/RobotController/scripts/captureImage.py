@@ -9,6 +9,8 @@ from picamera.array import PiRGBArray
 import time
 import sys
 from datetime import datetime
+import RPi.GPIO as GPIO
+
 class CameraClass:
     def process_image(original_image, colonyID):
         # Convert the image to the HSV
@@ -59,9 +61,13 @@ class CameraClass:
 
         # Place image in the array
         print("Capturing image...")
+        # Turn on light
+        GPIO.output(self.a, 1)
         self.camera.capture(raw_capture, format="bgr")
         original_image = raw_capture.array
         print("Image captured")
+        # Turn off light
+        GPIO.output(self.a, 0)
 
         # Process the captured image
         green = []
@@ -94,6 +100,10 @@ class CameraClass:
 
         # Set camera resolution (adjust as needed)
         self.camera.resolution = (640, 480)
+
+        # Set up light pin
+        GPIO.setup(12, GPIO.out)
+        GPIO.output(self.a, 0)
 
         rospy.spin()
 
