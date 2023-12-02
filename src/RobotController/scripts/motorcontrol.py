@@ -26,7 +26,7 @@ def drive_motor(a, b, c, e, direction, motor, dist):
                 GPIO.output(a, motor)
                 GPIO.output(b, 1)
                 GPIO.output(c, 1)
-            rospy.loginfo("Motor " + motor + " driven " + x + " rotations in positive direction")
+            rospy.loginfo("Motor " + str(motor) + " driven " + str(x) + " rotations in positive direction")
     # drive negative direction
     else:
         # drive "distance" rotations
@@ -48,7 +48,7 @@ def drive_motor(a, b, c, e, direction, motor, dist):
                 GPIO.output(a, motor)
                 GPIO.output(b, 1)
                 GPIO.output(c, 1)
-            rospy.loginfo("Motor " + motor + " driven " + x + " rotations in negative direction")
+            rospy.loginfo("Motor " + str(motor) + " driven " + str(x) + " rotations in negative direction")
 
 class cam_motors:
     def at_position(self, msg):
@@ -70,7 +70,7 @@ class cam_motors:
         desiredPos = msg.data
         # calculate the distance in y
         ydiff = (desiredPos % self.y) - (self.position % self.y)
-        rospy.loginfo("should move " + ydiff + " in y-direction")
+        rospy.loginfo("should move " + str(ydiff) + " in y-direction")
         # move motor in y
         for y in range(ydiff):
             if ydiff > 0:
@@ -82,7 +82,7 @@ class cam_motors:
         self.position = self.position + ydiff
         # calculate distance in x
         xdiff = (desiredPos / self.y) - (self.position / self.y)
-        rospy.loginfo("should move " + xdiff + " in x-direction")
+        rospy.loginfo("should move " + str(xdiff) + " in x-direction")
         # move motor in x
         for x in range(xdiff):
             if xdiff > 0:
@@ -173,7 +173,7 @@ class arm_motors:
         desiredPos = msg.data
         # calculate the distance in y
         ydiff = (desiredPos % self.y) - (self.position % self.y)
-        rospy.loginfo("should move " + ydiff + " in y-direction")
+        rospy.loginfo("should move " + str(ydiff) + " in y-direction")
         # move motor in y
         for y in range(ydiff):
             if ydiff > 0:
@@ -185,7 +185,7 @@ class arm_motors:
         self.position = self.position + ydiff
         # calculate distance in x
         xdiff = (desiredPos / self.y) - (self.position / self.y)
-        rospy.loginfo("should move " + xdiff + " in x-direction")
+        rospy.loginfo("should move " + str(xdiff) + " in x-direction")
         # move motor in x
         for x in range(xdiff):
             if xdiff > 0:
