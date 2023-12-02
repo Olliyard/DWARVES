@@ -12,7 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   OpenCV
-  picamera
+  #picamera
+  #RPi #RPi.GPIO
 )
 include_directories(${OpenCV_INCLUDE_DIRS})
 
@@ -164,6 +165,7 @@ include_directories(
 ## in contrast to setup.py, you can choose the destination
 install(PROGRAMS
   scripts/captureImage
+  scripts/motorcontrol
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
