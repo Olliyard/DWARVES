@@ -15,11 +15,10 @@ void multiplexerSetup()
 
 void resetMultiplexer()
 {
-    digitalWrite(PIN_A, LOW);
-    digitalWrite(PIN_B, LOW);
-    digitalWrite(PIN_C, LOW);
+    delay(switchDelay);
+    analogWrite(PIN_OUTPUT, 0);
     digitalWrite(PIN_INH, HIGH);
-    digitalWrite(PIN_OUTPUT, LOW);
+    delay(switchDelay);
 }
 
 void setBrightness(uint8_t colonyID, uint8_t brightnessRed, uint8_t brightnessBlue)
@@ -28,103 +27,105 @@ void setBrightness(uint8_t colonyID, uint8_t brightnessRed, uint8_t brightnessBl
     brightnessRed = map(brightnessRed, 0, 100, 0, 255);
     brightnessBlue = map(brightnessBlue, 0, 100, 0, 255);
 
+    // Print the values
+    /*
+    Serial.print("Red brightness: ");
+    Serial.println(brightnessRed);
+    Serial.print("Blue brightness: ");
+    Serial.println(brightnessBlue);
+    */
+
     switch (colonyID)
     {
     case 1:
         // Set RED (channel 0)
-        digitalWrite(PIN_A, LOW);   
-        digitalWrite(PIN_B, LOW);   
-        digitalWrite(PIN_C, LOW);   
-        digitalWrite(PIN_INH, LOW); 
+        digitalWrite(PIN_A, LOW);
+        digitalWrite(PIN_B, LOW);
+        digitalWrite(PIN_C, LOW);
+        digitalWrite(PIN_INH, LOW);
         analogWrite(PIN_OUTPUT, brightnessRed);
-        delay(switchDelay);
         resetMultiplexer();
 
         // set BLUE (channel 1)
-        digitalWrite(PIN_A, HIGH);   
-        digitalWrite(PIN_B, LOW);   
-        digitalWrite(PIN_C, LOW);  
-        digitalWrite(PIN_INH, LOW); 
+        digitalWrite(PIN_A, HIGH);
+        digitalWrite(PIN_B, LOW);
+        digitalWrite(PIN_C, LOW);
+        digitalWrite(PIN_INH, LOW);
         analogWrite(PIN_OUTPUT, brightnessBlue);
-        delay(switchDelay);
         resetMultiplexer();
         break;
 
     case 2:
         // Set RED (channel 2)
-        digitalWrite(PIN_A, LOW);   
-        digitalWrite(PIN_B, HIGH);   
-        digitalWrite(PIN_C, LOW);   
-        digitalWrite(PIN_INH, LOW); 
+        digitalWrite(PIN_A, LOW);
+        digitalWrite(PIN_B, HIGH);
+        digitalWrite(PIN_C, LOW);
+        digitalWrite(PIN_INH, LOW);
         analogWrite(PIN_OUTPUT, brightnessRed);
-        delay(switchDelay);
+
         resetMultiplexer();
 
         // set BLUE (channel 3)
-        digitalWrite(PIN_A, HIGH);   
-        digitalWrite(PIN_B, HIGH);   
-        digitalWrite(PIN_C, LOW);  
-        digitalWrite(PIN_INH, LOW); 
+        digitalWrite(PIN_A, HIGH);
+        digitalWrite(PIN_B, HIGH);
+        digitalWrite(PIN_C, LOW);
+        digitalWrite(PIN_INH, LOW);
         analogWrite(PIN_OUTPUT, brightnessBlue);
-        delay(switchDelay);
+
         resetMultiplexer();
         break;
 
     case 3:
         // Set RED (channel 4)
-        digitalWrite(PIN_A, LOW);   
-        digitalWrite(PIN_B, LOW);   
-        digitalWrite(PIN_C, HIGH);   
-        digitalWrite(PIN_INH, LOW); 
+        digitalWrite(PIN_A, LOW);
+        digitalWrite(PIN_B, LOW);
+        digitalWrite(PIN_C, HIGH);
+        digitalWrite(PIN_INH, LOW);
         analogWrite(PIN_OUTPUT, brightnessRed);
-        delay(switchDelay);
+
         resetMultiplexer();
 
         // set BLUE (channel 5)
-        digitalWrite(PIN_A, HIGH);   
-        digitalWrite(PIN_B, LOW);   
-        digitalWrite(PIN_C, HIGH);  
-        digitalWrite(PIN_INH, LOW); 
+        digitalWrite(PIN_A, HIGH);
+        digitalWrite(PIN_B, LOW);
+        digitalWrite(PIN_C, HIGH);
+        digitalWrite(PIN_INH, LOW);
         analogWrite(PIN_OUTPUT, brightnessBlue);
-        delay(switchDelay);
+
         resetMultiplexer();
     }
 }
-
 
 void setTemperature(uint8_t colonyID, uint8_t heat)
 {
     // Map the heat values from 0-100 to 0-255
     heat = map(heat, 0, 100, 0, 255);
-    
+
     switch (colonyID)
     {
     case 1:
         // Set TEMP (channel 6)
-        digitalWrite(PIN_A, LOW);   
-        digitalWrite(PIN_B, HIGH);   
-        digitalWrite(PIN_C, HIGH);   
-        digitalWrite(PIN_INH, LOW); 
+        digitalWrite(PIN_A, LOW);
+        digitalWrite(PIN_B, HIGH);
+        digitalWrite(PIN_C, HIGH);
+        digitalWrite(PIN_INH, LOW);
         analogWrite(PIN_OUTPUT, heat);
-        delay(switchDelay);
         resetMultiplexer();
         break;
 
     case 2:
         // Set TEMP (channel 7)
-        digitalWrite(PIN_A, HIGH);   
-        digitalWrite(PIN_B, HIGH);   
-        digitalWrite(PIN_C, HIGH);   
-        digitalWrite(PIN_INH, LOW); 
+        digitalWrite(PIN_A, HIGH);
+        digitalWrite(PIN_B, HIGH);
+        digitalWrite(PIN_C, HIGH);
+        digitalWrite(PIN_INH, LOW);
         analogWrite(PIN_OUTPUT, heat);
-        delay(switchDelay);
         resetMultiplexer();
         break;
 
     case 3:
         // Set TEMP (pin_temp_3)
         analogWrite(pin_temp_3, heat);
-        delay(switchDelay);
         resetMultiplexer();
     }
 }
@@ -134,20 +135,20 @@ void testsetTemperature(uint8_t colonyID, uint8_t heat)
 {
     // Coefficients obtained from linear regression
     float m = 0.021; // Replace with your actual value
-    float b = 1.7; // Replace with your actual value
+    float b = 1.7;   // Replace with your actual value
 
     // Map the heat values from 0-100 to 0-255
     heat = m * heat + b;
     heat = map(heat, 1.7, 5, 0, 255);
-    
+
     switch (colonyID)
     {
     case 1:
         // Set TEMP (channel 6)
-        digitalWrite(PIN_A, LOW);   
-        digitalWrite(PIN_B, HIGH);   
-        digitalWrite(PIN_C, HIGH);   
-        digitalWrite(PIN_INH, LOW); 
+        digitalWrite(PIN_A, LOW);
+        digitalWrite(PIN_B, HIGH);
+        digitalWrite(PIN_C, HIGH);
+        digitalWrite(PIN_INH, LOW);
         analogWrite(PIN_OUTPUT, heat);
         delay(switchDelay);
         resetMultiplexer();
@@ -155,9 +156,9 @@ void testsetTemperature(uint8_t colonyID, uint8_t heat)
 
     case 2:
         // Set TEMP (channel 7)
-        digitalWrite(PIN_A, HIGH);   
-        digitalWrite(PIN_B, HIGH);   
-        digitalWrite(PIN_C, HIGH);   
+        digitalWrite(PIN_A, HIGH);
+        digitalWrite(PIN_B, HIGH);
+        digitalWrite(PIN_C, HIGH);
         // ... rest of your code
     }
 }

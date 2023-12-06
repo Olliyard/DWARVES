@@ -18,3 +18,4 @@ void temperatureSetup();                     // Setup function for temperature s
 float getTemperature(DeviceAddress address); // Get temperature function
 float *getTemperatures();                    // Get temperatures function
 void testTemperature();                      // Test function for temperature sensor
+void printAddresses();                         // Get addresses function

@@ -1,6 +1,6 @@
 #include "../lib/colony_data.hpp"
 
-ColonyData colony1 = {0, 0, 0};
+ColonyData colony1 = {100, 100, 100};
 ColonyData colony2 = {0, 0, 0};
 ColonyData colony3 = {0, 0, 0};
 

@@ -6,7 +6,7 @@
 #include "DallasTemperature.h"
 
 // Define to which pin of the Arduino the 1-Wire bus is connected:
-#define ONE_WIRE_BUS A0
+#define ONE_WIRE_BUS 51
 void printTemperature(DeviceAddress address);
 
 // Create a new instance of the oneWire class to communicate with any OneWire device:
@@ -22,6 +22,7 @@ byte sensor3[8] = {0x10, 0xBF, 0xD4, 0x9A, 0x03, 0x08, 0x00, 0xF1};
 
 void setup()
 {
+    digitalWrite(53, HIGH); // Set the power pin HIGH to power the DS18B20
     // Begin serial communication at a baud rate of 9600:
     Serial.begin(9600);
     // Start up the library:

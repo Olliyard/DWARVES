@@ -14,13 +14,13 @@ void setup()
 
   // Setup temperature sensor
   temperatureSetup();
-
 }
 
 void loop()
 {
   // put your main code here, to run repeatedly:
-  react();
+  // printAddresses();
   // testTemperature();
+  react();
   delay(3000);
 }

@@ -7,7 +7,7 @@
 
 
 // Define to which pin of the Arduino the 1-Wire bus is connected:
-#define ONE_WIRE_BUS A0
+#define ONE_WIRE_BUS 53
 
 // Create a new instance of the oneWire class to communicate with any OneWire device:
 OneWire oneWire(ONE_WIRE_BUS);
@@ -18,11 +18,15 @@ DallasTemperature sensors(&oneWire);
 int deviceCount = 0;
 float tempC;
 
+DeviceAddress tempAddress;
+
 void setup() {
   // Begin serial communication at a baud rate of 9600:
   Serial.begin(9600);
   // Start up the library:
   sensors.begin();
+
+  digitalWrite(51, HIGH); // Set the power pin HIGH to power the DS18B20
 
   // Locate the devices on the bus:
   Serial.println("Locating devices...");
@@ -37,7 +41,7 @@ void loop() {
   sensors.requestTemperatures();
 
   // Display temperature from each sensor
-  for (int i = 0;  i < deviceCount;  i++) {
+  for (uint8_t i = 0;  i < deviceCount;  i++) {
     Serial.print("Sensor ");
     Serial.print(i + 1);
     Serial.print(" : ");
@@ -45,6 +49,7 @@ void loop() {
     Serial.print(tempC);
     Serial.print(" \xC2\xB0"); // shows degree symbol
     Serial.print("C ");
+    sensors.getAddress(tempAddress, i);
   }
 
   Serial.println();
