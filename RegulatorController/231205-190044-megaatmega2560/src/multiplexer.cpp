@@ -218,3 +218,32 @@ void test_stepwise_increment_colony1_blue()
         Serial.read();
     }
 }
+
+
+void test_stepwise_increment_colony1_temp()
+{
+    Serial.println("Testing stepwise increment of colony 1 temp");
+
+    // Set temperature
+    digitalWrite(PIN_A, LOW);
+    digitalWrite(PIN_B, HIGH);
+    digitalWrite(PIN_C, HIGH);
+    digitalWrite(PIN_INH, LOW);
+    int analogValue = 0;
+    // For loop to increment red brightness
+    for (int i = 0; i <= 100; i++)
+    {
+        analogValue = map(i, 0, 100, 0, 255);
+        analogWrite(PIN_OUTPUT, analogValue);
+        // Print Current values
+        Serial.print("Current temp: ");
+        Serial.println(i);
+
+        // Press enter to continue
+        while (!Serial.available())
+        {
+            delay(1000);
+        }
+        Serial.read();
+    }
+}

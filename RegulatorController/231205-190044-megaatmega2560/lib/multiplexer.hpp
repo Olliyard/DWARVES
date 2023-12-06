@@ -22,3 +22,4 @@ void testsetTemperature(uint8_t colonyID, uint8_t heat); // Test function for se
 
 void test_stepwise_increment_colony1_red(); // Test function for stepwise incrementing colony 1
 void test_stepwise_increment_colony1_blue();
+void test_stepwise_increment_colony1_temp();
