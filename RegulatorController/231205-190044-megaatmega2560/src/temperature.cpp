@@ -9,6 +9,9 @@ byte sensor3[8] = {0x10, 0xBF, 0xD4, 0x9A, 0x03, 0x08, 0x00, 0xF1};
 
 void temperatureSetup()
 {
+    // Set the power pin HIGH to power the DS18B20
+    digitalWrite(POWER_PIN, HIGH);
+    
     // Start up the library:
     sensors.begin();
 

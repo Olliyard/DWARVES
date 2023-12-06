@@ -2,6 +2,8 @@
 #include <Arduino.h>
 #include "../lib/multiplexer.hpp"
 #include "../lib/temperature.hpp"
+#include "../lib/colony_data.hpp"
+
 
 // Protocol;
 // <t> -> get temperatures
@@ -11,6 +13,6 @@
 
 void setupUART();
 void handleUART();
-void react(int colonyID, int redBrightness, int blueBrightness, int setTemp);
+void react();
 void sendTemperatures();
 void printSettings(int colonyID, int redBrightness, int blueBrightness, int setTemp);

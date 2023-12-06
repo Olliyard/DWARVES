@@ -36,8 +36,11 @@ void handleUART()
             // For debug: Call a function to print based on these values
             printSettings(colonyID, redBrightness, blueBrightness, setTemp);
 
-            // React to the data
-            react(colonyID, redBrightness, blueBrightness, setTemp);
+            // Set the values in the struct
+            setValues(colonyID, redBrightness, blueBrightness, setTemp);
+
+            // Print "OK"
+            Serial.println("OK"); // Host knows that the settings were applied
         }
 
         else
@@ -47,16 +50,27 @@ void handleUART()
     }
 }
 
-void react(int colonyID, int redBrightness, int blueBrightness, int setTemp)
+void serialEvent()
 {
-    // Set the brightness
-    setBrightness(colonyID, redBrightness, blueBrightness);
+    while (Serial.available())
+    {
+        // Call handleUART() when data is available
+        handleUART();
+    }
+}
 
-    // Set the temperature
-    setTemperature(colonyID, setTemp);
+// React to the data
+void react()
+{
+    // Set the brightness for all the colonies
+    setBrightness(1, colony1.redBrightness, colony1.blueBrightness);
+    setBrightness(2, colony2.redBrightness, colony2.blueBrightness);
+    setBrightness(3, colony3.redBrightness, colony3.blueBrightness);
 
-    // Print "OK"
-    Serial.println("OK"); // Host knows that the settings were applied
+    // Set the temperature for all the colonies
+    setTemperature(1, colony1.heat);
+    setTemperature(2, colony2.heat);
+    setTemperature(3, colony3.heat);
 }
 
 void sendTemperatures()
