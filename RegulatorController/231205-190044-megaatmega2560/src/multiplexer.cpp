@@ -162,3 +162,59 @@ void testsetTemperature(uint8_t colonyID, uint8_t heat)
         // ... rest of your code
     }
 }
+
+void test_stepwise_increment_colony1_red()
+{
+    Serial.println("Testing stepwise increment of colony 1 red");
+
+    // Set brightness
+    digitalWrite(PIN_A, LOW);
+    digitalWrite(PIN_B, LOW);
+    digitalWrite(PIN_C, LOW);
+    digitalWrite(PIN_INH, LOW);
+    int analogValue = 0;
+    // For loop to increment red brightness
+    for (int i = 0; i <= 100; i++)
+    {
+        analogValue = map(i, 0, 100, 0, 255);
+        analogWrite(PIN_OUTPUT, analogValue);
+        // Print Current values
+        Serial.print("Current red brightness: ");
+        Serial.println(i);
+
+        // Press enter to continue
+        while (!Serial.available())
+        {
+            delay(1000);
+        }
+        Serial.read();
+    }
+}
+
+void test_stepwise_increment_colony1_blue()
+{
+    Serial.println("Testing stepwise increment of colony 1 blue");
+
+    // Set brightness
+    digitalWrite(PIN_A, HIGH);
+    digitalWrite(PIN_B, LOW);
+    digitalWrite(PIN_C, LOW);
+    digitalWrite(PIN_INH, LOW);
+    int analogValue = 0;
+    // For loop to increment red brightness
+    for (int i = 0; i <= 100; i++)
+    {
+        analogValue = map(i, 0, 100, 0, 255);
+        analogWrite(PIN_OUTPUT, analogValue);
+        // Print Current values
+        Serial.print("Current blue brightness: ");
+        Serial.println(i);
+
+        // Press enter to continue
+        while (!Serial.available())
+        {
+            delay(1000);
+        }
+        Serial.read();
+    }
+}

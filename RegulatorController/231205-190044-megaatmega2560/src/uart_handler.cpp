@@ -50,6 +50,7 @@ void handleUART()
     }
 }
 
+/*
 void serialEvent()
 {
     while (Serial.available())
@@ -58,6 +59,7 @@ void serialEvent()
         handleUART();
     }
 }
+*/
 
 // React to the data
 void react()
