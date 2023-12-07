@@ -5,7 +5,7 @@ import os
 import serial
 from colony import Colony
 
-USB_PORT = "/dev/ttyACM0"  # Arduino Uno WiFi Rev2 (can be ttyUSB0)
+USB_PORT = "/dev/ttyUSB0"  # Arduino Uno WiFi Rev2 (can be ttyUSB0)
 RPI_ADDR = '192.168.0.104'
 RPI_USERNAME = 'rpi'
 RPI_PASS = 'raspberry'
