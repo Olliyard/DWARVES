@@ -14,12 +14,12 @@
 void multiplexerSetup(); // Setup function for multiplexer
 void resetMultiplexer(); // Reset multiplexer
 
-void mapValue(uint8_t value); // Map a value to graph for transistor turn on
+float fluxToAnalogValue(float flux); // Convert flux to analog value
 
 void setBrightness(uint8_t colonyID, uint8_t brightnessRed, uint8_t brightnessBlue); // Set the light for a colony
-void setTemperature(uint8_t colonyID, uint8_t heat); // Set the temperature for a colony
-void testsetTemperature(uint8_t colonyID, uint8_t heat); // Test function for setting temperature
+void setTemperature(uint8_t colonyID); // Turn on the heating element for a colony
 
+// Test functions
 void test_stepwise_increment_colony1_red(); // Test function for stepwise incrementing colony 1
 void test_stepwise_increment_colony1_blue();
 void test_stepwise_increment_colony1_temp();

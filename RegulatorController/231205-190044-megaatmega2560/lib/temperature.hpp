@@ -14,8 +14,8 @@ extern OneWire oneWire;
 extern DallasTemperature sensors;
 
 // Function declarations
-void temperatureSetup();                     // Setup function for temperature sensor
-float getTemperature(DeviceAddress address); // Get temperature function
-float *getTemperatures();                    // Get temperatures function
-void testTemperature();                      // Test function for temperature sensor
-void printAddresses();                         // Get addresses function
+void temperatureSetup();           // Setup function for temperature sensor
+float getTemperature(int colonyID); // Get temperature function
+float *getTemperatures();      // Get temperatures function
+void testTemperature();            // Test function for temperature sensor
+void printAddresses();             // Get addresses function

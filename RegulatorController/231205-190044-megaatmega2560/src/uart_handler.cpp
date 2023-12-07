@@ -7,50 +7,71 @@ void setupUART()
 
 void handleUART()
 {
-    if (Serial.available())
-    {                                               // If data is available to read
-        String data = Serial.readStringUntil('\n'); // Read the data until a newline character
-        Serial.println(data);
+    // Read the data
+    String data = Serial.readStringUntil('\n');
+    Serial.println(data);
 
-        // Protocol: "t" means get temperatures, data[0] = s means set settings
-        if (data[0] == 't')
-        {
-            sendTemperatures();
-            return;
-        }
+    // Check for <setl,colonyID,red,blue>
+    if (data.startsWith("<setl,"))
+    {
+        // Extract colonyID, red, blue. By dividing by comma
+        data = data.substring(6); // Remove the "<setl," part
+        int commaIndex1 = data.indexOf(',');
+        int commaIndex2 = data.indexOf(',', commaIndex1 + 1);
 
-        else if (data[0] == 's')
-        {
-            // Find the indices of the commas
-            int commaIndex0 = data.indexOf(',');
-            int commaIndex1 = data.indexOf(',', commaIndex0 + 1);
-            int commaIndex2 = data.indexOf(',', commaIndex1 + 1);
-            int commaIndex3 = data.indexOf(',', commaIndex2 + 1);
+        // Parse the data
+        int colonyID = data.substring(0, commaIndex1).toInt();
+        int red = data.substring(commaIndex1 + 1, commaIndex2).toInt();
+        int blue = data.substring(commaIndex2 + 1, data.length() - 1).toInt(); // Subtract 1 to remove the closing '>'
 
-            // Parse the data
-            int colonyID = data.substring(commaIndex0 + 1, commaIndex1).toInt();
-            int redBrightness = data.substring(commaIndex1 + 1, commaIndex2).toInt();
-            int blueBrightness = data.substring(commaIndex2 + 1, commaIndex3).toInt();
-            int setTemp = data.substring(commaIndex3 + 1).toInt();
+        /*         Serial.print("Colony ID: ");
+                Serial.println(colonyID);
+                Serial.print("Red brightness: ");
+                Serial.println(red);
+                Serial.print("Blue brightness: ");
+                Serial.println(blue); */
 
-            // For debug: Call a function to print based on these values
-            printSettings(colonyID, redBrightness, blueBrightness, setTemp);
+        // Set the values
+        setValuesBrightness(colonyID, red, blue);
+    }
+    // Check for <sett,colonyID,temp>
+    else if (data.startsWith("<sett"))
+    {
+        // Extract colonyID, temp. By dividing by comma
+        data = data.substring(6); // Remove the "<sett," part
+        int commaIndex = data.indexOf(',');
+        int colonyID = data.substring(0, commaIndex).toInt();
+        int temp = data.substring(commaIndex + 1, data.length() - 1).toInt(); // Subtract 1 to remove the closing '>'
 
-            // Set the values in the struct
-            setValues(colonyID, redBrightness, blueBrightness, setTemp);
+        /*         Serial.print("Colony ID: ");
+                Serial.println(colonyID);
+                Serial.print("Set temperature: ");
+                Serial.println(temp); */
 
-            // Print "OK"
-            Serial.println("OK"); // Host knows that the settings were applied
-        }
+        // Set the values
+        setValuesTemp(colonyID, temp);
+    }
 
-        else
-        {
-            Serial.println("ERROR: Invalid protocol");
-        }
+    // Check for <get,colonyID>
+    else if (data.startsWith("<get,"))
+    {
+        // Extract colonyID. By dividing by comma
+        data = data.substring(5);                                    // Remove the "<get," part
+        int colonyID = data.substring(0, data.length() - 1).toInt(); // Subtract 1 to remove the closing '>'
+        Serial.print("Colony ID hereere: ");
+        Serial.println(colonyID);
+
+        // Send the temperatures
+        float temperature = getTemperature(colonyID);
+        Serial.print(temperature);
+    }
+
+    else
+    {
+        Serial.println("ERROR: Invalid protocol");
     }
 }
 
-/*
 void serialEvent()
 {
     while (Serial.available())
@@ -59,7 +80,6 @@ void serialEvent()
         handleUART();
     }
 }
-*/
 
 // React to the data
 void react()
@@ -69,10 +89,20 @@ void react()
     setBrightness(2, colony2.redBrightness, colony2.blueBrightness);
     setBrightness(3, colony3.redBrightness, colony3.blueBrightness);
 
-    // Set the temperature for all the colonies
-    setTemperature(1, colony1.heat);
-    setTemperature(2, colony2.heat);
-    setTemperature(3, colony3.heat);
+    // Check the temperatures, if they are less than the set temperature, turn heat onto max:
+    float *temperatures = getTemperatures();
+    if (temperatures[0] < colony1.heat)
+    {
+        setTemperature(1);
+    }
+    else if (temperatures[1] < colony2.heat)
+    {
+        setTemperature(2);
+    }
+    else if (temperatures[2] < colony3.heat)
+    {
+        setTemperature(3);
+    }
 }
 
 void sendTemperatures()

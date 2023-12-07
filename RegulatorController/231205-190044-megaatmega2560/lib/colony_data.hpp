@@ -1,12 +1,15 @@
 #pragma once
 
-void setValues(int colonyID, int redBrightness, int blueBrightness, int setTemp);
+
+void setValuesBrightness(int colonyID, int redBrightness, int blueBrightness);
+void setValuesTemp(int colonyID, int temp);
+
 
 struct ColonyData
 {
-    int redBrightness;
-    int blueBrightness;
-    int heat;
+    int redBrightness; // relative flux 0-100%
+    int blueBrightness; // relative flux 0-100%
+    int heat; // wanted heat in degrees C
 };
 
 extern ColonyData colony1;

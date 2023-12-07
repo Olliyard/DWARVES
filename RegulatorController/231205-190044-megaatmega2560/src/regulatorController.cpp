@@ -21,8 +21,8 @@ void loop()
   // put your main code here, to run repeatedly:
   // printAddresses();
   // testTemperature();
-  // react();
+  react();
   // delay(3000);
-  test_stepwise_increment_colony1_blue();
-  exit(1);
+  // test_stepwise_increment_colony1_temp();
+  // exit(1);
 }

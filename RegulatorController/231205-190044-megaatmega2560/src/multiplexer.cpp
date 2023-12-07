@@ -23,17 +23,10 @@ void resetMultiplexer()
 
 void setBrightness(uint8_t colonyID, uint8_t brightnessRed, uint8_t brightnessBlue)
 {
-    // Map the brightness values from 0-100 to 0-255
-    brightnessRed = map(brightnessRed, 0, 100, 0, 255);
-    brightnessBlue = map(brightnessBlue, 0, 100, 0, 255);
 
-    // Print the values
-    /*
-    Serial.print("Red brightness: ");
-    Serial.println(brightnessRed);
-    Serial.print("Blue brightness: ");
-    Serial.println(brightnessBlue);
-    */
+    // Map the brightness values from 0-100 to 0-255
+    brightnessRed = fluxToAnalogValue(brightnessRed);
+    brightnessBlue = fluxToAnalogValue(brightnessBlue);
 
     switch (colonyID)
     {
@@ -96,71 +89,59 @@ void setBrightness(uint8_t colonyID, uint8_t brightnessRed, uint8_t brightnessBl
     }
 }
 
-void setTemperature(uint8_t colonyID, uint8_t heat)
+void setTemperature(uint8_t colonyID)
 {
-    // Map the heat values from 0-100 to 0-255
-    heat = map(heat, 0, 100, 0, 255);
-
     switch (colonyID)
     {
     case 1:
+
         // Set TEMP (channel 6)
         digitalWrite(PIN_A, LOW);
         digitalWrite(PIN_B, HIGH);
         digitalWrite(PIN_C, HIGH);
         digitalWrite(PIN_INH, LOW);
-        analogWrite(PIN_OUTPUT, heat);
+        analogWrite(PIN_OUTPUT, 255); // 100% duty cycle
         resetMultiplexer();
         break;
 
     case 2:
+
         // Set TEMP (channel 7)
         digitalWrite(PIN_A, HIGH);
         digitalWrite(PIN_B, HIGH);
         digitalWrite(PIN_C, HIGH);
         digitalWrite(PIN_INH, LOW);
-        analogWrite(PIN_OUTPUT, heat);
-        resetMultiplexer();
+        analogWrite(PIN_OUTPUT, 255); // 100% duty cycle
+        resetMultiplexer(); 
         break;
 
     case 3:
+
         // Set TEMP (pin_temp_3)
-        analogWrite(pin_temp_3, heat);
+        analogWrite(pin_temp_3, 255);
         resetMultiplexer();
     }
 }
 
-// to be tested. Replace with actual values from tests.
-void testsetTemperature(uint8_t colonyID, uint8_t heat)
+float fluxToAnalogValue(float flux)
 {
-    // Coefficients obtained from linear regression
-    float m = 0.021; // Replace with your actual value
-    float b = 1.7;   // Replace with your actual value
-
-    // Map the heat values from 0-100 to 0-255
-    heat = m * heat + b;
-    heat = map(heat, 1.7, 5, 0, 255);
-
-    switch (colonyID)
+    if (flux == 0) // To make sure that voltage is zero when flux is zero
     {
-    case 1:
-        // Set TEMP (channel 6)
-        digitalWrite(PIN_A, LOW);
-        digitalWrite(PIN_B, HIGH);
-        digitalWrite(PIN_C, HIGH);
-        digitalWrite(PIN_INH, LOW);
-        analogWrite(PIN_OUTPUT, heat);
-        delay(switchDelay);
-        resetMultiplexer();
-        break;
-
-    case 2:
-        // Set TEMP (channel 7)
-        digitalWrite(PIN_A, HIGH);
-        digitalWrite(PIN_B, HIGH);
-        digitalWrite(PIN_C, HIGH);
-        // ... rest of your code
+        return 0;
     }
+    // Coefficients obtained from linear regression
+    // duty_cycle = 0.36 * flux + 50.0
+    float a = 0.36;
+    float b = 50.0;
+
+    // Map the flux values from 0-100 to 0-255
+    uint8_t dutyCycle = a * flux + b;
+    // Serial.print("Duty cycle: ");
+    // Serial.println(dutyCycle);
+    uint8_t analogValue = map(dutyCycle, 0, 100, 0, 255);
+    // Serial.print("Analog value: ");
+    // Serial.println(analogValue);
+    return analogValue;
 }
 
 void test_stepwise_increment_colony1_red()
@@ -218,7 +199,6 @@ void test_stepwise_increment_colony1_blue()
         Serial.read();
     }
 }
-
 
 void test_stepwise_increment_colony1_temp()
 {

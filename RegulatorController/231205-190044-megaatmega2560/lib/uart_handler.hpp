@@ -6,10 +6,12 @@
 
 
 // Protocol;
-// <t> -> get temperatures
-// example: t
-// <s> -> set settings: <command>, <colonyID (1 to 3), redBrightness (percentage), blueBrightness (percentage), setTemp (percentage)>
-// example: s,1,100,100,100
+/* set:
+<setl,colonyID,red,blue>
+<sett,colonyID,temp>
+
+get:
+<get,colonyID> */
 
 void setupUART();
 void handleUART();

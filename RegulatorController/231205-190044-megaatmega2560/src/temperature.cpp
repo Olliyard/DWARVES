@@ -20,9 +20,22 @@ void temperatureSetup()
     sensors.setResolution(12);
 }
 
-float getTemperature(DeviceAddress address)
+float getTemperature(int colonyID)
 {
-    return sensors.getTempC(address);
+    switch (colonyID)
+    {
+    case 1:
+        return sensors.getTempC(sensor1);
+        break;
+    case 2:
+        return sensors.getTempC(sensor2);
+        break;
+    case 3:
+        return sensors.getTempC(sensor1);
+        break;
+    default:
+        return 0;
+    }
 }
 
 // Returns all temperatures in degrees Celsius
@@ -34,9 +47,9 @@ float *getTemperatures()
 
     // Get the temperatures
     float *temperatures = new float[3];
-    temperatures[0] = getTemperature(sensor1);
-    temperatures[1] = getTemperature(sensor2);
-    temperatures[2] = getTemperature(sensor3);
+    temperatures[0] = getTemperature(1);
+    temperatures[1] = getTemperature(2);
+    temperatures[2] = getTemperature(3);
     return temperatures;
 }
 
@@ -48,11 +61,11 @@ void testTemperature()
 
     // After we got the temperatures, we can print them here:
     Serial.print("Temperature for the device 1 (index 0) is: ");
-    Serial.println(getTemperature(sensor1));
+    Serial.println(getTemperature(1));
     Serial.print("Temperature for the device 2 (index 1) is: ");
-    Serial.println(getTemperature(sensor2));
+    Serial.println(getTemperature(2));
     Serial.print("Temperature for the device 3 (index 2) is: ");
-    Serial.println(getTemperature(sensor3));
+    Serial.println(getTemperature(3));
 }
 
 void printAddresses()
