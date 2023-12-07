@@ -263,7 +263,9 @@ class Master:
     colonyID: ID of the colony to be updated
     connect to arduino, set light and log time of change
     '''
-    def setLight(self, colonyID):
+    def setLight(self, updatedColony):
+        colonyID = updatedColony.id
+        self._updateColony(colonyID, updatedColony)
         colonyInstance = self.colonyStorage.get(colonyID, None)
         usb = self._establish_serial_connection()
         if colonyInstance.startTime <= datetime.now().time() <= colonyInstance.dayInterval:    
@@ -355,7 +357,9 @@ master.displayColonyStorage(colony.id)
 master.insertColony(colonyID=colony.id)
 print(f'After inserting colony: {master.colonyStorage}')
 master.displayColonyStorage(colonyID = colony.id)
-colony.dayTemp = 20
-colony.nightTemp = 10
-colony.blueDay = 100
 master.getObservationData(colony)
+colony.redDay = 10
+colony.blueDay = 15
+colony.redNight = 20
+colony.blueNight = 25
+master.setLight(colony)

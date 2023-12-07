@@ -3,16 +3,16 @@
         "id": 1,
         "occupied": false,
         "daytime_hours": "00:00:00",
-        "daytime_temperature": 20,
+        "daytime_temperature": 0,
         "daytime_red_light": 0,
-        "daytime_blue_light": 100,
+        "daytime_blue_light": 0,
         "nighttime_hours": "00:00:00",
-        "nighttime_temperature": 10,
+        "nighttime_temperature": 0,
         "nighttime_red_light": 0,
         "nighttime_blue_light": 0,
         "observed_temperature": 0,
         "observation_interval": 1,
         "experiment_start_date": "2023-12-07",
-        "last_observation_date": "2023-12-07 10:16"
+        "last_observation_date": "2023-12-07 14:11"
     }
 }
