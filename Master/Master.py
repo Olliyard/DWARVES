@@ -5,7 +5,8 @@ import os
 import serial
 from colony import Colony
 
-USB_PORT = "/dev/ttyUSB0"  # Arduino Uno WiFi Rev2 (can be ttyUSB0)
+#USB_PORT = "/dev/ttyUSB0"  # Arduino Uno WiFi Rev2 (can be ttyUSB0)
+USB_PORT = "COM14"
 RPI_ADDR = '192.168.0.104'
 RPI_USERNAME = 'rpi'
 RPI_PASS = 'raspberry'
@@ -113,6 +114,7 @@ class Master:
             else: 
                 return False
     
+    
     '''Observes a colony
     colonyID: ID of the colony to be observed
     collects data and captures image'''
@@ -121,9 +123,24 @@ class Master:
         colonyInstance = self.colonyStorage.get(colonyID, None)
         print(f'Collecting data for colony {colonyID}...')
         try:
-            usb.write(f'<get,{colonyID}>')
-            temperature = usb.readline().decode().strip()
-            colonyInstance.obsTemp = temperature
+            usb.write(f'<get,{colonyID}>'.encode('utf-8'))
+            response = usb.readline().decode().strip()
+            
+            # Debug print the received raw response
+            print(f'Received raw response: {response}')
+
+            values = response.split(',')
+            
+            if len(values) >= 3:
+                colonyInstance.obsTemp = int(values[0]) if values[0] else 0
+                colonyInstance.redBrightness = int(values[1]) if values[1] else 0
+                colonyInstance.blueBrightness = int(values[2]) if values[2] else 0
+
+                print(f'Set Temperature: {colonyInstance.obsTemp}')
+                print(f'Red Brightness: {colonyInstance.redBrightness}')
+                print(f'Blue Brightness: {colonyInstance.blueBrightness}')
+            else:
+                print('Error: Insufficient values in the response')
             
             '''Missing code to receive image from Pi Zero 2 w camera
             publish to topic
@@ -353,14 +370,14 @@ class Master:
 
 master = Master(1)
 colony = Colony(1)
-print(f'Before inserting colony: {master.colonyStorage}')
-master.displayColonyStorage(colony.id)
+# print(f'Before inserting colony: {master.colonyStorage}')
+# master.displayColonyStorage(colony.id)
+# master.insertColony(colonyID=colony.id)
+# print(f'After inserting colony: {master.colonyStorage}')
+# master.displayColonyStorage(colonyID = colony.id)
+
 master.insertColony(colonyID=colony.id)
-print(f'After inserting colony: {master.colonyStorage}')
-master.displayColonyStorage(colonyID = colony.id)
+colony.dayTemp = 25
+master.setTemperature(colony)
+master.observeColony(colony.id)
 master.getObservationData(colony)
-colony.redDay = 10
-colony.blueDay = 15
-colony.redNight = 20
-colony.blueNight = 25
-master.setLight(colony)
