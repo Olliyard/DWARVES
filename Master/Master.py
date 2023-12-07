@@ -2,7 +2,6 @@ import paramiko
 from datetime import datetime, time, timedelta
 import json
 import os
-import sys
 import serial
 from colony import Colony
 
@@ -11,7 +10,7 @@ RPI_ADDR = '192.168.0.104'
 RPI_USERNAME = 'rpi'
 RPI_PASS = 'raspberry'
 RPI_PATH = '/home/pi/Documents/gitreps/DWARVES/RobotController/'
-LOCAL_PATH = 'C:/Users/revil/Desktop/Git_Repos/DWARVES/Master/filesys/'
+LOCAL_PATH = os.path.join(os.getcwd(), 'Master/')
 MAX_COLONIES = 10
 
 class Master:
@@ -170,7 +169,7 @@ class Master:
                 }
 
                 # Load existing data from the file
-                with open(f'{LOCAL_PATH}colonyData.json', 'a+') as file:
+                with open(f'{LOCAL_PATH}/filesys/colonyData.json', 'a+') as file:
                     file.seek(0)
                     try:
                         all_colonies_data = json.load(file)
@@ -184,7 +183,7 @@ class Master:
                 print(json.dumps(all_colonies_data, indent=4))
 
                 # Write the updated data back to the file
-                with open(f'{LOCAL_PATH}colonyData.json', 'w') as file:
+                with open(f'{LOCAL_PATH}/filesys/colonyData.json', 'w') as file:
                     json.dump(all_colonies_data, file, indent=4)
 
                 print(f"Data for colony {colonyID} saved successfully.")
@@ -311,7 +310,7 @@ class Master:
     '''
     def logMessage(msg, *args):
         # log messages in logfile
-        with open(f'{LOCAL_PATH}logfile.txt', 'a') as file:
+        with open(f'{LOCAL_PATH}/filesys/logfile.txt', 'a') as file:
             file.write(f'{datetime.now().time()}: {msg}\n')
     
 
