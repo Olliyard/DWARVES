@@ -2,7 +2,7 @@
     "colony1": {
         "id": "1x1",
         "occupied": false,
-        "daytime_hours": 16,
+        "daytime_hours": 12,
         "daytime_temperature": 22,
         "nighttime_temperature": 20,
         "daytime_light_R_intensity": 1,
