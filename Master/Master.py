@@ -242,18 +242,20 @@ class Master:
     colonyID: ID of the colony to be updated
     connect to arduino, set temperature and log time of change
     '''
-    def setTemperature(self, colonyID):
+    def setTemperature(self, updatedColony):
+        colonyID = updatedColony.id
+        self._updateColony(colonyID, updatedColony)
         colonyInstance = self.colonyStorage.get(colonyID, None)
         usb = self._establish_serial_connection()
         if colonyInstance.startTime <= datetime.now().time() <= colonyInstance.dayInterval:    
             # Set day temperature
-            usb.write(f'<sett,{colonyInstance.id},{colonyInstance.dayTemp}>')
+            usb.write(f'<sett,{colonyInstance.id},{colonyInstance.dayTemp}>'.encode('utf-8'))
             print(usb.readline().decode().strip())      # Decode and remove whitespace and print return message
             self.logMessage(f'Colony {colonyInstance.id} day temperature changed to {colonyInstance.dayTemp} at {datetime.now().time()}')    # log time of change
 
         else:
             # Set night temperature
-            usb.write(f'sett,{colonyInstance.id},{colonyInstance.nightTemp}')
+            usb.write(f'sett,{colonyInstance.id},{colonyInstance.nightTemp}'.encode('utf-8'))
             print(usb.readline().decode().strip())     # Decode and remove whitespace and print return message
             self.logMessage(f'Colony {colonyInstance.id} night temperature changed to {colonyInstance.nightTemp} at {datetime.now().time()}')         # log time of change
 
@@ -269,13 +271,13 @@ class Master:
         usb = self._establish_serial_connection()
         if colonyInstance.startTime <= datetime.now().time() <= colonyInstance.dayInterval:    
             # Set day light
-            usb.write(f'<setl,{colonyInstance.id},{colonyInstance.redDay},{colonyInstance.blueDay}>')
+            usb.write(f'<setl,{colonyInstance.id},{colonyInstance.redDay},{colonyInstance.blueDay}>'.encode('utf-8'))
             print(usb.readline().decode().strip())      # Decode and remove whitespace and print return message
             self.logMessage(f'Colony {colonyInstance.id} day lights changed to r:{colonyInstance.redDay} and b:{colonyInstance.blueDay} at {datetime.now().time()}')    # log time of change
 
         else:
             # Set night light
-            usb.write(f'<setl,{colonyInstance.id},{colonyInstance.redDay},{colonyInstance.blueDay}>')
+            usb.write(f'<setl,{colonyInstance.id},{colonyInstance.redDay},{colonyInstance.blueDay}>'.encode('utf-8'))
             print(usb.readline().decode().strip())      # Decode and remove whitespace and print return message
             self.logMessage(f'Colony {colonyInstance.id} day lights changed to r:{colonyInstance.redDay} and b:{colonyInstance.blueDay} at {datetime.now().time()}')    # log time of change
             
