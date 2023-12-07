@@ -169,7 +169,7 @@ class Master:
                 }
 
                 # Load existing data from the file
-                with open(f'{LOCAL_PATH}/filesys/colonyData.json', 'a+') as file:
+                with open(f'{LOCAL_PATH}filesys/colonyData.json', 'a+') as file:
                     file.seek(0)
                     try:
                         all_colonies_data = json.load(file)
@@ -183,7 +183,7 @@ class Master:
                 print(json.dumps(all_colonies_data, indent=4))
 
                 # Write the updated data back to the file
-                with open(f'{LOCAL_PATH}/filesys/colonyData.json', 'w') as file:
+                with open(f'{LOCAL_PATH}filesys/colonyData.json', 'w') as file:
                     json.dump(all_colonies_data, file, indent=4)
 
                 print(f"Data for colony {colonyID} saved successfully.")
@@ -310,7 +310,7 @@ class Master:
     '''
     def logMessage(msg, *args):
         # log messages in logfile
-        with open(f'{LOCAL_PATH}/filesys/logfile.txt', 'a') as file:
+        with open(f'{LOCAL_PATH}filesys/logfile.txt', 'a') as file:
             file.write(f'{datetime.now().time()}: {msg}\n')
     
 
