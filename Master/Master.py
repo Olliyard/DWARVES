@@ -10,7 +10,7 @@ RPI_ADDR = '192.168.0.104'
 RPI_USERNAME = 'rpi'
 RPI_PASS = 'raspberry'
 RPI_PATH = '/home/pi/Documents/gitreps/DWARVES/RobotController/'
-LOCAL_PATH = os.path.join(os.getcwd(), 'Master/')
+LOCAL_PATH = os.getcwd() + '/'
 MAX_COLONIES = 10
 
 class Master:
