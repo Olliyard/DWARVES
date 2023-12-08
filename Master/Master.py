@@ -1,383 +1,240 @@
+from datetime import datetime
+from colony import Colony
 import paramiko
-from datetime import datetime, time, timedelta
+import serial
+import time
 import json
 import os
-import serial
-from colony import Colony
 
-#USB_PORT = "/dev/ttyUSB0"  # Arduino Uno WiFi Rev2 (can be ttyUSB0)
-USB_PORT = "COM14"
-RPI_ADDR = '192.168.0.104'
-RPI_USERNAME = 'rpi'
-RPI_PASS = 'raspberry'
-RPI_PATH = '/home/pi/Documents/gitreps/DWARVES/RobotController/'
-LOCAL_PATH = os.getcwd() + '/'
+USB_PORT = "COM14" or "/dev/ttyUSB0"
+RPI_ADDR = "192.168.0.104"
+RPI_USERNAME = "rpi"
+RPI_PASS = "raspberry"
+RPI_PATH = "/home/pi/Documents/gitreps/DWARVES/RobotController/"
+LOCAL_PATH = os.getcwd() + "/"
 MAX_COLONIES = 10
 
 class Master:
-    def __init__(self, observationFrequency=0):
-        # List of colonies
-        self.colonyStorage = {} # {colonyID: {colonyInstance: colonyInstance}}
-        self.observationFrequency = observationFrequency
-
-
-    '''Establishes an SSH connection to the Raspberry Pi and returns the connection object
-    paramikoSSH: SSH connection object
-    '''
-    def _establish_ssh_connection(self):
-        try:
-            paramikoSSH = paramiko.SSHClient()
-            paramikoSSH.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            paramikoSSH.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)  # IP, username, password
-            return paramikoSSH
-        except Exception as e:
-            print(f'Error: {e}')
-            self.logMessage(f'Error: {e}')
-
-
-    '''Establishes a serial connection to the Arduino and returns the connection object
-    usb: Serial connection object
-    '''
-    def _establish_serial_connection(self):
-        try:
-            usb = serial.Serial(USB_PORT, 9600, timeout=2)
-            return usb
-        except Exception as e:
-            print(f"Error: {e}")
-            self.logMessage(f'Error: {e}')
-
-
-    '''Adds a colony to the colonyStorage dictionary
-    colonyID: ID of the colony to be added
-    measurement_data: Dictionary containing the measurement data
-    '''
-    def _add_colony_measurement(self, colonyID, measurement_data):
-        self.colonyStorage.setdefault(colonyID, {}).setdefault(measurement_data, []).append(measurement_data)
+    def __init__(self, obsFreq=1):
+        self.colonyStorage = {}
+        self.observationFrequency = obsFreq
+        self.ser = serial.Serial(USB_PORT, 9600, timeout=5)
+        self.ssh = paramiko.SSHClient().set_missing_host_key_policy(paramiko.AutoAddPolicy())
     
-    
-    '''Adds a colony to the colonyStorage dictionary
-    colonyID: ID of the colony to be added
-    image_data: Dictionary containing the image data
-    '''
-    def _add_colony_images(self, colonyID, image_data):
-        self.colonyStorage.setdefault(colonyID, {}).setdefault(image_data, []).append(image_data)
+    def __str__(self):
+        colony_strings = [f"colony{i.id}" if i is not None else "Invalid Colony" for i in self.colonyStorage.values()]
+        return f"Currently observing {len(self.colonyStorage)} colonies: {', '.join(colony_strings)}"
 
-
-    '''Returns the colonyStorage dictionary
-    '''
+# COLONY HANDLING METHODS
     def checkColonies(self, colonyID):
-        if colonyID in self.colonyStorage:
-            print(f'Colony {colonyID} found in system.')
-            return True
-        else:
-            print(f'Colony {colonyID} not found in system.')
-            return False
-    
-    
-    '''Returns the colonyStorage dictionary'''
+        return colonyID in self.colonyStorage
+
     def getAvailability(self):
         if len(self.colonyStorage) == MAX_COLONIES:
-            print("No available space in system.")
+            msg = "ERROR: No available space in system."
+            self.logMessage(msg)
             return False
         else:
-            print("Available space found in system.")
             return True
-    
-    '''Checks the loading zone for colonies'''
-    def checkLoadingZone(self):
-        paramikoSSH = self._establish_ssh_connection()
-        paramikoSSH.exec_command('') # Path to executable on the Raspberry Pi
-        pass
 
-
-    '''Inserts a colony into the system
-    colonyID: ID of the colony to be inserted
-    '''
     def insertColony(self, colonyID):
-        if colonyID not in self.colonyStorage:
-            new_colony = Colony(colonyID=colonyID, status=True)         # Create a new colony instance
-            self.colonyStorage[colonyID] = new_colony                   # Add the colony instance to the colonyStorage dictionary
+        if 1 <= int(colonyID) <= MAX_COLONIES:
+            if colonyID not in self.colonyStorage and self.getAvailability():
+                newColony = Colony(colonyID, status=True)
+                self.colonyStorage[colonyID] = newColony
+                self.logMessage(f"Colony{colonyID}: Colony inserted into system.")
+                return newColony
+            else:
+                self.logMessage(f"ERROR: Colony{colonyID} could not be inserted into the system. Already exists or no availability.")
+                return None
+        else:
+            self.logMessage(f"ERROR: Invalid colony ID. Colony ID should be between 1 and {MAX_COLONIES}.")
+            return None
 
-
-    '''Removes a colony from the system
-    colonyID: ID of the colony to be removed
-    '''
     def extractColony(self, colonyID):
-        for entry in self.colonyStorage:
-            if entry['colony_instance'].id == colonyID:
-                #paramikoSSH = self._establish_ssh_connection()
-                #paramikoSSH.exec_command('') # Path to executable on the Raspberry Pi
-           
-                # If succesful, remove colonyID from colonyStorage
-                self.colonyStorage.remove(entry)
+        if self.checkColonies(colonyID):
+            if self.colonyStorage.pop(colonyID, None):
+                self.logMessage(f"Colony{colonyID}: Colony removed from system.")
                 return True
-            else: 
+
+            else:
+                self.logMessage(f"ERROR: Unable to remove Colony{colonyID} from system.")
                 return False
-    
-    
-    '''Observes a colony
-    colonyID: ID of the colony to be observed
-    collects data and captures image'''
-    def observeColony(self, colonyID):
-        usb = self._establish_serial_connection()
-        colonyInstance = self.colonyStorage.get(colonyID, None)
-        print(f'Collecting data for colony {colonyID}...')
-        try:
-            usb.write(f'<get,{colonyID}>'.encode('utf-8'))
-            response = usb.readline().decode().strip()
-            
-            # Debug print the received raw response
-            print(f'Received raw response: {response}')
+        else:
+            self.logMessage(f"ERROR: Colony{colonyID} does not exist in the system.")
+            return False
 
-            values = response.split(',')
-            
+# OBSERVATION METHODS
+    def observeColony(self, colonyID, colony=None):
+        time.sleep(2)
+        self.ser.flushInput()
+        self.ser.write(f"<get,{colonyID}>".encode("utf-8"))
+        response = self.ser.readline().decode().strip()
+        if response:
+            values = response.split(",")
             if len(values) >= 3:
-                colonyInstance.obsTemp = int(values[0]) if values[0] else 0
-                colonyInstance.redBrightness = int(values[1]) if values[1] else 0
-                colonyInstance.blueBrightness = int(values[2]) if values[2] else 0
+                temp = int(values[0]) if values[0] else 0
+                red = int(values[1]) if values[1] else 0
+                blue = int(values[2]) if values[2] else 0
 
-                print(f'Set Temperature: {colonyInstance.obsTemp}')
-                print(f'Red Brightness: {colonyInstance.redBrightness}')
-                print(f'Blue Brightness: {colonyInstance.blueBrightness}')
-            else:
-                print('Error: Insufficient values in the response')
-            
-            '''Missing code to receive image from Pi Zero 2 w camera
-            publish to topic
-            receive image
-            '''
-        
-            colonyInstance.lastObs = datetime.now().strftime("%Y-%m-%d %H:%M")  # Last observation date and time 
-            print(f'Colony {colonyID} observed successfully.')
-            return 1
-            
-        except Exception as e:
-            print(f'Error: {e}')
-            self.logMessage(f'Error: {e}')
-            return 0
-
-    '''Returns the observation data for a colony
-    updatedColony: Colony instance with updated data
-    writes data to file'''
-    def getObservationData(self, updatedColony):
-        try:
-            colonyID = updatedColony.id
-            self._updateColony(colonyID, updatedColony)
-            # Retrieve the relevant data from the Colony instance
-            colonyInstance = self.colonyStorage.get(colonyID, None)
-            
-            if colonyInstance is not None:
-                # Update the data for the specific colony
-                colony_data = {
-                    'id': colonyInstance.id,
-                    'occupied': colonyInstance.status,
-                    'daytime_hours': str(colonyInstance.dayInterval),
-                    'daytime_temperature': colonyInstance.dayTemp,
-                    'daytime_red_light': colonyInstance.redDay,
-                    'daytime_blue_light': colonyInstance.blueDay,
-                    'nighttime_hours': str(colonyInstance.nightInterval),
-                    'nighttime_temperature': colonyInstance.nightTemp,
-                    'nighttime_red_light': colonyInstance.redNight,
-                    'nighttime_blue_light': colonyInstance.blueNight,
-                    'observed_temperature': colonyInstance.obsTemp,
-                    'observation_interval': self.observationFrequency,
-                    'experiment_start_date': str(colonyInstance.startDate),
-                    'last_observation_date': str(colonyInstance.lastObsTime),
-                }
-
-                # Load existing data from the file
-                with open(f'{LOCAL_PATH}filesys/colonyData.json', 'a+') as file:
-                    file.seek(0)
-                    try:
-                        all_colonies_data = json.load(file)
-                    except json.JSONDecodeError:
-                        all_colonies_data = {}
-
-                # Update the data for the specific colony in the dictionary
-                all_colonies_data[f'colony{colonyID}'] = colony_data
-
-                print("Updated data")
-                print(json.dumps(all_colonies_data, indent=4))
-
-                # Write the updated data back to the file
-                with open(f'{LOCAL_PATH}filesys/colonyData.json', 'w') as file:
-                    json.dump(all_colonies_data, file, indent=4)
-
-                print(f"Data for colony {colonyID} saved successfully.")
-                return 1
-
-            else:
-                print(f"Colony with ID {colonyID} not found.")
-                return 0
-
-        except Exception as e:
-            print(f'Error: {e}')
-            self.logMessage(f'Error: {e}')
-            return 0
-
-
-    '''Returns the observation footage for a colony
-    colonyID: ID of the colony to be observed
-    returns footage for the colony'''
-    def getObservationFootage(self, colonyID):
-        try:
-            with open (f'{LOCAL_PATH}colony{colonyID}.txt', 'w') as file:
-                # Write image data to file
-                file.write(f'Colony {colonyID} image data:\n')
-                for image in self.colonyStorage[colonyID]['images']:
-                    file.write(f'{image}\n')
-                    
-            return 1
-        
-        except Exception as e:
-            print(f'Error: {e}')
-            self.logMessage(f'Error: {e}')
-            return 0
-        
-
-    def saveObservationData(colonyID):
-        # Save data to local storage
-        pass
-
-
-    def saveObservationFootage(colonyID):
-        # Save footage to local storage
-        pass
-
-
-    def deleteObservationData(colonyID):
-        # Delete data from local storage
-        pass
-
-
-    def deleteObservationFootage(colonyID):
-        # Delete footage from local storage
-        pass
-
-
-    '''Sets the temperature for a colony
-    colonyID: ID of the colony to be updated
-    connect to arduino, set temperature and log time of change
-    '''
-    def setTemperature(self, updatedColony):
-        colonyID = updatedColony.id
-        self._updateColony(colonyID, updatedColony)
-        colonyInstance = self.colonyStorage.get(colonyID, None)
-        usb = self._establish_serial_connection()
-        if colonyInstance.startTime <= datetime.now().time() <= colonyInstance.dayInterval:    
-            # Set day temperature
-            usb.write(f'<sett,{colonyInstance.id},{colonyInstance.dayTemp}>'.encode('utf-8'))
-            print(usb.readline().decode().strip())      # Decode and remove whitespace and print return message
-            self.logMessage(f'Colony {colonyInstance.id} day temperature changed to {colonyInstance.dayTemp} at {datetime.now().time()}')    # log time of change
-
+                colony = self.updateColony(colonyID, colony, obsTemp=temp)
+                if colony is not None:
+                    self.logMessage(f"Colony{colony.id}: Observed values for temp: {temp}, red: {red}, blue: {blue}.")
         else:
-            # Set night temperature
-            usb.write(f'sett,{colonyInstance.id},{colonyInstance.nightTemp}'.encode('utf-8'))
-            print(usb.readline().decode().strip())     # Decode and remove whitespace and print return message
-            self.logMessage(f'Colony {colonyInstance.id} night temperature changed to {colonyInstance.nightTemp} at {datetime.now().time()}')         # log time of change
+            err = "ERROR: No response from Arduino"
+            self.logMessage(err)
 
+    def getObservationData(self, colonyID, colony=None):
+        if not self.checkColonies(colonyID):
+            self.logMessage(f"ERROR: Colony{colonyID} does not exist in the system (if not getObservationData).")
+            return
 
-    '''Sets the light for a colony
-    colonyID: ID of the colony to be updated
-    connect to arduino, set light and log time of change
-    '''
-    def setLight(self, updatedColony):
-        colonyID = updatedColony.id
-        self._updateColony(colonyID, updatedColony)
-        colonyInstance = self.colonyStorage.get(colonyID, None)
-        usb = self._establish_serial_connection()
-        if colonyInstance.startTime <= datetime.now().time() <= colonyInstance.dayInterval:    
-            # Set day light
-            usb.write(f'<setl,{colonyInstance.id},{colonyInstance.redDay},{colonyInstance.blueDay}>'.encode('utf-8'))
-            print(usb.readline().decode().strip())      # Decode and remove whitespace and print return message
-            self.logMessage(f'Colony {colonyInstance.id} day lights changed to r:{colonyInstance.redDay} and b:{colonyInstance.blueDay} at {datetime.now().time()}')    # log time of change
+        colony = self.updateColony(colonyID, colony)
 
-        else:
-            # Set night light
-            usb.write(f'<setl,{colonyInstance.id},{colonyInstance.redDay},{colonyInstance.blueDay}>'.encode('utf-8'))
-            print(usb.readline().decode().strip())      # Decode and remove whitespace and print return message
-            self.logMessage(f'Colony {colonyInstance.id} day lights changed to r:{colonyInstance.redDay} and b:{colonyInstance.blueDay} at {datetime.now().time()}')    # log time of change
-            
-    
-    '''Sets the observation interval for a colony
-    colonyID: ID of the colony to be updated
-    dayInterval: Day interval in hours
-    nightInterval: Night interval in hours
-    '''
-    def setObservationInterval(self, colonyID, dayInterval, nightInterval):
-        colonyInstance = self.colonyStorage.get(colonyID, None)
-        colonyInstance.dayInterval = time(dayInterval, 0)
-        colonyInstance.nightInterval = time(dayInterval + nightInterval, 0)
-        self.logMessage(f'Colony {colonyInstance.id} day/night interval changed to {dayInterval} and {nightInterval} at {datetime.now().time()}')    # log time of change
-        
+        if colony is None:
+            self.logMessage(f"ERROR: Colony{colonyID} does not exist in the system (getObservationData).")
+            return
 
-    '''Sets the observation interval for all colonies	
-    observationFrequency: Observation interval in hours
-    '''
-    def setObservationFrequency(self, observationFrequency):
-        self.observationFrequency = observationFrequency
-        self.logMessage(f'Observation interval for all colonies changed to {observationFrequency} at {datetime.now().time()}')    # log time of change
-        
+        filename = f"{LOCAL_PATH}filesys/colonyData.json"
+        with open(filename, "r") as file:
+            try:
+                all_colonies_data = json.load(file)
+            except json.JSONDecodeError:
+                all_colonies_data = {}
 
-    def pauseObservation(colonyID):
-        # Call a method from Pi to pause observation
-        pass
-    
+        all_colonies_data[f"colony{colony.id}"] = {
+            "id": colony.id,
+            "occupied": colony.status,
+            "daytime_hours": str(colony.dayInterval),
+            "daytime_temperature": colony.dayTemp,
+            "daytime_red_light": colony.redDay,
+            "daytime_blue_light": colony.blueDay,
+            "nighttime_hours": str(colony.nightInterval),
+            "nighttime_temperature": colony.nightTemp,
+            "nighttime_red_light": colony.redNight,
+            "nighttime_blue_light": colony.blueNight,
+            "observed_temperature": colony.obsTemp,
+            "observation_interval": self.observationFrequency,
+            "experiment_start_date": str(colony.startDate),
+            "last_observation_date": str(colony.lastObsTime),
+        }
+        sorted_colonies_data = dict(
+            sorted(all_colonies_data.items(), key=lambda x: int(x[1]["id"]))
+        )
 
-    '''Logs a message to the logfile
-    msg: Message to be logged
-    '''
-    def logMessage(msg, *args):
-        # log messages in logfile
+        with open(filename, "w") as file:
+            json.dump(sorted_colonies_data, file, indent=4)
+
+        self.logMessage(f"Colony{colony.id}: Colony successfully written to {filename}.")
+
+# SET METHODS
+    def setLight(self, colonyID, colony=None, redDay=0, blueDay=0, redNight=0, blueNight=0):
+        colony = self.updateColony(colonyID, colony, redDay=redDay, blueDay=blueDay, redNight=redNight, blueNight=blueNight)
+        if colony is not None:
+            time.sleep(2)
+            self.ser.flushInput()
+            if colony.startTime <= datetime.now().time() <= colony.dayInterval:
+                self.ser.write(f"<setl,{colony.id},{colony.redDay},{colony.blueDay}>".encode("utf-8"))
+            else:
+                self.ser.write(f"<setl,{colony.id},{colony.redNight},{colony.blueNight}>".encode("utf-8"))
+
+    def setTemperature(self, colonyID, colony=None, dayTemp=0, nightTemp=0):
+        colony = self.updateColony(colonyID, colony, dayTemp=dayTemp, nightTemp=nightTemp)
+        if colony is not None:
+            time.sleep(2)
+            self.ser.flushInput()
+            if colony.startTime <= datetime.now().time() <= colony.dayInterval:
+                self.ser.write(f"<sett,{colony.id},{colony.nightTemp}>".encode("utf-8"))
+            else:
+                self.ser.write(f"<sett,{colony.id},{colony.nightTemp}>".encode("utf-8"))
+
+    def setObservationInterval(self, colonyID, colony=None, dayInterval=0, nightInterval=0):
+        dayInterval = datetime.strptime(f"{dayInterval}:00:00", "%H:%M:%S").time()
+        nightInterval = datetime.strptime(f"{nightInterval}:00:00", "%H:%M:%S").time()
+        colony = self.updateColony(colonyID, colony, dayInterval=dayInterval, nightInterval=nightInterval)
+        if colony is not None:
+            self.logMessage(f"Colony{colony.id}: Updated observation interval to day: {colony.dayInterval}, night: {colony.nightInterval}")
+
+    def setObservationFrequency(self, freq):
+        self.observationFrequency = freq
+        self.logMessage(f"ALL COLONIES: Observation frequency set to {freq} minutes.")
+
+# INTERNAL METHODS
+    def logMessage(self, msg):
         with open(f'{LOCAL_PATH}filesys/logfile.txt', 'a') as file:
-            file.write(f'{datetime.now().time()}: {msg}\n')
-    
+            file.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M")}: {msg}\n')
 
-    """Display the storage of the colony.
-    Prints the string representation of each colony instance in the colony storage.
-    """
-    def displayColonyStorage(self, colonyID=None):
+    def printColonies(self, colonyID=None):
         if colonyID is not None:
             colony_instance = self.colonyStorage.get(colonyID)
             if colony_instance is not None:
                 print(colony_instance)
-            else:
-                self.logMessage(f"Colony with ID {colonyID} not found in storage.")
-                print(f"Colony {colonyID} - status: Not Occupied")
         else:
-            for colony_instance in self.colonyStorage.items():
+            for colonyID, colony_instance in self.colonyStorage.items():
                 print(colony_instance)
 
+    def updateColony(self, colonyID=1, colony=None, file=False, **attributeUpdates):
+        if file:
+            if not self.checkColonies(colonyID):
+                new_colony = self.insertColony(colonyID)
+                if new_colony is not None:
+                    self.logMessage(f"Colony{colonyID}: Updated settings from settings.json")
+                    return new_colony
+                else:
+                    return None
 
-    """Update an existing colony instance in the colonyStorage.
-    colonyID: ID of the colony to be updated
-    updatedColony: Colony instance with updated data
-    file: If True, update colony from file
-    """
-    def _updateColony(self, colonyID, updatedColony, file=False):
-        # Update an existing colony instance in the colonyStorage
-        if colonyID in self.colonyStorage and file is False:
-            existing_colony_instance = self.colonyStorage[colonyID]
-            existing_colony_instance.updateAttributes(updatedColony)
-            print(f"Colony {colonyID} updated successfully.")
-        elif colonyID in self.colonyStorage and file is True:
-            existing_colony_instance = self.colonyStorage[colonyID]
-            existing_colony_instance.updateAttributesFromFile(file)
-            print(f"Colony {colonyID} updated successfully.")
+            updated_colony = self.colonyStorage[colonyID]
+            updated_colony.updateAttributesFromFile(f'{LOCAL_PATH}filesys/settings.json')
+
+            with open(f'{LOCAL_PATH}filesys/settings.json', 'r') as f:
+                settings = json.load(f)
+                settings = settings.get(f'colony{colonyID}', {})
+                if settings:
+                    self.observationFrequency = settings.get('observation_interval', self.observationFrequency)
+                    self.logMessage(f"Colony{colonyID}: Updated settings from settings.json")
+                    return updated_colony
+                else:
+                    self.logMessage(f"ERROR: Colony{colonyID} settings not found in settings.json")
+                    return None
+                
+        elif self.checkColonies(colonyID):
+            existing_colony = self.colonyStorage[colonyID]
+            existing_colony.update(attributeUpdates)
+            return existing_colony
         else:
-            print(f"Colony with ID {colonyID} not found.")
-            
+            self.logMessage(f"ERROR: Colony{colonyID} does not exist in the system.")
+            return None
 
-master = Master(1)
-colony = Colony(1)
-# print(f'Before inserting colony: {master.colonyStorage}')
-# master.displayColonyStorage(colony.id)
-# master.insertColony(colonyID=colony.id)
-# print(f'After inserting colony: {master.colonyStorage}')
-# master.displayColonyStorage(colonyID = colony.id)
+# Create an instance of the Master class
+# master = Master(1)
 
-master.insertColony(colonyID=colony.id)
-colony.dayTemp = 25
-master.setTemperature(colony)
-master.observeColony(colony.id)
-master.getObservationData(colony)
+# print("Adding colony 1:")               # TEST PASSED
+# colony1 = master.insertColony(1)
+# master.printColonies(1)
+
+# print("Default settings:")              # TEST PASSED
+# master.getObservationData(colony1.id)
+# time.sleep(2)                           # BEFORE UPDATE
+
+# print("Updating settings:")             # TEST PASSED
+# master.setLight(colony1.id, redDay=100, blueDay=100, redNight=10, blueNight=10)
+# master.setTemperature(colony1.id, dayTemp=25, nightTemp=20)
+# master.setObservationInterval(colony1.id, dayInterval=12, nightInterval=12)
+# master.observeColony(colony1.id)
+# master.getObservationData(colony1.id)
+# time.sleep(2)                           # BEFORE UPDATE
+
+# print("Updating settings from file:")   # TEST PASSED
+# master.updateColony(colony1.id, file=True)
+# master.getObservationData(colony1.id)
+
+# print("Adding colony 2:")               # TEST PASSED
+# colony2 = master.insertColony(2)
+# master.getObservationData(colony2.id)
+
+# print("Adding colony 3 from file:")     # TEST PASSED
+# colony3 = master.insertColony(3)
+# master.updateColony(colony3.id, colony3, file=True)
+# master.getObservationData(colony3.id)
+
+# print(master)

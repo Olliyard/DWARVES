@@ -50,7 +50,6 @@ def check_colonies():
             i += 1
     print("0. Back to main menu")
 
-
 # Function to display JSON data for a specific colony
 def display_colony_data(colony_name):
     with open('settings.json', 'r') as file:

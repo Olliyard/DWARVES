@@ -1,9 +1,9 @@
 {
-    "colony1": {
-        "id": 1,
-        "occupied": false,
+    "colony3": {
+        "id": 3,
+        "occupied": true,
         "daytime_hours": "00:00:00",
-        "daytime_temperature": 25,
+        "daytime_temperature": 0,
         "daytime_red_light": 0,
         "daytime_blue_light": 0,
         "nighttime_hours": "00:00:00",
@@ -12,7 +12,7 @@
         "nighttime_blue_light": 0,
         "observed_temperature": 0,
         "observation_interval": 1,
-        "experiment_start_date": "2023-12-07",
-        "last_observation_date": "2023-12-07 15:28"
+        "experiment_start_date": "2023-12-08",
+        "last_observation_date": "2023-12-08 13:32"
     }
 }
