@@ -4,7 +4,7 @@ import json
 class Colony:
     def __init__(self, colonyID, status=False, redDay=0, blueDay=0, 
                  redNight=0, blueNight=0, dayTemp=15, 
-                 nightTemp=15, dayInterval=0, nightInterval=0):
+                 nightTemp=15, dayInterval=1, nightInterval=1):
         
         self.id = colonyID      # Colony ID
         self.status = status    # Set to True if occupied
@@ -27,6 +27,13 @@ class Colony:
     
     def __str__(self):
         return f"Colony {self.id} - Status: {'Occupied' if self.status else 'Not Occupied'}"
+
+    def __setitem__(self, key, value):
+        # Assuming settings are stored as attributes in the Colony instance
+        if hasattr(self, key):
+            setattr(self, key, value)
+        else:
+            raise KeyError(f"Invalid key: {key}")
 
     def update(self, attributes):
         for key, value in attributes.items():

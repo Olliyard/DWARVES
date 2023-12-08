@@ -3,7 +3,7 @@ import time
 import json
 from master import Master
 import os
-LOCAL_PATH = os.getcwd() + "/filesys/colonyData.json"
+LOCAL_PATH = os.path.join(os.getcwd(), "filesys", "colonyData.json")
 # ANSI color codes
 RED = '\033[0;31m'
 GREEN = '\033[0;32m'
@@ -25,7 +25,6 @@ class UI:
         # Observation interval limits
         self.min_observation_interval = 1
         self.max_observation_interval = 24
-        self.clearInactiveEntries()
         self.loadColonyData()
 
     def clearScreen(self):
@@ -58,15 +57,15 @@ class UI:
         self.clearScreen()
         self.clearInactiveEntries()
         print("Currently active colonies")
-        with open('filesys/colonyData.json', 'r') as file:
+        with open(f'{LOCAL_PATH}', 'r') as file:
             data = json.load(file)
-            colony_ids = list(data.keys())  # Store the actual colony IDs
-            for i, colony_id in enumerate(colony_ids, start=1):
-                print(f"{i}. {colony_id}")
+            colonyIDs = list(data.keys())  # Store the actual colony IDs
+            for i, colonyID in enumerate(colonyIDs, start=1):
+                print(f"{i}. {colonyID}")
             print("0. Back to main menu")
 
         # Return the list of colony IDs
-        return colony_ids
+        return colonyIDs
 
     def displayColonyData(self, colonyID):
         self.master.updateColony(colonyID, None, True)
@@ -77,66 +76,99 @@ class UI:
             print(f"Colony Data for colony{colonyID}:")
             print(json.dumps(data[f"colony{colonyID}"], indent=4))
 
+    # Update the settings for the specified colony
     def updateColonySettings(self, colonyID):
-        with open('filesys/colonyData.json', 'r') as file:
-            data = json.load(file)
+        # Get the colony data from the Master instance
+        updated_colony = self.master.colonyStorage[colonyID]
 
+        while True:
             self.clearScreen()
-            print(f"Colony Data for colony{colonyID}:")
-            print(json.dumps(data[f"colony{colonyID}"], indent=4))
+            print(f"Changing settings for {updated_colony}:")
 
-            settings_mapping = {
-                '1': ('daytime_temperature', 'Daytime temperature'),
-                '2': ('nighttime_temperature', 'Nighttime temperature'),
-                '3': ('daytime_red_light', 'Daytime red light intensity'),
-                '4': ('nighttime_red_light', 'Nighttime red light intensity'),
-                '5': ('daytime_blue_light', 'Daytime blue light intensity'),
-                '6': ('nighttime_blue_light', 'Nighttime blue light intensity'),
-                '7': ('daytime_hours', 'Daytime hours'),
-                '8': ('nighttime_hours', 'Nighttime hours'),
-                '9': ('observation_interval', 'Observation interval'),
-            }
+            # Display daytime settings
+            print(f"Daytime Settings:")
+            print(f"1. Daytime temperature: {updated_colony.dayTemp} (Limit: {self.min_temperature}-{self.max_temperature}°C)")
+            print(f"2. Daytime red light: {updated_colony.redDay} (Limit: {self.min_light_intensity}-{self.max_light_intensity})")
+            print(f"3. Daytime blue light: {updated_colony.blueDay} (Limit: {self.min_light_intensity}-{self.max_light_intensity})")
+            print(f"4. Daytime hours: {updated_colony.dayInterval.hour} (Limit: {self.min_daytime_hours}-{self.max_daytime_hours} hours)")
 
-            while True:
-                choice = input("Enter your choice: ")
-                if choice in settings_mapping:
-                    setting_key, setting_name = settings_mapping[choice]
-                    new_value = input(f"Enter new {setting_name}: ")
+            # Display nighttime settings
+            print(f"Nighttime Settings:")
+            print(f"5. Nighttime temperature: {updated_colony.nightTemp} (Limit: {self.min_temperature}-{self.max_temperature}°C)")
+            print(f"6. Nighttime red light: {updated_colony.redNight} (Limit: {self.min_light_intensity}-{self.max_light_intensity})")
+            print(f"7. Nighttime blue light: {updated_colony.blueNight} (Limit: {self.min_light_intensity}-{self.max_light_intensity})")
 
-                    if new_value.isnumeric():
-                        new_value = int(new_value)
-                        min_limit, max_limit = self.getLimits(setting_key)  # Implement getLimits function
+            # Display Observation interval setting
+            print(f"Observation Settings:")
+            print(f"8. Observation interval: {self.master.observationFrequency} (Limit: {self.min_observation_interval}-{self.max_observation_interval} hours)")
+            print("0. Back to main menu")
 
-                        if min_limit <= new_value <= max_limit:
-                            data[f"colony{colonyID}"][setting_key] = new_value
-                            with open('filesys/settings.json', 'w') as file:
-                                json.dump(data, file, indent=4)
-                            print(f"{GREEN}{setting_name} changed successfully!{NC}")
-                            break  # Exit the loop if the value is accepted
-                        else:
-                            print(f"{RED}Invalid {setting_name}!{NC}")
-                    else:
-                        print(f"{RED}Invalid {setting_name}!{NC}")
-                elif choice == '0':
-                    print("Returning to main menu...")
-                    break  # Exit the loop if the user chooses to go back
+            setting_choice = input("Enter the setting to change (or 0 to go back): ")
+
+            if setting_choice == '0':
+                break
+            elif setting_choice in ['1', '2', '3', '4', '5', '6', '7', '8']:
+                new_value = input("Enter the new value: ")
+
+                try:
+                    new_value = int(new_value)
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+                    input("Press Enter to continue...")
+                    continue
+
+                min_limit, max_limit = self.getLimits(setting_choice)
+
+                if min_limit <= new_value <= max_limit:
+                    setting_key = self.getSettingKey(setting_choice)
+                    # Update the colony settings directly
+                    setattr(updated_colony, setting_key, new_value)
+                    print(f"Setting updated. New value for {setting_key}: {getattr(updated_colony, setting_key)}")
+
+                    # Update the JSON file with the new setting
+                    with open(LOCAL_PATH, 'r') as f:
+                        settings = json.load(f)
+
+                    colony_settings = settings.get(f'colony{colonyID}', {})
+                    colony_settings[setting_key] = new_value
+                    settings[f'colony{colonyID}'] = colony_settings
+
+                    with open(LOCAL_PATH, 'w') as f:
+                        json.dump(settings, f, indent=4)
+                    input("Press Enter to continue...")
                 else:
-                    print(f"{RED}Invalid choice!{NC}")
+                    print(f"Invalid input. Value must be between {min_limit} and {max_limit}.")
+                    input("Press Enter to continue...")
+            else:
+                print("Invalid choice. Please select a valid option.")
+                input("Press Enter to continue...")
 
-    def getLimits(self, setting_key):
-        # Return the limits for the specified setting
-        if setting_key == 'daytime_temperature' or setting_key == 'nighttime_temperature':
+    # Return the limits for the specified setting
+    def getLimits(self, setting_choice):
+        if setting_choice == '1' or setting_choice == '5':
             return self.min_temperature, self.max_temperature
-        elif setting_key == 'daytime_red_light' or setting_key == 'nighttime_red_light' or setting_key == 'daytime_blue_light' or setting_key == 'nighttime_blue_light':
+        elif setting_choice in ['2', '3', '4', '6', '7']:
             return self.min_light_intensity, self.max_light_intensity
-        elif setting_key == 'daytime_hours' or setting_key == 'nighttime_hours':
-            return self.min_daytime_hours, self.max_daytime_hours
-        elif setting_key == 'observation_interval':
+        elif setting_choice in ['8']:
             return self.min_observation_interval, self.max_observation_interval
         else:
             return None, None
 
-# Insert colony into the system, and add it to the colonyData.json file
+    # Map setting choice to the corresponding setting key
+    def getSettingKey(self, setting_choice):
+        settings_mapping = {
+            '1': 'daytime_temperature',
+            '2': 'daytime_red_light',
+            '3': 'daytime_blue_light',
+            '4': 'daytime_hours',
+            '5': 'nighttime_temperature',
+            '6': 'nighttime_red_light',
+            '7': 'nighttime_blue_light',
+            '8': 'observation_interval',
+        }
+        return settings_mapping.get(setting_choice, None)
+
+    # Insert colony into the system, and add it to the colonyData.json file
     def insertColony(self):
         self.clearScreen()
         # Check if no colonies are available
@@ -150,41 +182,39 @@ class UI:
             colony_choice = input("Enter the number of the colony to insert (or 0 to go back): ")
             if colony_choice != '0':
                 print(f'Inserting colony{colony_choice}')
-                colony_id = int(colony_choice)
-                self.master.insertColony(colony_id)       # Insert the colony into the Master instance
-                self.master.getObservationData(colony_id) # Get observation data for the colony
+                colonyID = int(colony_choice)
+                self.master.insertColony(colonyID)       # Insert the colony into the Master instance
+                self.master.getObservationData(colonyID) # Get observation data for the colony
                 time.sleep(1)
                 print("Colony inserted successfully!")
             else:
                 print("Returning to main menu...")
 
-# Extract colony from the system, and remove it from the colonyData.json file
+    # Extract colony from the system, and remove it from the colonyData.json file
     def extractColony(self):
         self.clearScreen()
         self.listColonies()
         colony_choice = input("Enter the number of the colony to extract (or 0 to go back): ")
         if colony_choice != '0':
             print(f'Extracting colony{colony_choice}')
-            colony_id = int(colony_choice)
+            colonyID = int(colony_choice)
             
             # Extract the colony and remove it from the system
-            if self.master.extractColony(colony_id):
+            if self.master.extractColony(colonyID):
                 # Remove the colony from the colonyData.json file
                 
-                self.clearInactiveEntries(True)
+                self.clearInactiveEntries()
                 time.sleep(1)
-                print(f"Colony{colony_id} extracted successfully!")
+                print(f"Colony{colonyID} extracted successfully!")
             else:
-                print(f"ERROR: Unable to extract Colony{colony_id}.")
+                print(f"ERROR: Unable to extract Colony{colonyID}.")
         else:
             print("Returning to main menu...")
 
-# Remove inactive entries from the settings.json or colonyData.json files
-    def clearInactiveEntries(self, extract=False):
-        filename = f"{LOCAL_PATH}filesys/settings.json"
-
+    # Remove extracted entries from the colonyData.json
+    def clearInactiveEntries(self):
         try:
-            with open(filename, "r") as file:
+            with open(LOCAL_PATH, "r") as file:
                 try:
                     all_colonies_data = json.load(file)
                 except json.JSONDecodeError:
@@ -192,24 +222,83 @@ class UI:
         except FileNotFoundError:
             all_colonies_data = {}
 
-        active_colony_ids = set(map(str, self.master.colonyStorage.keys()))
-        filtered_colonies_data = {key: value for key, value in all_colonies_data.items() if key[6:] in active_colony_ids}
+        active_colonyIDs = set(map(str, self.master.colonyStorage.keys()))
+        filtered_colonies_data = {key: value for key, value in all_colonies_data.items() if key[6:] in active_colonyIDs}
 
-        with open(filename, "w") as file:
+        with open(LOCAL_PATH, "w") as file:
             json.dump(filtered_colonies_data, file, indent=4)
 
-
-# Load colony data from colonyData.json into the Master instance
+    # Load colony data from colonyData.json into the Master instance
     def loadColonyData(self):
         try:
-            with open('filesys/colonyData.json', 'r') as file:
-                colony_data = json.load(file)
-                for colony_id, values in colony_data.items():
-                    self.master.insertColony(int(colony_id[6:]))  # Extract colony number and insert into Master
-                    self.master.updateColony(int(colony_id[6:]), values, True)  # Update colony data in Master
+            with open(LOCAL_PATH, 'r') as file:
+                updated_colony = json.load(file)
+                for colonyID, values in updated_colony.items():
+                    colony_number = int(colonyID.split("colony")[1])  # Extract colony number
+                    self.master.insertColony(colony_number)  # Insert colony into Master
+                    self.master.updateColony(colony_number, values, True)  # Update colony data in Master
         except (FileNotFoundError, json.JSONDecodeError):
-            self.master.logMessage(f"ALL: Unable to load colony data from filesys/colonyData.json")
-  
+            self.master.logMessage(f"ALL: Unable to load colony data from {LOCAL_PATH}")
+
+
+
+    # Check if settings in colonyData.json are out of bounds
+    def checkOutOfBoundsSettings(self):
+        # Check if settings in colonyData.json are out of bounds
+        self.clearScreen()
+        print("Checking out-of-bounds settings...")
+        # Loop through all current colonies and check if their settings are out of bounds. If they are, print a warning message if otherwise, print a success message
+        with open(f'{LOCAL_PATH}', 'r') as file:
+            data = json.load(file)
+            for colony, info in data.items():
+                out_of_bounds = False  # Flag to track if any setting is out of bounds
+                colony_name = colony
+                # Check each setting
+                if not (self.min_temperature <= info['daytime_temperature'] <= self.max_temperature):
+                    print(f"Colony {colony_name} has out-of-bounds daytime temperature: {info['daytime_temperature']} (Limit: {self.min_temperature}-{self.max_temperature}°C)")
+                    out_of_bounds = True
+
+                if not (self.min_temperature <= info['nighttime_temperature'] <= self.max_temperature):
+                    print(f"Colony {colony_name} has out-of-bounds nighttime temperature: {info['nighttime_temperature']} (Limit: {self.min_temperature}-{self.max_temperature}°C)")
+                    out_of_bounds = True
+
+                if not (self.min_light_intensity <= info['daytime_red_light'] <= self.max_light_intensity):
+                    print(f"Colony {colony_name} has out-of-bounds daytime red light: {info['daytime_red_light']} (Limit: {self.min_light_intensity}-{self.max_light_intensity})")
+                    out_of_bounds = True
+
+                if not (self.min_light_intensity <= info['daytime_blue_light'] <= self.max_light_intensity):
+                    print(f"Colony {colony_name} has out-of-bounds daytime blue light: {info['daytime_blue_light']} (Limit: {self.min_light_intensity}-{self.max_light_intensity})")
+                    out_of_bounds = True
+
+                if not (self.min_light_intensity <= info['nighttime_red_light'] <= self.max_light_intensity):
+                    print(f"Colony {colony_name} has out-of-bounds nighttime red light: {info['nighttime_red_light']} (Limit: {self.min_light_intensity}-{self.max_light_intensity})")
+                    out_of_bounds = True
+
+                if not (self.min_light_intensity <= info['nighttime_blue_light'] <= self.max_light_intensity):
+                    print(f"Colony {colony_name} has out-of-bounds nighttime blue light: {info['nighttime_blue_light']} (Limit: {self.min_light_intensity}-{self.max_light_intensity})")
+                    out_of_bounds = True
+
+                try:
+                    daytime_hours = int(info['daytime_hours'].split(':')[0])
+                    if not (self.min_daytime_hours <= daytime_hours <= self.max_daytime_hours):
+                        print(f"Colony {colony_name} has out-of-bounds daytime hours: {daytime_hours} (Limit: {self.min_daytime_hours}-{self.max_daytime_hours} hours)")
+                        out_of_bounds = True
+                except ValueError:
+                    print(f"Colony {colony_name} has an invalid format for daytime hours.")
+                    out_of_bounds = True
+
+                if not (self.min_observation_interval <= int(info['observation_interval']) <= self.max_observation_interval):
+                    print(f"Colony {colony_name} has out-of-bounds observation interval: {info['observation_interval']} (Limit: {self.min_observation_interval}-{self.max_observation_interval} hours)")
+                    out_of_bounds = True
+
+                if out_of_bounds:
+                    print()
+                else:
+                    print(f"Colony {colony_name}: All settings are within bounds")
+                    
+            input("Press Enter to continue...")
+
+
 # Main loop      
     def run(self):
         while True:
@@ -217,11 +306,11 @@ class UI:
             choice = input("Enter your choice: ")
 
             if choice == '1':
-                colony_ids = self.listColonies()                            # Get the list of colony IDs [colony1, colony2, ...]
-                colony_ids = [colony_id[6:] for colony_id in colony_ids]    # Remove the 'colony' prefix [1, 2, ...]
+                colonyIDs = self.listColonies()                            # Get the list of colony IDs [colony1, colony2, ...]
+                colonyIDs = [colonyID[6:] for colonyID in colonyIDs]    # Remove the 'colony' prefix [1, 2, ...]
                 colony_choice = input("Enter your choice: ")
                 if colony_choice != '0':
-                    actual_colonyID = colony_ids[int(colony_choice) - 1]    # Subtract 1 to get the index
+                    actual_colonyID = colonyIDs[int(colony_choice) - 1]    # Subtract 1 to get the index
                     self.displayColonyData(actual_colonyID)                 # Display the colony data
                     action = input("1. Change settings \n0. Back to the main menu: ")
                     if action == '1':
@@ -237,7 +326,13 @@ class UI:
             elif choice == '3':
                 # Extract colony from system
                 self.extractColony()
-        
+            
+            elif choice == '4':
+                # Check out-of-bounds settings
+                self.checkOutOfBoundsSettings()
+            
+            elif choice == '5':
+                pass
 
             elif choice == '0':
                 print("Quitting...")

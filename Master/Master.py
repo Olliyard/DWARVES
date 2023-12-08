@@ -58,7 +58,7 @@ class Master:
             extracted_colony = self.colonyStorage.pop(colonyID, None)
             if extracted_colony:
                 # Remove the colony from colonyData.json
-                filename = "filesys/colonyData.json"
+                filename = os.path.abspath("filesys/colonyData.json")
                 try:
                     with open(filename, "r") as file:
                         try:
@@ -68,8 +68,8 @@ class Master:
                 except FileNotFoundError:
                     all_colonies_data = {}
 
-                active_colony_ids = set(map(str, self.colonyStorage.keys()))
-                filtered_colonies_data = {key: value for key, value in all_colonies_data.items() if key[6:] in active_colony_ids}
+                active_colonyIDs = set(map(str, self.colonyStorage.keys()))
+                filtered_colonies_data = {key: value for key, value in all_colonies_data.items() if key[6:] in active_colonyIDs}
 
                 with open(filename, "w") as file:
                     json.dump(filtered_colonies_data, file, indent=4)
