@@ -3,6 +3,7 @@
 #include "../lib/multiplexer.hpp"
 #include "../lib/temperature.hpp"
 #include "../lib/colony_data.hpp"
+#include "../lib/loadingsensor.hpp"
 
 
 // Protocol;
@@ -18,3 +19,4 @@ void handleUART();
 void react();
 void sendTemperatures();
 void printSettings(int colonyID, int redBrightness, int blueBrightness, int setTemp);
+void sendLoadingZoneStatus();

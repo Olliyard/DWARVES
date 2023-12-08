@@ -1,8 +1,12 @@
 #include "../lib/uart_handler.hpp"
 
+HX711Wrapper weightSensor(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN, WEIGHT_THRESHOLD);
+
 void setupUART()
 {
     Serial.begin(9600);
+    // Setup weight sensor
+    weightSensor.initialize();
 }
 
 void handleUART()
@@ -66,6 +70,13 @@ void handleUART()
         Serial.print(temperature);
     }
 
+    // check for <lz>
+    else if (data.startsWith("<lz>"))
+    {
+        // Send the temperatures
+        sendLoadingZoneStatus();
+    }
+
     else
     {
         Serial.println("ERROR: Invalid protocol");
@@ -79,6 +90,12 @@ void serialEvent()
         // Call handleUART() when data is available
         handleUART();
     }
+}
+
+void sendLoadingZoneStatus()
+{
+    // Send the loading zone status
+    Serial.println(weightSensor.getWeightStatus());
 }
 
 // React to the data

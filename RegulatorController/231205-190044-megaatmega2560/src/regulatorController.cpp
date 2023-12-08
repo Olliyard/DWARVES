@@ -3,6 +3,7 @@
 // #include "../lib/temperature.hpp" // This is included in uart_handler.hpp
 // #include "../lib/multiplexer.hpp" // This is included in uart_handler.hpp
 #include "../lib/uart_handler.hpp"
+#include "../lib/loadingsensor.hpp"
 
 void setup()
 {
@@ -14,15 +15,13 @@ void setup()
 
   // Setup temperature sensor
   temperatureSetup();
+
+
 }
 
 void loop()
 {
-  // put your main code here, to run repeatedly:
-  // printAddresses();
-  // testTemperature();
-  react();
-  // delay(3000);
-  // test_stepwise_increment_colony1_temp();
-  // exit(1);
+  // react();
+  sendLoadingZoneStatus();
+  delay(1000);
 }
