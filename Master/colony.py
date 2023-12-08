@@ -3,8 +3,8 @@ import json
 
 class Colony:
     def __init__(self, colonyID, status=False, redDay=0, blueDay=0, 
-                 redNight=0, blueNight=0, dayTemp=0, 
-                 nightTemp=0, dayInterval=0, nightInterval=0):
+                 redNight=0, blueNight=0, dayTemp=15, 
+                 nightTemp=15, dayInterval=0, nightInterval=0):
         
         self.id = colonyID      # Colony ID
         self.status = status    # Set to True if occupied

@@ -45,18 +45,37 @@ class Master:
                 self.logMessage(f"Colony{colonyID}: Colony inserted into system.")
                 return newColony
             else:
+                print("ERROR: Colony already exists or no availability.")
                 self.logMessage(f"ERROR: Colony{colonyID} could not be inserted into the system. Already exists or no availability.")
                 return None
         else:
+            print("ERROR: Invalid colony ID.")
             self.logMessage(f"ERROR: Invalid colony ID. Colony ID should be between 1 and {MAX_COLONIES}.")
             return None
 
     def extractColony(self, colonyID):
         if self.checkColonies(colonyID):
-            if self.colonyStorage.pop(colonyID, None):
-                self.logMessage(f"Colony{colonyID}: Colony removed from system.")
-                return True
+            extracted_colony = self.colonyStorage.pop(colonyID, None)
+            if extracted_colony:
+                # Remove the colony from colonyData.json
+                filename = "filesys/colonyData.json"
+                try:
+                    with open(filename, "r") as file:
+                        try:
+                            all_colonies_data = json.load(file)
+                        except json.JSONDecodeError:
+                            all_colonies_data = {}
+                except FileNotFoundError:
+                    all_colonies_data = {}
 
+                active_colony_ids = set(map(str, self.colonyStorage.keys()))
+                filtered_colonies_data = {key: value for key, value in all_colonies_data.items() if key[6:] in active_colony_ids}
+
+                with open(filename, "w") as file:
+                    json.dump(filtered_colonies_data, file, indent=4)
+
+                self.logMessage(f"Colony{colonyID}: Removed from system and {filename}.")
+                return True
             else:
                 self.logMessage(f"ERROR: Unable to remove Colony{colonyID} from system.")
                 return False
@@ -103,7 +122,7 @@ class Master:
                 all_colonies_data = {}
 
         all_colonies_data[f"colony{colony.id}"] = {
-            "id": colony.id,
+            "id": int(colony.id),
             "occupied": colony.status,
             "daytime_hours": str(colony.dayInterval),
             "daytime_temperature": colony.dayTemp,
