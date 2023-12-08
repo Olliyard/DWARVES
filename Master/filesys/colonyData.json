@@ -1,22 +1,6 @@
 {
-    "colony1": {
-        "id": 1,
-        "occupied": true,
-        "daytime_hours": "00:00:00",
-        "daytime_temperature": 30,
-        "daytime_red_light": 90,
-        "daytime_blue_light": 80,
-        "nighttime_hours": "00:00:00",
-        "nighttime_temperature": 15,
-        "nighttime_red_light": 20,
-        "nighttime_blue_light": 10,
-        "observed_temperature": 0,
-        "observation_interval": 1,
-        "experiment_start_date": "2023-12-08",
-        "last_observation_date": "2023-12-08 01:02"
-    },
-    "colony2": {
-        "id": 2,
+    "colony3": {
+        "id": 3,
         "occupied": true,
         "daytime_hours": "00:00:00",
         "daytime_temperature": 0,
@@ -29,22 +13,6 @@
         "observed_temperature": 0,
         "observation_interval": 1,
         "experiment_start_date": "2023-12-08",
-        "last_observation_date": "2023-12-08 01:02"
-    },
-    "colony3": {
-        "id": 3,
-        "occupied": true,
-        "daytime_hours": "12:00:00",
-        "daytime_temperature": 28,
-        "daytime_red_light": 0,
-        "daytime_blue_light": 0,
-        "nighttime_hours": "00:00:00",
-        "nighttime_temperature": 22,
-        "nighttime_red_light": 0,
-        "nighttime_blue_light": 0,
-        "observed_temperature": 0,
-        "observation_interval": 24,
-        "experiment_start_date": "2023-12-08",
-        "last_observation_date": "2023-12-08 01:02"
+        "last_observation_date": "2023-12-08 13:32"
     }
 }

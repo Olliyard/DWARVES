@@ -28,6 +28,9 @@ class Colony:
     def __str__(self):
         return f"Colony {self.id} - Status: {'Occupied' if self.status else 'Not Occupied'}"
 
+    def update(self, attributes):
+        for key, value in attributes.items():
+            setattr(self, key, value)
 
     def updateAttributesFromFile(self, file_path='settings.json'):
         # Read settings from the specified JSON file and load them into the colony object
@@ -44,7 +47,7 @@ class Colony:
                 self.redNight = settings.get('nighttime_red_light', self.redNight)
                 self.blueDay = settings.get('daytime_blue_light', self.blueDay)
                 self.blueNight = settings.get('nighttime_blue_light', self.blueNight)
-                self.dayInterval = time(settings.get('daytime_hours', self.dayInterval.hour), 0)
-                self.nightInterval = time(settings.get('nighttime_hours', self.nightInterval.hour), 0)
+                self.dayInterval = datetime.strptime(settings.get('daytime_hours', f"{self.dayInterval.hour}:00:00"), "%H:%M:%S").time()
+                self.nightInterval = datetime.strptime(settings.get('nighttime_hours', f"{self.nightInterval.hour}:00:00"), "%H:%M:%S").time()
             else:
                 print(f'No settings found for colony {self.id}')

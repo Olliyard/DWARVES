@@ -22,3 +22,832 @@
 2023-12-08 01:02: Colony3: Colony inserted into system.
 2023-12-08 01:02: Colony3: Updated settings from settings.json
 2023-12-08 01:02: Colony3: Colony successfully written to colonyData.json
+2023-12-08 01:39: Colony1: Colony inserted into system.
+2023-12-08 01:39: Colony1: Set night lights to 0 and 0
+2023-12-08 01:39: Colony1: Set night lights to 20 and 10
+2023-12-08 01:39: Colony1: Observed values for temp: 0, red: 20, blue: 10.
+2023-12-08 01:40: Colony1: Set night temperature to 15
+2023-12-08 01:40: Colony1: Observed values for temp: 15, red: 20, blue: 10.
+2023-12-08 01:40: Colony1: Colony successfully written to colonyData.json
+2023-12-08 01:40: Colony2: Colony inserted into system.
+2023-12-08 01:40: Colony2: Colony successfully written to colonyData.json
+2023-12-08 01:40: Colony3: Colony inserted into system.
+2023-12-08 01:40: Colony3: Updated settings from settings.json
+2023-12-08 01:40: Colony3: Colony successfully written to colonyData.json
+2023-12-08 01:40: Colony1: Colony inserted into system.
+2023-12-08 01:41: Colony1: Set night lights to 0 and 0
+2023-12-08 01:41: Colony1: Set night lights to 20 and 10
+2023-12-08 01:41: Colony1: Observed values for temp: 0, red: 20, blue: 10.
+2023-12-08 01:41: Colony1: Set night temperature to 15
+2023-12-08 01:41: Colony1: Observed values for temp: 15, red: 20, blue: 10.
+2023-12-08 01:41: Colony1: Colony successfully written to colonyData.json
+2023-12-08 01:41: Colony2: Colony inserted into system.
+2023-12-08 01:41: Colony2: Colony successfully written to colonyData.json
+2023-12-08 01:41: Colony3: Colony inserted into system.
+2023-12-08 01:41: Colony3: Updated settings from settings.json
+2023-12-08 01:41: Colony3: Colony successfully written to colonyData.json
+2023-12-08 03:04: Colony4: Colony inserted into system.
+2023-12-08 03:09: Colony1: Colony inserted into system.
+2023-12-08 03:09: Colony1: Colony inserted into system.
+2023-12-08 03:09: Colony2: Colony inserted into system.
+2023-12-08 03:10: Colony4: Colony inserted into system.
+2023-12-08 03:13: Colony4: Colony inserted into system.
+2023-12-08 03:26: ColonyNone: Colony inserted into system.
+2023-12-08 03:27: Colony0: Colony inserted into system.
+2023-12-08 08:48: Colony1: Colony inserted into system.
+2023-12-08 08:49: Colony1: Colony inserted into system.
+2023-12-08 08:49: Colony1: Set night lights to 10 and 20
+2023-12-08 08:50: Colony1: Colony inserted into system.
+2023-12-08 08:50: Colony1: Set night lights to 10 and 20
+2023-12-08 08:52: Colony1: Colony inserted into system.
+2023-12-08 08:53: Colony1: Set night lights to 10 and 20
+2023-12-08 08:54: Colony1: Colony inserted into system.
+2023-12-08 08:54: Colony1: Set night lights to 10 and 20
+2023-12-08 08:57: Colony1: Colony inserted into system.
+2023-12-08 08:57: Colony1: Set night lights to 10 and 20
+2023-12-08 08:57: Colony1: Observed values for temp: 0, red: 10, blue: 20.
+2023-12-08 09:01: Colony1: Colony inserted into system.
+2023-12-08 09:01: Colony1: Set night lights to 10 and 20
+2023-12-08 09:02: Colony1: Colony inserted into system.
+2023-12-08 09:02: Colony1: Set night lights to 10 and 20
+2023-12-08 09:02: ERROR: ColonyColony 1 - Status: Occupied does not exist in the system.
+2023-12-08 09:02: Colony2: Colony inserted into system.
+2023-12-08 09:02: ERROR: ColonyColony 2 - Status: Occupied does not exist in the system.
+2023-12-08 09:02: Colony3: Colony inserted into system.
+2023-12-08 09:04: Colony1: Colony inserted into system.
+2023-12-08 09:04: Colony1: Set night lights to 10 and 20
+2023-12-08 09:04: ERROR: ColonyColony 1 - Status: Occupied does not exist in the system.
+2023-12-08 09:04: Colony2: Colony inserted into system.
+2023-12-08 09:04: ERROR: ColonyColony 2 - Status: Occupied does not exist in the system.
+2023-12-08 09:04: Colony3: Colony inserted into system.
+2023-12-08 09:06: Colony1: Colony inserted into system.
+2023-12-08 09:06: Colony1: Set night lights to 10 and 20
+2023-12-08 09:06: ERROR: ColonyColony 1 - Status: Occupied does not exist in the system.
+2023-12-08 09:06: Colony2: Colony inserted into system.
+2023-12-08 09:06: ERROR: ColonyColony 2 - Status: Occupied does not exist in the system.
+2023-12-08 09:06: Colony3: Colony inserted into system.
+2023-12-08 09:06: Colony3: Updated settings from settings.json
+2023-12-08 09:06: ERROR: ColonyColony 3 - Status: Occupied does not exist in the system.
+2023-12-08 09:08: Colony1: Colony inserted into system.
+2023-12-08 09:08: Colony1: Set night lights to 10 and 20
+2023-12-08 09:08: ERROR: ColonyColony 1 - Status: Occupied does not exist in the system.
+2023-12-08 09:08: Colony2: Colony inserted into system.
+2023-12-08 09:08: ERROR: ColonyColony 2 - Status: Occupied does not exist in the system.
+2023-12-08 09:08: Colony3: Colony inserted into system.
+2023-12-08 09:08: Colony3: Updated settings from settings.json
+2023-12-08 09:08: ERROR: ColonyColony 3 - Status: Occupied does not exist in the system.
+2023-12-08 09:09: Colony1: Colony inserted into system.
+2023-12-08 09:09: Colony1: Set night lights to 10 and 20
+2023-12-08 09:11: Colony1: Colony inserted into system.
+2023-12-08 09:11: Colony1: Set night lights to 10 and 20
+2023-12-08 09:11: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:11: Colony2: Colony inserted into system.
+2023-12-08 09:11: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:11: Colony3: Colony inserted into system.
+2023-12-08 09:11: Colony3: Updated settings from settings.json
+2023-12-08 09:11: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:14: Colony1: Colony inserted into system.
+2023-12-08 09:14: Colony1: Set night lights to 10 and 20
+2023-12-08 09:14: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:14: Colony2: Colony inserted into system.
+2023-12-08 09:14: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:14: Colony3: Colony inserted into system.
+2023-12-08 09:14: Colony3: Updated settings from settings.json
+2023-12-08 09:14: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:15: Colony1: Colony inserted into system.
+2023-12-08 09:15: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:15: Colony2: Colony inserted into system.
+2023-12-08 09:15: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:15: Colony3: Colony inserted into system.
+2023-12-08 09:15: Colony3: Updated settings from settings.json
+2023-12-08 09:15: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:16: Colony1: Colony inserted into system.
+2023-12-08 09:16: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:16: Colony2: Colony inserted into system.
+2023-12-08 09:16: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:16: Colony3: Colony inserted into system.
+2023-12-08 09:16: Colony3: Updated settings from settings.json
+2023-12-08 09:16: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:17: Colony1: Colony inserted into system.
+2023-12-08 09:17: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:17: Colony2: Colony inserted into system.
+2023-12-08 09:17: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:17: Colony3: Colony inserted into system.
+2023-12-08 09:17: Colony3: Updated settings from settings.json
+2023-12-08 09:17: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:19: Colony1: Colony inserted into system.
+2023-12-08 09:19: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:19: Colony2: Colony inserted into system.
+2023-12-08 09:19: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:19: Colony3: Colony inserted into system.
+2023-12-08 09:19: Colony3: Updated settings from settings.json
+2023-12-08 09:19: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:20: Colony1: Colony inserted into system.
+2023-12-08 09:20: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:20: Colony2: Colony inserted into system.
+2023-12-08 09:20: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:20: Colony3: Colony inserted into system.
+2023-12-08 09:20: Colony3: Updated settings from settings.json
+2023-12-08 09:20: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:20: Colony1: Colony inserted into system.
+2023-12-08 09:20: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:20: Colony2: Colony inserted into system.
+2023-12-08 09:20: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:20: Colony3: Colony inserted into system.
+2023-12-08 09:20: Colony3: Updated settings from settings.json
+2023-12-08 09:20: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:21: Colony1: Colony inserted into system.
+2023-12-08 09:21: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:21: Colony2: Colony inserted into system.
+2023-12-08 09:21: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:21: Colony3: Colony inserted into system.
+2023-12-08 09:21: Colony3: Updated settings from settings.json
+2023-12-08 09:21: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:22: Colony1: Colony inserted into system.
+2023-12-08 09:22: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:22: Colony2: Colony inserted into system.
+2023-12-08 09:22: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:22: Colony3: Colony inserted into system.
+2023-12-08 09:22: Colony3: Updated settings from settings.json
+2023-12-08 09:22: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:23: Colony1: Colony inserted into the system.
+2023-12-08 09:23: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:23: Colony2: Colony inserted into the system.
+2023-12-08 09:23: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:23: Colony3: Colony inserted into the system.
+2023-12-08 09:23: Colony3: Updated settings from settings.json
+2023-12-08 09:23: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:23: Colony1: Colony inserted into the system.
+2023-12-08 09:23: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:23: Colony2: Colony inserted into the system.
+2023-12-08 09:23: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:23: Colony3: Colony inserted into the system.
+2023-12-08 09:23: Colony3: Updated settings from settings.json
+2023-12-08 09:23: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:24: Colony1: Colony inserted into system.
+2023-12-08 09:24: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:24: Colony2: Colony inserted into system.
+2023-12-08 09:24: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:24: Colony3: Colony inserted into system.
+2023-12-08 09:24: Colony3: Updated settings from settings.json
+2023-12-08 09:24: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:25: Colony1: Colony inserted into system.
+2023-12-08 09:25: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:25: Colony1: Colony inserted into system.
+2023-12-08 09:25: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:25: Colony2: Colony inserted into system.
+2023-12-08 09:25: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:25: Colony3: Colony inserted into system.
+2023-12-08 09:25: Colony3: Updated settings from settings.json
+2023-12-08 09:25: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:26: Colony1: Colony inserted into the system.
+2023-12-08 09:26: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:26: Colony2: Colony inserted into the system.
+2023-12-08 09:26: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:26: Colony3: Colony inserted into the system.
+2023-12-08 09:26: Colony3: Updated settings from settings.json
+2023-12-08 09:26: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:27: Colony1: Colony inserted into the system.
+2023-12-08 09:27: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:27: Colony2: Colony inserted into the system.
+2023-12-08 09:27: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:27: Colony3: Colony inserted into the system.
+2023-12-08 09:27: Colony3: Updated settings from settings.json
+2023-12-08 09:27: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:28: Colony1: Colony inserted into system.
+2023-12-08 09:28: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:28: Colony2: Colony inserted into system.
+2023-12-08 09:28: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:28: Colony3: Colony inserted into system.
+2023-12-08 09:28: Colony3: Updated settings from settings.json
+2023-12-08 09:28: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:29: Colony1: Colony inserted into system.
+2023-12-08 09:29: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:29: Colony2: Colony inserted into system.
+2023-12-08 09:29: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:29: Colony3: Colony inserted into system.
+2023-12-08 09:29: Colony3: Updated settings from settings.json
+2023-12-08 09:29: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:30: Colony1: Colony inserted into system.
+2023-12-08 09:30: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:30: Colony2: Colony inserted into system.
+2023-12-08 09:30: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:30: Colony3: Colony inserted into system.
+2023-12-08 09:30: Colony3: Updated settings from settings.json
+2023-12-08 09:30: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:31: Colony1: Colony inserted into system.
+2023-12-08 09:31: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:31: Colony2: Colony inserted into system.
+2023-12-08 09:31: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:31: Colony3: Colony inserted into system.
+2023-12-08 09:31: Colony3: Updated settings from settings.json
+2023-12-08 09:31: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:33: Colony1: Colony inserted into system.
+2023-12-08 09:33: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:33: Colony2: Colony inserted into system.
+2023-12-08 09:33: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:33: Colony3: Colony inserted into system.
+2023-12-08 09:33: Colony3: Updated settings from settings.json
+2023-12-08 09:33: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:35: Colony1: Colony inserted into system.
+2023-12-08 09:35: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:35: Colony2: Colony inserted into system.
+2023-12-08 09:35: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:35: Colony3: Colony inserted into system.
+2023-12-08 09:35: Colony3: Updated settings from settings.json
+2023-12-08 09:35: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:36: Colony1: Colony inserted into system.
+2023-12-08 09:36: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:36: Colony2: Colony inserted into system.
+2023-12-08 09:36: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:36: Colony3: Colony inserted into system.
+2023-12-08 09:36: Colony3: Updated settings from settings.json
+2023-12-08 09:36: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:36: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
+2023-12-08 09:39: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
+2023-12-08 09:41: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
+2023-12-08 09:42: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
+2023-12-08 09:43: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
+2023-12-08 09:43: Colony1: Colony inserted into system.
+2023-12-08 09:43: ERROR: Colony1 does not exist in the system.
+2023-12-08 09:43: Colony2: Colony inserted into system.
+2023-12-08 09:43: ERROR: Colony2 does not exist in the system.
+2023-12-08 09:43: Colony3: Colony inserted into system.
+2023-12-08 09:43: Colony3: Updated settings from settings.json
+2023-12-08 09:43: ERROR: Colony3 does not exist in the system.
+2023-12-08 09:45: Colony1: Colony inserted into system.
+2023-12-08 09:45: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 09:45: Colony2: Colony inserted into system.
+2023-12-08 09:45: ERROR: Colony2 does not exist in the system (getObservationData).
+2023-12-08 09:45: Colony3: Colony inserted into system.
+2023-12-08 09:45: Colony3: Updated settings from settings.json
+2023-12-08 09:45: ERROR: Colony3 does not exist in the system (getObservationData).
+2023-12-08 09:46: Colony1: Colony inserted into system.
+2023-12-08 09:46: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 09:46: Colony2: Colony inserted into system.
+2023-12-08 09:46: ERROR: Colony2 does not exist in the system (getObservationData).
+2023-12-08 09:46: Colony3: Colony inserted into system.
+2023-12-08 09:46: Colony3: Updated settings from settings.json
+2023-12-08 09:46: ERROR: Colony3 does not exist in the system (getObservationData).
+2023-12-08 09:47: Colony1: Colony inserted into system.
+2023-12-08 09:47: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 09:47: Colony2: Colony inserted into system.
+2023-12-08 09:47: ERROR: Colony2 does not exist in the system (getObservationData).
+2023-12-08 09:47: Colony3: Colony inserted into system.
+2023-12-08 09:47: Colony3: Updated settings from settings.json
+2023-12-08 09:47: ERROR: Colony3 does not exist in the system (getObservationData).
+2023-12-08 09:48: Colony1: Colony inserted into system.
+2023-12-08 09:48: Colony1: Updated colony in system.
+2023-12-08 09:48: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 09:48: Colony2: Colony inserted into system.
+2023-12-08 09:48: Colony2: Updated colony in system.
+2023-12-08 09:48: ERROR: Colony2 does not exist in the system (getObservationData).
+2023-12-08 09:48: Colony3: Colony inserted into system.
+2023-12-08 09:48: Colony3: Updated settings from settings.json
+2023-12-08 09:48: Colony3: Updated colony in system.
+2023-12-08 09:48: ERROR: Colony3 does not exist in the system (getObservationData).
+2023-12-08 09:50: Colony1: Colony inserted into system.
+2023-12-08 09:50: Colony1: Updated colony in system.
+2023-12-08 09:50: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 09:50: Colony2: Colony inserted into system.
+2023-12-08 09:50: Colony2: Updated colony in system.
+2023-12-08 09:50: ERROR: Colony2 does not exist in the system (getObservationData).
+2023-12-08 09:50: Colony3: Colony inserted into system.
+2023-12-08 09:50: Colony3: Updated settings from settings.json
+2023-12-08 09:50: Colony3: Updated colony in system.
+2023-12-08 09:50: ERROR: Colony3 does not exist in the system (getObservationData).
+2023-12-08 09:51: Colony1: Colony inserted into system.
+2023-12-08 09:51: Colony1: Updated colony in system.
+2023-12-08 09:51: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 09:51: Colony2: Colony inserted into system.
+2023-12-08 09:51: Colony2: Updated colony in system.
+2023-12-08 09:51: ERROR: Colony2 does not exist in the system (getObservationData).
+2023-12-08 09:51: Colony3: Colony inserted into system.
+2023-12-08 09:51: Colony3: Updated settings from settings.json
+2023-12-08 09:51: Colony3: Updated colony in system.
+2023-12-08 09:51: ERROR: Colony3 does not exist in the system (getObservationData).
+2023-12-08 09:53: Colony1: Colony inserted into system.
+2023-12-08 09:53: Colony1: Updated colony in system.
+2023-12-08 09:53: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 09:53: Colony2: Colony inserted into system.
+2023-12-08 09:53: Colony2: Updated colony in system.
+2023-12-08 09:53: ERROR: Colony2 does not exist in the system (getObservationData).
+2023-12-08 09:53: Colony3: Colony inserted into system.
+2023-12-08 09:53: Colony3: Updated settings from settings.json
+2023-12-08 09:53: Colony3: Updated colony in system.
+2023-12-08 09:53: ERROR: Colony3 does not exist in the system (getObservationData).
+2023-12-08 09:54: Colony1: Colony inserted into system.
+2023-12-08 09:55: Colony1: Colony inserted into system.
+2023-12-08 09:55: Colony1: Colony successfully written to colonyData.json
+2023-12-08 09:55: Colony2: Colony inserted into system.
+2023-12-08 09:55: Colony2: Colony successfully written to colonyData.json
+2023-12-08 09:55: Colony3: Colony inserted into system.
+2023-12-08 09:55: Colony3: Updated settings from settings.json
+2023-12-08 09:55: Colony3: Colony successfully written to colonyData.json
+2023-12-08 09:59: Colony1: Colony inserted into system.
+2023-12-08 09:59: Colony1: Colony successfully written to colonyData.json
+2023-12-08 09:59: Colony2: Colony inserted into system.
+2023-12-08 09:59: Colony2: Colony successfully written to colonyData.json
+2023-12-08 09:59: Colony3: Colony inserted into system.
+2023-12-08 09:59: Colony3: Updated settings from settings.json
+2023-12-08 09:59: Colony3: Colony successfully written to colonyData.json
+2023-12-08 09:59: Colony1: Colony inserted into system.
+2023-12-08 09:59: Colony1: Colony successfully written to colonyData.json
+2023-12-08 09:59: Colony2: Colony inserted into system.
+2023-12-08 09:59: Colony2: Colony successfully written to colonyData.json
+2023-12-08 09:59: Colony3: Colony inserted into system.
+2023-12-08 09:59: Colony3: Updated settings from settings.json
+2023-12-08 09:59: Colony3: Colony successfully written to colonyData.json
+2023-12-08 10:01: Colony1: Colony inserted into system.
+2023-12-08 10:01: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:01: Colony1: Updated observation interval to day: 12, night: 12
+2023-12-08 10:01: Colony1: Observed values for temp: 20, red: 0, blue: 0.
+2023-12-08 10:01: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:01: Colony2: Colony inserted into system.
+2023-12-08 10:01: Colony2: Colony successfully written to colonyData.json
+2023-12-08 10:01: Colony3: Colony inserted into system.
+2023-12-08 10:01: Colony3: Updated settings from settings.json
+2023-12-08 10:01: Colony3: Colony successfully written to colonyData.json
+2023-12-08 10:01: Colony1: Colony inserted into system.
+2023-12-08 10:01: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:01: Colony1: Updated observation interval to day: 12, night: 12
+2023-12-08 10:01: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 10:01: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:01: Colony2: Colony inserted into system.
+2023-12-08 10:01: Colony2: Colony successfully written to colonyData.json
+2023-12-08 10:01: Colony3: Colony inserted into system.
+2023-12-08 10:01: Colony3: Updated settings from settings.json
+2023-12-08 10:01: Colony3: Colony successfully written to colonyData.json
+2023-12-08 10:03: Colony1: Colony inserted into system.
+2023-12-08 10:03: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:03: Colony1: Updated observation interval to day: 12, night: 12
+2023-12-08 10:03: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 10:03: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:08: Colony1: Colony inserted into system.
+2023-12-08 10:08: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:08: Colony1: Updated observation interval to day: 12, night: 12
+2023-12-08 10:08: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 10:08: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:12: Colony1: Colony inserted into system.
+2023-12-08 10:12: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:12: Colony1: Updated observation interval to day: 12, night: 12
+2023-12-08 10:12: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 10:12: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:13: Colony1: Colony inserted into system.
+2023-12-08 10:13: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:13: Colony1: Updated observation interval to day: 12, night: 12
+2023-12-08 10:13: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 10:13: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:13: Colony1: Colony inserted into system.
+2023-12-08 10:13: Colony1: Updated settings from settings.json
+2023-12-08 10:13: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:13: Colony2: Colony inserted into system.
+2023-12-08 10:13: Colony2: Colony successfully written to colonyData.json
+2023-12-08 10:13: Colony3: Colony inserted into system.
+2023-12-08 10:13: Colony3: Updated settings from settings.json
+2023-12-08 10:13: Colony3: Colony successfully written to colonyData.json
+2023-12-08 10:14: Colony1: Colony inserted into system.
+2023-12-08 10:14: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:14: Colony1: Updated observation interval to day: 12, night: 12
+2023-12-08 10:14: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 10:14: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:17: Colony1: Colony inserted into system.
+2023-12-08 10:18: Colony1: Colony inserted into system.
+2023-12-08 10:26: Colony1: Colony inserted into system.
+2023-12-08 10:26: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 10:26: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 10:26: Colony1: Updated settings from settings.json
+2023-12-08 10:26: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 10:26: Colony2: Colony inserted into system.
+2023-12-08 10:26: ERROR: Colony2 does not exist in the system (getObservationData).
+2023-12-08 10:26: Colony3: Colony inserted into system.
+2023-12-08 10:26: Colony3: Updated settings from settings.json
+2023-12-08 10:26: ERROR: Colony3 does not exist in the system (getObservationData).
+2023-12-08 10:26: Colony1: Colony inserted into system.
+2023-12-08 10:26: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 10:26: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 10:26: Colony1: Updated settings from settings.json
+2023-12-08 10:26: ERROR: Colony1 does not exist in the system (getObservationData).
+2023-12-08 10:26: Colony2: Colony inserted into system.
+2023-12-08 10:26: ERROR: Colony2 does not exist in the system (getObservationData).
+2023-12-08 10:26: Colony3: Colony inserted into system.
+2023-12-08 10:26: Colony3: Updated settings from settings.json
+2023-12-08 10:26: ERROR: Colony3 does not exist in the system (getObservationData).
+2023-12-08 10:26: Colony1: Colony inserted into system.
+2023-12-08 10:26: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:27: Colony1: Updated observation interval to day: 12, night: 12
+2023-12-08 10:27: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 10:27: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:28: Colony1: Colony inserted into system.
+2023-12-08 10:28: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:28: Colony1: Updated observation interval to day: 12, night: 12
+2023-12-08 10:28: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 10:28: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:29: Colony1: Colony inserted into system.
+2023-12-08 10:29: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:31: Colony1: Colony inserted into system.
+2023-12-08 10:31: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:33: Colony1: Colony inserted into system.
+2023-12-08 10:33: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:35: Colony1: Colony inserted into system.
+2023-12-08 10:35: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:36: Colony1: Colony inserted into system.
+2023-12-08 10:36: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:36: Colony1: Updated observation interval to day: 12, night: 12
+2023-12-08 10:36: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 10:36: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:37: Colony1: Colony inserted into system.
+2023-12-08 10:37: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:37: Colony1: Updated observation interval to day: 12:00:00, night: 12:00:00
+2023-12-08 10:37: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 10:37: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:37: Colony1: Updated settings from settings.json
+2023-12-08 10:37: Colony1: Colony successfully written to colonyData.json
+2023-12-08 10:37: Colony2: Colony inserted into system.
+2023-12-08 10:37: Colony2: Colony successfully written to colonyData.json
+2023-12-08 10:37: Colony3: Colony inserted into system.
+2023-12-08 10:37: Colony3: Updated settings from settings.json
+2023-12-08 10:37: Colony3: Colony successfully written to colonyData.json
+2023-12-08 11:10: Colony1: Colony inserted into system.
+2023-12-08 11:10: Colony1: Colony successfully written to colonyData.json
+2023-12-08 11:10: Colony1: Updated observation interval to day: 12:00:00, night: 12:00:00
+2023-12-08 11:10: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 11:10: Colony1: Colony successfully written to colonyData.json
+2023-12-08 11:10: Colony1: Updated settings from settings.json
+2023-12-08 11:10: Colony1: Colony successfully written to colonyData.json
+2023-12-08 11:10: Colony2: Colony inserted into system.
+2023-12-08 11:10: Colony2: Colony successfully written to colonyData.json
+2023-12-08 11:10: Colony3: Colony inserted into system.
+2023-12-08 11:10: Colony3: Updated settings from settings.json
+2023-12-08 11:10: Colony3: Colony successfully written to colonyData.json
+2023-12-08 11:12: Colony1: Colony inserted into system.
+2023-12-08 11:12: Colony1: Colony successfully written to colonyData.json
+2023-12-08 11:12: Colony1: Colony inserted into system.
+2023-12-08 11:12: Colony1: Colony successfully written to colonyData.json
+2023-12-08 11:14: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 11:25: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 11:26: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 11:29: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 11:29: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 11:30: Colony1: Colony inserted into system.
+2023-12-08 11:30: Colony4: Colony inserted into system.
+2023-12-08 11:32: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 11:39: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 11:41: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 11:44: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 11:47: Colony1: Colony inserted into system.
+2023-12-08 11:47: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 11:48: Colony1: Updated observation interval to day: 12:00:00, night: 12:00:00
+2023-12-08 11:48: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 11:48: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 11:48: Colony1: Updated settings from settings.json
+2023-12-08 11:48: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 11:48: Colony2: Colony inserted into system.
+2023-12-08 11:48: Colony2: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 11:48: Colony3: Colony inserted into system.
+2023-12-08 11:48: Colony3: Updated settings from settings.json
+2023-12-08 11:48: Colony3: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 11:57: Colony1: Colony inserted into system.
+2023-12-08 12:00: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
+2023-12-08 12:02: Colony2: Colony inserted into system.
+2023-12-08 12:04: ERROR: Colony2 could not be inserted into the system. Already exists or no availability.
+2023-12-08 12:04: Colony3: Colony inserted into system.
+2023-12-08 12:06: Colony2: Colony inserted into system.
+2023-12-08 12:06: Colony2: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:08: Colony1: Colony inserted into system.
+2023-12-08 12:08: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:10: Colony1: Colony inserted into system.
+2023-12-08 12:10: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:13: Colony2: Colony inserted into system.
+2023-12-08 12:13: Colony2: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:13: Colony1: Colony inserted into system.
+2023-12-08 12:13: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:14: Colony2: Colony inserted into system.
+2023-12-08 12:14: Colony2: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:14: Colony3: Colony inserted into system.
+2023-12-08 12:14: Colony3: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:14: Colony4: Colony inserted into system.
+2023-12-08 12:14: Colony4: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:14: Colony5: Colony inserted into system.
+2023-12-08 12:14: Colony5: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:14: Colony6: Colony inserted into system.
+2023-12-08 12:14: Colony6: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:14: Colony7: Colony inserted into system.
+2023-12-08 12:14: Colony7: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:14: Colony8: Colony inserted into system.
+2023-12-08 12:14: Colony8: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:14: Colony9: Colony inserted into system.
+2023-12-08 12:14: Colony9: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:14: Colony10: Colony inserted into system.
+2023-12-08 12:14: Colony10: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:14: ERROR: No available space in system.
+2023-12-08 12:14: ERROR: No available space in system.
+2023-12-08 12:14: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:15: Colony1: Colony inserted into system.
+2023-12-08 12:15: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:15: Colony2: Colony inserted into system.
+2023-12-08 12:15: Colony2: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:16: Colony1: Colony inserted into system.
+2023-12-08 12:16: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:16: Colony2: Colony inserted into system.
+2023-12-08 12:16: Colony2: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:16: Colony1: Colony removed from system.
+2023-12-08 12:16: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:18: Colony1: Colony inserted into system.
+2023-12-08 12:18: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:18: Colony1: Colony removed from system.
+2023-12-08 12:18: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:21: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
+2023-12-08 12:21: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:21: Colony1: Colony removed from system.
+2023-12-08 12:21: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:23: Colony1: Colony inserted into system.
+2023-12-08 12:23: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:23: Colony1: Colony removed from system.
+2023-12-08 12:23: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:24: Colony1: Colony inserted into system.
+2023-12-08 12:24: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:24: Colony1: Colony removed from system.
+2023-12-08 12:24: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:24: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:25: Colony1: Colony inserted into system.
+2023-12-08 12:25: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:25: Colony1: Colony removed from system.
+2023-12-08 12:25: Colony1: Colony successfully written to colonyData.json and inactive entries removed.
+2023-12-08 12:31: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:31: Colony1: Colony inserted into system.
+2023-12-08 12:31: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:32: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:32: Colony1: Colony inserted into system.
+2023-12-08 12:32: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:32: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:32: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:32: Colony1: Colony removed from system.
+2023-12-08 12:32: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:33: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:36: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:36: Colony1: Colony inserted into system.
+2023-12-08 12:36: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:36: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:36: Colony1: Colony removed from system.
+2023-12-08 12:36: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:36: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:36: Colony1: Colony inserted into system.
+2023-12-08 12:36: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:37: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:37: Colony1: Colony removed from system.
+2023-12-08 12:37: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:38: Colony1: Colony inserted into system.
+2023-12-08 12:38: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:38: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:38: Colony1: Colony removed from system.
+2023-12-08 12:38: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:45: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:45: Colony1: Colony inserted into system.
+2023-12-08 12:45: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:45: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:45: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:47: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:47: Colony1: Colony inserted into system.
+2023-12-08 12:47: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:47: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:47: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:47: Colony1: Updated settings from settings.json
+2023-12-08 12:47: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:47: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:47: Colony1: Updated settings from settings.json
+2023-12-08 12:50: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
+2023-12-08 12:50: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:50: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:50: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:50: Colony1: Updated settings from settings.json
+2023-12-08 12:50: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:50: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:50: Colony1: Updated settings from settings.json
+2023-12-08 12:51: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:51: Colony1: Colony inserted into system.
+2023-12-08 12:51: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:51: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:51: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:51: Colony1: Updated settings from settings.json
+2023-12-08 12:51: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:51: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:52: Colony1: Colony inserted into system.
+2023-12-08 12:52: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:52: Colony1: Updated observation interval to day: 12:00:00, night: 12:00:00
+2023-12-08 12:52: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 12:52: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:53: Colony1: Colony inserted into system.
+2023-12-08 12:53: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:53: Colony1: Updated observation interval to day: 12:00:00, night: 12:00:00
+2023-12-08 12:53: Colony1: Observed values for temp: 20, red: 10, blue: 10.
+2023-12-08 12:53: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:53: Colony1: Updated settings from settings.json
+2023-12-08 12:53: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:53: Colony2: Colony inserted into system.
+2023-12-08 12:53: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:53: Colony3: Colony inserted into system.
+2023-12-08 12:53: ERROR: Colony3 settings not found in settings.json
+2023-12-08 12:53: Colony3: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:59: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:59: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:59: Colony1: Colony inserted into system.
+2023-12-08 12:59: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:59: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 12:59: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 12:59: Colony1: Updated settings from settings.json
+2023-12-08 13:00: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:00: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:02: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:02: Colony1: Colony inserted into system.
+2023-12-08 13:02: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:02: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:02: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:02: Colony1: Updated settings from settings.json
+2023-12-08 13:03: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:03: Colony1: Colony inserted into system.
+2023-12-08 13:03: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:04: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:04: Colony1: Colony inserted into system.
+2023-12-08 13:04: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:05: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:05: Colony1: Colony inserted into system.
+2023-12-08 13:05: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:05: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:05: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:05: Colony1: Updated settings from settings.json
+2023-12-08 13:07: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:07: Colony1: Colony inserted into system.
+2023-12-08 13:07: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:07: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:07: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:07: Colony1: Updated settings from settings.json
+2023-12-08 13:07: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:07: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:07: Colony1: Updated settings from settings.json
+2023-12-08 13:07: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:07: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:07: Colony1: Updated settings from settings.json
+2023-12-08 13:08: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:08: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:08: Colony1: Updated settings from settings.json
+2023-12-08 13:08: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:08: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:08: Colony1: Updated settings from settings.json
+2023-12-08 13:08: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:08: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:08: Colony1: Updated settings from settings.json
+2023-12-08 13:09: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:09: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:09: Colony1: Updated settings from settings.json
+2023-12-08 13:09: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:09: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:09: Colony1: Updated settings from settings.json
+2023-12-08 13:11: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:11: Colony1: Colony inserted into system.
+2023-12-08 13:11: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:11: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:11: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:11: Colony1: Updated settings from settings.json
+2023-12-08 13:11: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:11: Colony1: Colony inserted into system.
+2023-12-08 13:11: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:12: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:12: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:12: Colony1: Updated settings from settings.json
+2023-12-08 13:12: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:15: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:15: Colony1: Colony inserted into system.
+2023-12-08 13:15: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:15: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:15: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:15: Colony1: Updated settings from settings.json
+2023-12-08 13:15: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:15: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:15: Colony1: Colony inserted into system.
+2023-12-08 13:15: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:15: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:15: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:15: Colony1: Updated settings from settings.json
+2023-12-08 13:15: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:15: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:15: Colony1: Updated settings from settings.json
+2023-12-08 13:16: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:16: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:16: Colony1: Updated settings from settings.json
+2023-12-08 13:16: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:16: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:16: Colony1: Updated settings from settings.json
+2023-12-08 13:16: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:16: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:16: Colony1: Updated settings from settings.json
+2023-12-08 13:16: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:16: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:16: Colony1: Updated settings from settings.json
+2023-12-08 13:16: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:16: Colony1: Colony removed from system.
+2023-12-08 13:16: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:16: Colony2: Colony inserted into system.
+2023-12-08 13:16: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:16: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:16: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 13:16: Colony1: Colony inserted into system.
+2023-12-08 13:16: Colony1: Updated settings from settings.json
+2023-12-08 13:21: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:21: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:21: Colony1: Colony inserted into system.
+2023-12-08 13:21: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:21: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:21: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:21: Colony1: Colony removed from system.
+2023-12-08 13:21: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:21: Colony3: Colony inserted into system.
+2023-12-08 13:21: Colony3: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:21: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:21: ERROR: Colonycolony3 does not exist in the system (if not getObservationData).
+2023-12-08 13:22: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:22: Colony3: Colony inserted into system.
+2023-12-08 13:22: Colony3: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:22: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:22: ERROR: Colonycolony3 does not exist in the system (if not getObservationData).
+2023-12-08 13:22: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:23: Colony3: Colony inserted into system.
+2023-12-08 13:23: Colony3: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:23: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:23: Colony2: Colony inserted into system.
+2023-12-08 13:23: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:23: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:24: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:24: Colony3: Colony inserted into system.
+2023-12-08 13:24: Colony3: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:24: Colony2: Colony inserted into system.
+2023-12-08 13:24: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:24: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:24: ERROR: Colony2 does not exist in the system (if not getObservationData).
+2023-12-08 13:24: Colony2: Colony inserted into system.
+2023-12-08 13:24: Colony2: Updated settings from settings.json
+2023-12-08 13:25: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:25: ERROR: Colony3 does not exist in the system (if not getObservationData).
+2023-12-08 13:25: Colony3: Colony inserted into system.
+2023-12-08 13:25: Colony3: Updated settings from settings.json
+2023-12-08 13:27: Colony1: Colony inserted into system.
+2023-12-08 13:27: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:27: ERROR: Colony3 could not be inserted into the system. Already exists or no availability.
+2023-12-08 13:27: Colony3: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:27: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:27: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 13:27: Colony1: Colony inserted into system.
+2023-12-08 13:27: Colony1: Updated settings from settings.json
+2023-12-08 13:27: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:27: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:27: Colony1: Updated settings from settings.json
+2023-12-08 13:27: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:27: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:27: Colony1: Updated settings from settings.json
+2023-12-08 13:28: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:28: Colony1: Colony inserted into system.
+2023-12-08 13:28: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:28: Colony3: Colony inserted into system.
+2023-12-08 13:28: Colony3: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:28: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:28: ERROR: Colony1 does not exist in the system (if not getObservationData).
+2023-12-08 13:28: Colony1: Colony inserted into system.
+2023-12-08 13:28: Colony1: Updated settings from settings.json
+2023-12-08 13:28: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:28: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:28: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:28: Colony1: Updated settings from settings.json
+2023-12-08 13:28: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:28: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:28: Colony1: Updated settings from settings.json
+2023-12-08 13:29: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:29: Colony2: Colony inserted into system.
+2023-12-08 13:29: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:29: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:29: Colony2: Colony inserted into system.
+2023-12-08 13:29: Colony2: Updated settings from settings.json
+2023-12-08 13:29: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:29: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:29: Colony2: Updated settings from settings.json
+2023-12-08 13:29: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:30: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:30: Colony2: Updated settings from settings.json
+2023-12-08 13:30: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:30: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:30: Colony2: Updated settings from settings.json
+2023-12-08 13:30: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:30: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:30: ERROR: Colony1 does not exist in the system.
+2023-12-08 13:31: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:31: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:32: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:32: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:32: Colony1: Colony inserted into system.
+2023-12-08 13:32: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:32: Colony3: Colony inserted into system.
+2023-12-08 13:32: Colony3: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
+2023-12-08 13:32: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:33: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:33: Colony1: Colony removed from system.
+2023-12-08 13:33: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
+2023-12-08 13:33: ALL: Removed inactive entries from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json
