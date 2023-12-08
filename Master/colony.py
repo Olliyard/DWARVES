@@ -29,18 +29,6 @@ class Colony:
         return f"Colony {self.id} - Status: {'Occupied' if self.status else 'Not Occupied'}"
 
 
-    def updateAttributes(self, updatedColony):
-        self.status = updatedColony.status
-        self.dayTemp = updatedColony.dayTemp
-        self.nightTemp = updatedColony.nightTemp
-        self.redDay = updatedColony.redDay
-        self.redNight = updatedColony.redNight
-        self.blueDay = updatedColony.blueDay
-        self.blueNight = updatedColony.blueNight
-        self.dayInterval = updatedColony.dayInterval
-        self.nightInterval = updatedColony.nightInterval
-
-
     def updateAttributesFromFile(self, file_path='settings.json'):
         # Read settings from the specified JSON file and load them into the colony object
         with open(file_path, 'r') as f:
@@ -59,17 +47,4 @@ class Colony:
                 self.dayInterval = time(settings.get('daytime_hours', self.dayInterval.hour), 0)
                 self.nightInterval = time(settings.get('nighttime_hours', self.nightInterval.hour), 0)
             else:
-                print(f'No settings found for colony {self.id}')            
-
-    def _updateInstanceVariables(self, settings=None):
-
-            # Update attributes from instance variables
-            self.status = self.status
-            self.dayTemp = self.dayTemp
-            self.nightTemp = self.nightTemp
-            self.redDay = self.redDay
-            self.redNight = self.redNight
-            self.blueDay = self.blueDay
-            self.blueNight = self.blueNight
-            self.dayInterval = self.dayInterval
-            self.nightInterval = self.nightInterval
+                print(f'No settings found for colony {self.id}')

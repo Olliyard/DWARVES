@@ -76,13 +76,33 @@ class Master:
                 # print(f'Set Temperature: {temp}')
                 # print(f'Red Brightness: {red}')
                 # print(f'Blue Brightness: {blue}')
-                self.logMessage(f"Colony{colonyID}: Observed values for temp: {temp}, red: {red}, blue: {blue}.")
+                self.logMessage(f"Colony{colonyID}: Observed values for temp: {temp}, red: {red}, blue: {blue}.")             
             else:
                 print("ERROR: Insufficient values in the response")
         else:
             err = "ERROR: No response from Arduino"
             print(err)
             self.logMessage(err)
+                
+        # Create a connection to the Raspberry Pi
+        self.ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
+        # Trigger image capture and processing on the Raspberry Pi
+        _, stdout, stderr = self.ssh.exec_command(f'python3 {RPI_PATH}captureImage.py {colonyID}')
+        if stdout.channel.recv_exit_status() == 0:
+            sftp = self.ssh.open_sftp()
+            image_files = [file for file in sftp.listdir(f'{RPI_PATH}colony{colonyID}/') if file.endswith(('.jpg', '.txt', '.png'))]
+            # Loop through the files and receive them
+            for file in image_files:
+                # Make local dir if none
+                os.makedirs(f'{LOCAL_PATH}/colony{colonyID}', exist_ok=True)
+                try:
+                    sftp.get(f'{RPI_PATH}colony{colonyID}/{file}', f'{LOCAL_PATH}colony{colonyID}/{file}')
+                except Exception as e:
+                    print(f"Error extracting images: {str(e)}")
+                finally:
+                    _, stdout, _ = self.ssh.exec_command(f'rm -rf {RPI_PATH}colony{colonyID}')
+                    if stdout.channel.recv_exit_status() == 0:
+                        self.logMessage(f"Colony{colonyID}: Image data successfully extracted to {LOCAL_PATH}colony{colonyID}.")
 
     def getObservationData(self, colony):
         # Write the colony instance to a json file
