@@ -62,12 +62,12 @@ void handleUART()
         // Extract colonyID. By dividing by comma
         data = data.substring(5);                                    // Remove the "<get," part
         int colonyID = data.substring(0, data.length() - 1).toInt(); // Subtract 1 to remove the closing '>'
-        Serial.print("Colony ID hereere: ");
-        Serial.println(colonyID);
+        // Serial.print("Colony ID hereere: ");
+        // Serial.println(colonyID);
 
         // Send the temperatures
         float temperature = getTemperature(colonyID);
-        Serial.print(temperature);
+        Serial.println(temperature);
     }
 
     // check for <lz>

@@ -15,13 +15,11 @@ void setup()
 
   // Setup temperature sensor
   temperatureSetup();
-
-
 }
 
 void loop()
 {
-  // react();
+  react();
   sendLoadingZoneStatus();
   delay(1000);
 }
