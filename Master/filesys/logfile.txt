@@ -1,280 +1,116 @@
-2023-12-08 17:12: Colony2: Colony inserted into system.
-2023-12-08 17:12: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:12: ERROR: Colony2 does not exist in the system.
-2023-12-08 17:13: ALL: Unable to load colony data from filesys/colonyData.json
-2023-12-08 17:13: Colony1: Colony inserted into system.
-2023-12-08 17:13: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:13: ERROR: Colony1 does not exist in the system.
-2023-12-08 17:13: ERROR: Colony1 does not exist in the system.
-2023-12-08 17:13: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
-2023-12-08 17:13: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:16: Colony1: Colony inserted into system.
-2023-12-08 17:16: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:16: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
-2023-12-08 17:16: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:16: ERROR: Colony1 does not exist in the system.
-2023-12-08 17:17: ALL: Unable to load colony data from filesys/colonyData.json
-2023-12-08 17:17: Colony1: Colony inserted into system.
-2023-12-08 17:17: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:17: ERROR: Colony1 does not exist in the system.2023-12-08 17:19: ALL: Unable to load colony data from filesys/colonyData.json
-2023-12-08 17:19: Colony1: Colony inserted into system.
-2023-12-08 17:19: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:19: ERROR: Colony1 does not exist in the system.
-2023-12-08 17:25: ALL: Unable to load colony data from filesys/colonyData.json
-2023-12-08 17:25: Colony1: Colony inserted into system.
-2023-12-08 17:25: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:25: ERROR: Colony1 does not exist in the system.
-2023-12-08 17:26: Colony1: Colony inserted into system.
-2023-12-08 17:26: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:26: ERROR: Colony1 does not exist in the system.
-2023-12-08 17:26: ALL: Unable to load colony data from filesys/colonyData.json
-2023-12-08 17:26: Colony1: Colony inserted into system.
-2023-12-08 17:26: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:26: ERROR: Colony1 does not exist in the system.
-2023-12-08 17:30: Colony1: Colony inserted into system.
-2023-12-08 17:30: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:30: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
-2023-12-08 17:30: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:30: Colony1: Colony inserted into system.
-2023-12-08 17:30: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:30: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
-2023-12-08 17:30: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:30: ERROR: Colony1 does not exist in the system.
-2023-12-08 17:31: Colony2: Colony inserted into system.
-2023-12-08 17:31: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:31: ERROR: Colony2 does not exist in the system.
-2023-12-08 17:31: Colony1: Colony inserted into system.
-2023-12-08 17:31: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:31: Colony2: Colony inserted into system.
-2023-12-08 17:31: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:31: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
-2023-12-08 17:31: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:31: ERROR: Colony2 could not be inserted into the system. Already exists or no availability.
-2023-12-08 17:31: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:31: Colony1: Removed from system and filesys/colonyData.json.
-2023-12-08 17:32: Colony2: Colony inserted into system.
-2023-12-08 17:32: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:32: ERROR: Colony1 does not exist in the system.
-2023-12-08 17:32: ALL: Unable to load colony data from filesys/colonyData.json
-2023-12-08 17:33: Colony1: Colony inserted into system.
-2023-12-08 17:33: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:33: Colony1: Removed from system and filesys/colonyData.json.
-2023-12-08 17:33: Colony1: Colony inserted into system.
-2023-12-08 17:33: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:33: Colony2: Colony inserted into system.
-2023-12-08 17:33: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:33: Colony1: Removed from system and filesys/colonyData.json.
-2023-12-08 17:33: Colony2: Removed from system and filesys/colonyData.json.
-2023-12-08 17:33: Colony1: Colony inserted into system.
-2023-12-08 17:33: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:36: Colony1: Colony inserted into system.
-2023-12-08 17:36: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:36: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 17:36: Colony1: Colony inserted into system.
-2023-12-08 17:36: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:36: Colony1: Colony inserted into system.
-2023-12-08 17:36: Colony1: Updated settings from settings.json
-2023-12-08 17:36: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:37: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 17:44: Colony1: Colony inserted into system.
-2023-12-08 17:44: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:44: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 17:44: Colony1: Colony inserted into system.
-2023-12-08 17:44: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:44: Colony2: Colony inserted into system.
-2023-12-08 17:44: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:44: Colony1: Colony inserted into system.
-2023-12-08 17:44: Colony1: Updated settings from settings.json
-2023-12-08 17:44: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:46: Colony1: Colony inserted into system.
-2023-12-08 17:46: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:46: Colony2: Colony inserted into system.
-2023-12-08 17:46: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:46: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
-2023-12-08 17:46: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:46: ERROR: Colony2 could not be inserted into the system. Already exists or no availability.
-2023-12-08 17:46: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:46: Colony1: Colony inserted into system.
-2023-12-08 17:46: Colony1: Updated settings from settings.json
-2023-12-08 17:46: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:47: Colony1: Colony inserted into system.
-2023-12-08 17:47: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:47: Colony2: Colony inserted into system.
-2023-12-08 17:47: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:47: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
-2023-12-08 17:47: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:47: Colony1: Colony inserted into system.
-2023-12-08 17:47: Colony1: Updated settings from settings.json
-2023-12-08 17:47: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:51: Colony1: Colony inserted into system.
-2023-12-08 17:51: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:51: Colony2: Colony inserted into system.
-2023-12-08 17:51: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:52: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
-2023-12-08 17:52: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:52: Colony1: Colony inserted into system.
-2023-12-08 17:52: Colony1: Updated settings from settings.json
-2023-12-08 17:52: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:52: Colony1: Colony inserted into system.
-2023-12-08 17:52: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:52: Colony2: Colony inserted into system.
-2023-12-08 17:52: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:52: Colony1: Colony inserted into system.
-2023-12-08 17:52: Colony1: Updated settings from settings.json
-2023-12-08 17:52: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:53: Colony1: Colony inserted into system.
-2023-12-08 17:53: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:53: Colony2: Colony inserted into system.
-2023-12-08 17:53: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:53: Colony1: Colony inserted into system.
-2023-12-08 17:53: Colony1: Updated settings from settings.json
-2023-12-08 17:53: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:54: Colony1: Colony inserted into system.
-2023-12-08 17:54: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:54: Colony2: Colony inserted into system.
-2023-12-08 17:54: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:54: Colony1: Colony inserted into system.
-2023-12-08 17:54: Colony1: Updated settings from settings.json
-2023-12-08 17:54: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:54: Colony1: Colony inserted into system.
-2023-12-08 17:54: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:54: Colony2: Colony inserted into system.
-2023-12-08 17:54: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:55: Colony1: Colony inserted into system.
-2023-12-08 17:55: Colony1: Updated settings from settings.json
-2023-12-08 17:55: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:56: Colony1: Colony inserted into system.
-2023-12-08 17:56: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:56: Colony2: Colony inserted into system.
-2023-12-08 17:56: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:56: Colony1: Colony inserted into system.
-2023-12-08 17:56: Colony1: Updated settings from settings.json
-2023-12-08 17:56: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:56: Colony1: Colony inserted into system.
-2023-12-08 17:56: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:56: Colony2: Colony inserted into system.
-2023-12-08 17:56: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:56: Colony1: Colony inserted into system.
-2023-12-08 17:56: Colony1: Updated settings from settings.json
-2023-12-08 17:56: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:57: Colony1: Colony inserted into system.
-2023-12-08 17:57: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:57: Colony2: Colony inserted into system.
-2023-12-08 17:57: ERROR: Colony2 settings not found in settings.json
-2023-12-08 17:57: Colony1: Colony inserted into system.
-2023-12-08 17:57: Colony1: Updated settings from settings.json
-2023-12-08 17:57: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 17:57: ERROR: Colony1 settings not found in settings.json
-2023-12-08 17:57: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:00: Colony1: Colony inserted into system.
-2023-12-08 18:00: ERROR: Colony1 settings not found in settings.json
-2023-12-08 18:00: Colony2: Colony inserted into system.
-2023-12-08 18:00: ERROR: Colony2 settings not found in settings.json
-2023-12-08 18:00: Colony1: Colony inserted into system.
-2023-12-08 18:00: Colony1: Updated settings from settings.json
-2023-12-08 18:00: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:00: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:01: Colony1: Colony inserted into system.
-2023-12-08 18:01: ERROR: Colony1 settings not found in settings.json
-2023-12-08 18:01: Colony2: Colony inserted into system.
-2023-12-08 18:01: ERROR: Colony2 settings not found in settings.json
-2023-12-08 18:01: Colony1: Colony inserted into system.
-2023-12-08 18:01: Colony1: Updated settings from settings.json
-2023-12-08 18:01: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:01: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:01: Colony2: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:01: Colony2: Colony inserted into system.
-2023-12-08 18:01: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:02: ERROR: Colony1 does not exist in the system.
-2023-12-08 18:02: Colony1: Colony inserted into system.
-2023-12-08 18:02: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:02: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:02: ERROR: Colony1 does not exist in the system.
-2023-12-08 18:02: Colony1: Colony inserted into system.
-2023-12-08 18:02: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:02: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
-2023-12-08 18:02: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:02: ERROR: Colony1 could not be inserted into the system. Already exists or no availability.
-2023-12-08 18:02: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:02: Colony3: Colony inserted into system.
-2023-12-08 18:02: Colony3: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:02: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:02: Colony2: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:02: Colony3: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:02: Colony1: Colony inserted into system.
-2023-12-08 18:02: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:02: Colony2: Colony inserted into system.
-2023-12-08 18:02: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:02: Colony3: Colony inserted into system.
-2023-12-08 18:02: Colony3: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:05: Colony1: Colony inserted into system.
-2023-12-08 18:05: ERROR: Colony1 settings not found in settings.json
-2023-12-08 18:05: Colony2: Colony inserted into system.
-2023-12-08 18:05: ERROR: Colony2 settings not found in settings.json
-2023-12-08 18:05: Colony3: Colony inserted into system.
-2023-12-08 18:05: ERROR: Colony3 settings not found in settings.json
-2023-12-08 18:05: Colony1: Colony inserted into system.
-2023-12-08 18:05: Colony1: Updated settings from settings.json
-2023-12-08 18:05: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:05: Colony1: Colony inserted into system.
-2023-12-08 18:05: ERROR: Colony1 settings not found in settings.json
-2023-12-08 18:05: Colony2: Colony inserted into system.
-2023-12-08 18:05: ERROR: Colony2 settings not found in settings.json
-2023-12-08 18:05: Colony3: Colony inserted into system.
-2023-12-08 18:05: ERROR: Colony3 settings not found in settings.json
-2023-12-08 18:05: ALL: Unable to load colony data from filesys/colonyData.json
-2023-12-08 18:06: Colony1: Colony inserted into system.
-2023-12-08 18:06: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:06: Colony2: Colony inserted into system.
-2023-12-08 18:06: Colony2: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:06: Colony3: Colony inserted into system.
-2023-12-08 18:06: Colony3: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:06: Colony1: Colony inserted into system.
-2023-12-08 18:06: Colony1: Updated settings from settings.json
-2023-12-08 18:06: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:06: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:08: ALL: Unable to load colony data from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json
-2023-12-08 18:08: Colony1: Colony inserted into system.
-2023-12-08 18:08: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:08: Colony1: Colony inserted into system.
-2023-12-08 18:08: Colony1: Updated settings from settings.json
-2023-12-08 18:08: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:08: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:10: Colony1: Colony inserted into system.
-2023-12-08 18:10: ERROR: Colony1 settings not found in settings.json
-2023-12-08 18:10: ALL: Unable to load colony data from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json
-2023-12-08 18:10: Colony1: Colony inserted into system.
-2023-12-08 18:10: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:10: Colony1: Colony inserted into system.
-2023-12-08 18:10: Colony1: Updated settings from settings.json
-2023-12-08 18:10: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:10: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:11: Colony1: Colony inserted into system.
-2023-12-08 18:11: ERROR: Colony1 settings not found in settings.json
-2023-12-08 18:11: ALL: Unable to load colony data from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json
-2023-12-08 18:11: Colony1: Colony inserted into system.
-2023-12-08 18:11: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:11: Colony1: Colony inserted into system.
-2023-12-08 18:11: Colony1: Updated settings from settings.json
-2023-12-08 18:11: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:13: Colony1: Colony inserted into system.
-2023-12-08 18:13: ERROR: Colony1 settings not found in settings.json
-2023-12-08 18:13: Colony1: Colony inserted into system.
-2023-12-08 18:13: Colony1: Updated settings from settings.json
-2023-12-08 18:13: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:13: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:18: ALL: Unable to load colony data from C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json
-2023-12-08 18:18: Colony1: Colony inserted into system.
-2023-12-08 18:18: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:18: Colony1: Colony inserted into system.
-2023-12-08 18:18: Colony1: Updated settings from settings.json
-2023-12-08 18:18: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:20: Colony1: Colony inserted into system.
-2023-12-08 18:20: ERROR: Colony1 settings not found in settings.json
-2023-12-08 18:20: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
-2023-12-08 18:20: Colony1: Colony inserted into system.
-2023-12-08 18:20: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:20: Colony1: Colony inserted into system.
-2023-12-08 18:20: Colony1: Updated settings from settings.json
-2023-12-08 18:20: Colony1: Colony successfully written to C:\Users\revil\Desktop\Git_Repos\DWARVES\Master/filesys/colonyData.json.
-2023-12-08 18:20: Colony1: Removed from system and C:\Users\revil\Desktop\Git_Repos\DWARVES\Master\filesys\colonyData.json.
+2023-12-10 13:21:37 - Colony3: Set temperature to 15/15.
+2023-12-10 13:21:39 - Colony3: Set lights to R:0/0 B:0/0.
+2023-12-10 13:21:39 - Colony3: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 13:21:39 - colonyData.json: Updating colony3 data.
+2023-12-10 13:34:56 - Colony1: Inserted.
+2023-12-10 13:34:58 - Colony1: Set temperature to 25/15.
+2023-12-10 13:35:00 - Colony1: Set lights to R:0/0 B:0/0.
+2023-12-10 13:35:00 - Colony1: Set observation interval to 13:00:00/01:00:00.
+2023-12-10 13:35:00 - colonyData.json: Updating colony1 data.
+2023-12-10 13:35:00 - Colony3: Inserted.
+2023-12-10 13:35:02 - Colony3: Set temperature to 15/15.
+2023-12-10 13:35:04 - Colony3: Set lights to R:0/0 B:0/0.
+2023-12-10 13:35:04 - Colony3: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 13:35:04 - colonyData.json: Updating colony3 data.
+2023-12-10 13:35:19 - Colony2: Inserted.
+2023-12-10 13:35:19 - colonyData.json: Updating colony2 data.
+2023-12-10 13:38:22 - Colony1: Set lights to R:0/0 B:0/0.
+2023-12-10 13:38:24 - Colony1: Set temperature to 25/15.
+2023-12-10 13:38:24 - Colony1: Set observation interval to 13:00:00/01:00:00.
+2023-12-10 13:38:24 - colonyData.json: Updating colony1 data.
+2023-12-10 13:43:46 - Colony1: Inserted.
+2023-12-10 13:43:48 - Colony1: Set temperature to 25/15.
+2023-12-10 13:43:50 - Colony1: Set lights to R:0/0 B:0/0.
+2023-12-10 13:43:50 - Colony1: Set observation interval to 13:00:00/01:00:00.
+2023-12-10 13:43:50 - colonyData.json: Updating colony1 data.
+2023-12-10 13:43:50 - Colony2: Inserted.
+2023-12-10 13:43:52 - Colony2: Set temperature to 15/15.
+2023-12-10 13:43:54 - Colony2: Set lights to R:0/0 B:0/0.
+2023-12-10 13:43:54 - Colony2: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 13:43:54 - colonyData.json: Updating colony2 data.
+2023-12-10 13:43:54 - Colony3: Inserted.
+2023-12-10 13:43:56 - Colony3: Set temperature to 15/15.
+2023-12-10 13:43:58 - Colony3: Set lights to R:0/0 B:0/0.
+2023-12-10 13:43:58 - Colony3: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 13:43:58 - colonyData.json: Updating colony3 data.
+2023-12-10 13:46:12 - Colony1: Set lights to R:0/0 B:0/0.
+2023-12-10 13:46:14 - Colony1: Set temperature to 30/15.
+2023-12-10 13:46:14 - Colony1: Set observation interval to 13:00:00/01:00:00.
+2023-12-10 13:46:14 - colonyData.json: Updating colony1 data.
+2023-12-10 13:47:41 - Colony1: Inserted.
+2023-12-10 13:47:43 - Colony1: Set temperature to 30/15.
+2023-12-10 13:47:45 - Colony1: Set lights to R:0/0 B:0/0.
+2023-12-10 13:47:45 - Colony1: Set observation interval to 13:00:00/01:00:00.
+2023-12-10 13:47:45 - colonyData.json: Updating colony1 data.
+2023-12-10 13:47:45 - Colony2: Inserted.
+2023-12-10 13:47:47 - Colony2: Set temperature to 15/15.
+2023-12-10 13:47:49 - Colony2: Set lights to R:0/0 B:0/0.
+2023-12-10 13:47:49 - Colony2: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 13:47:49 - colonyData.json: Updating colony2 data.
+2023-12-10 13:47:49 - Colony3: Inserted.
+2023-12-10 13:47:51 - Colony3: Set temperature to 15/15.
+2023-12-10 13:47:53 - Colony3: Set lights to R:0/0 B:0/0.
+2023-12-10 13:47:53 - Colony3: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 13:47:53 - colonyData.json: Updating colony3 data.
+2023-12-10 13:48:05 - Master: Set observation frequency to 2 hours.
+2023-12-10 13:50:47 - Colony1: Inserted.
+2023-12-10 13:50:49 - Colony1: Set temperature to 30/15.
+2023-12-10 13:50:51 - Colony1: Set lights to R:0/0 B:0/0.
+2023-12-10 13:50:51 - Colony1: Set observation interval to 13:00:00/01:00:00.
+2023-12-10 13:50:51 - colonyData.json: Updating colony1 data.
+2023-12-10 13:50:51 - Colony2: Inserted.
+2023-12-10 13:50:53 - Colony2: Set temperature to 15/15.
+2023-12-10 13:50:55 - Colony2: Set lights to R:0/0 B:0/0.
+2023-12-10 13:50:55 - Colony2: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 13:50:55 - colonyData.json: Updating colony2 data.
+2023-12-10 13:50:55 - Colony3: Inserted.
+2023-12-10 13:50:57 - Colony3: Set temperature to 15/15.
+2023-12-10 13:50:59 - Colony3: Set lights to R:0/0 B:0/0.
+2023-12-10 13:50:59 - Colony3: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 13:50:59 - colonyData.json: Updating colony3 data.
+2023-12-10 14:05:19 - Colony1: Inserted.
+2023-12-10 14:05:21 - Colony1: Set temperature to 30/15.
+2023-12-10 14:05:23 - Colony1: Set lights to R:0/0 B:0/0.
+2023-12-10 14:05:23 - Colony1: Set observation interval to 13:00:00/01:00:00.
+2023-12-10 14:05:23 - colonyData.json: Updating colony1 data.
+2023-12-10 14:05:23 - Colony2: Inserted.
+2023-12-10 14:05:25 - Colony2: Set temperature to 15/15.
+2023-12-10 14:05:27 - Colony2: Set lights to R:0/0 B:0/0.
+2023-12-10 14:05:27 - Colony2: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 14:05:27 - colonyData.json: Updating colony2 data.
+2023-12-10 14:05:27 - Colony3: Inserted.
+2023-12-10 14:05:29 - Colony3: Set temperature to 15/15.
+2023-12-10 14:05:31 - Colony3: Set lights to R:0/0 B:0/0.
+2023-12-10 14:05:31 - Colony3: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 14:05:31 - colonyData.json: Updating colony3 data.
+2023-12-10 14:13:33 - Colony1: Inserted.
+2023-12-10 14:13:35 - Colony1: Set temperature to 30/15.
+2023-12-10 14:13:37 - Colony1: Set lights to R:0/0 B:0/0.
+2023-12-10 14:13:37 - Colony1: Set observation interval to 13:00:00/01:00:00.
+2023-12-10 14:13:37 - colonyData.json: Updating colony1 data.
+2023-12-10 14:13:37 - Colony2: Inserted.
+2023-12-10 14:13:39 - Colony2: Set temperature to 15/15.
+2023-12-10 14:13:41 - Colony2: Set lights to R:0/0 B:0/0.
+2023-12-10 14:13:41 - Colony2: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 14:13:41 - colonyData.json: Updating colony2 data.
+2023-12-10 14:13:41 - Colony3: Inserted.
+2023-12-10 14:13:43 - Colony3: Set temperature to 15/15.
+2023-12-10 14:13:45 - Colony3: Set lights to R:0/0 B:0/0.
+2023-12-10 14:13:45 - Colony3: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 14:13:45 - colonyData.json: Updating colony3 data.
+2023-12-10 14:14:22 - Colony1: Inserted.
+2023-12-10 14:14:24 - Colony1: Set temperature to 30/15.
+2023-12-10 14:14:26 - Colony1: Set lights to R:0/0 B:0/0.
+2023-12-10 14:14:26 - Colony1: Set observation interval to 13:00:00/01:00:00.
+2023-12-10 14:14:26 - colonyData.json: Updating colony1 data.
+2023-12-10 14:14:26 - Colony2: Inserted.
+2023-12-10 14:14:28 - Colony2: Set temperature to 15/15.
+2023-12-10 14:14:30 - Colony2: Set lights to R:0/0 B:0/0.
+2023-12-10 14:14:30 - Colony2: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 14:14:30 - colonyData.json: Updating colony2 data.
+2023-12-10 14:14:30 - Colony3: Inserted.
+2023-12-10 14:14:32 - Colony3: Set temperature to 15/15.
+2023-12-10 14:14:34 - Colony3: Set lights to R:0/0 B:0/0.
+2023-12-10 14:14:34 - Colony3: Set observation interval to 01:00:00/01:00:00.
+2023-12-10 14:14:34 - colonyData.json: Updating colony3 data.
+2023-12-10 14:14:40 - colonyData.json: Updating colony1 data.

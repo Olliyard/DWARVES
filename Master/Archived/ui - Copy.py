@@ -125,6 +125,9 @@ class UI:
                     setattr(updated_colony, setting_key, new_value)
                     print(f"Setting updated. New value for {setting_key}: {getattr(updated_colony, setting_key)}")
 
+                    # Add the following print statement to check the attribute names in the Colony instance
+                    print(f"Attributes in updated_colony: {dir(updated_colony)}")
+
                     # Update the JSON file with the new setting
                     with open(LOCAL_PATH, 'r') as f:
                         settings = json.load(f)
@@ -143,6 +146,21 @@ class UI:
                 print("Invalid choice. Please select a valid option.")
                 input("Press Enter to continue...")
 
+    # Save colony data to colonyData.json
+    def saveColonyData(self):
+        with open(LOCAL_PATH, 'r') as f:
+            settings = json.load(f)
+
+        for colonyID, colony_instance in self.colonyStorage.items():
+            colony_data = settings.get(f'colony{colonyID}', {})
+            for attribute, value in colony_instance.__dict__.items():
+                colony_data[attribute] = value
+
+            settings[f'colony{colonyID}'] = colony_data
+
+        with open(LOCAL_PATH, 'w') as f:
+            json.dump(settings, f, indent=4)
+
     # Return the limits for the specified setting
     def getLimits(self, setting_choice):
         if setting_choice == '1' or setting_choice == '5':
@@ -154,19 +172,19 @@ class UI:
         else:
             return None, None
 
-    # Map setting choice to the corresponding setting key
+    # Add this method to your UI class
     def getSettingKey(self, setting_choice):
-        settings_mapping = {
-            '1': 'daytime_temperature',
-            '2': 'daytime_red_light',
-            '3': 'daytime_blue_light',
-            '4': 'daytime_hours',
-            '5': 'nighttime_temperature',
-            '6': 'nighttime_red_light',
-            '7': 'nighttime_blue_light',
-            '8': 'observation_interval',
+        setting_key_mapping = {
+            '1': 'dayTemp',
+            '2': 'redDay',
+            '3': 'blueDay',
+            '4': 'dayInterval',
+            '5': 'nightTemp',
+            '6': 'redNight',
+            '7': 'blueNight',
+            '8': 'observationInterval',  # Adjusted to match your Colony class attribute
         }
-        return settings_mapping.get(setting_choice, None)
+        return setting_key_mapping.get(setting_choice)
 
     # Insert colony into the system, and add it to the colonyData.json file
     def insertColony(self):
@@ -241,7 +259,6 @@ class UI:
             self.master.logMessage(f"ALL: Unable to load colony data from {LOCAL_PATH}")
 
 
-
     # Check if settings in colonyData.json are out of bounds
     def checkOutOfBoundsSettings(self):
         # Check if settings in colonyData.json are out of bounds
@@ -299,7 +316,7 @@ class UI:
             input("Press Enter to continue...")
 
 
-# Main loop      
+    # Main loop      
     def run(self):
         while True:
             self.displayMainMenu()

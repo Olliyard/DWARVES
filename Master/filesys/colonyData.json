@@ -1,18 +1,44 @@
 {
     "colony1": {
         "id": 1,
-        "occupied": true,
-        "daytime_hours": "01:00:00",
-        "daytime_temperature": 25,
-        "daytime_red_light": 0,
-        "daytime_blue_light": 0,
-        "nighttime_hours": "01:00:00",
-        "nighttime_temperature": 15,
-        "nighttime_red_light": 0,
-        "nighttime_blue_light": 0,
-        "observed_temperature": 0,
-        "observation_interval": 1,
-        "experiment_start_date": "2023-12-08",
-        "last_observation_date": "2023-12-08 18:20"
+        "startDate": "2023-12-10",
+        "lastObservation": "2023-12-10 12:55",
+        "observedTemperature": 0,
+        "dayTemperature": 30,
+        "nightTemperature": 15,
+        "redDay": 0,
+        "redNight": 0,
+        "blueDay": 0,
+        "blueNight": 0,
+        "dayInterval": "13:00:00",
+        "nightInterval": "01:00:00"
+    },
+    "colony2": {
+        "id": 2,
+        "startDate": "2023-12-10",
+        "lastObservation": "2023-12-10 13:35",
+        "observedTemperature": 0,
+        "dayTemperature": 15,
+        "nightTemperature": 15,
+        "redDay": 0,
+        "redNight": 0,
+        "blueDay": 0,
+        "blueNight": 0,
+        "dayInterval": "01:00:00",
+        "nightInterval": "01:00:00"
+    },
+    "colony3": {
+        "id": 3,
+        "startDate": "2023-12-10",
+        "lastObservation": "2023-12-10 12:21",
+        "observedTemperature": 0,
+        "dayTemperature": 15,
+        "nightTemperature": 15,
+        "redDay": 0,
+        "redNight": 0,
+        "blueDay": 0,
+        "blueNight": 0,
+        "dayInterval": "01:00:00",
+        "nightInterval": "01:00:00"
     }
 }
