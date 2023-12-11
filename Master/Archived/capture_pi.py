@@ -7,10 +7,10 @@ def capture_and_receive_data(colonyID):
     # Create a connection to the Raspberry Pi
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect('192.168.0.123', username='pi', password='raspberry')
+    ssh.connect('192.168.30.231', username='pi', password='raspberry')
 
     # Trigger image capture and processing on the Raspberry Pi
-    stdin, stdout, stderr = ssh.exec_command(f'python3 /home/pi/Documents/gitreps/DWARVES/RobotController/Camera/captureImage.py {colonyID}')
+    stdin, stdout, stderr = ssh.exec_command(f'python3 /home/pi/DWARVES/RobotController/Camera/captureImage.py {colonyID}')
 
     # Wait for the command to complete
     exit_status = stdout.channel.recv_exit_status()
@@ -21,12 +21,12 @@ def capture_and_receive_data(colonyID):
         print(f'Locating colony{colonyID} images files...')
         
         # List files in the folder
-        image_files = [file for file in sftp.listdir(f'/home/pi/Documents/gitreps/DWARVES/RobotController/Camera/colony{colonyID}/') if file.endswith(('.jpg', '.txt', '.png'))]
+        image_files = [file for file in sftp.listdir(f'/home/pi/DWARVES/RobotController/Camera/colony{colonyID}/') if file.endswith(('.jpg', '.txt', '.png'))]
         print(f'Files found: {image_files}')
 
         # Loop through the files and receive them
         for file in image_files:
-            remote_path = f'/home/pi/Documents/gitreps/DWARVES/RobotController/Camera/colony{colonyID}'
+            remote_path = f'/home/pi/DWARVES/RobotController/Camera/colony{colonyID}'
             local_path = f'/home/stud/Documents/gitreps/DWARVES/Master/colony{colonyID}'
 
             # Make local dir if none

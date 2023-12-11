@@ -7,9 +7,9 @@ import time
 import json
 import os
 
-USB_PORT = "/dev/ttyACM0"
+USB_PORT = "COM15"#"/dev/ttyACM0"
 RPI_ADDR = "192.168.30.231"
-RPI_USERNAME = "rpi"
+RPI_USERNAME = "pi"
 RPI_PASS = "raspberry"
 RPI_PATH = "/home/pi/DWARVES/RobotController"
 LOGFILE_PATH = os.path.join(os.getcwd(), "filesys", "logfile.txt")
@@ -45,10 +45,10 @@ class Master:
 
                 # Wait for the command to complete
                 exit_status = stdout.channel.recv_exit_status()
-                # if exit_status == 0:
-                self.__logMessage(f"Colony{colonyID}", stdout.read().decode('utf-8'))
-                self.__logMessage(f"Colony{colonyID}", stderr.read().decode('utf-8'))
-                print(f"Robot moved to colony {colonyID}.")
+                if exit_status == 0:
+                    self.__logMessage(f"Colony{colonyID}", stdout.read().decode('utf-8'))
+                    self.__logMessage(f"Colony{colonyID}", stderr.read().decode('utf-8'))
+                    print(f"Robot moved to colony {colonyID}.")
 
             except Exception as e:
                 print(f"Error: {str(e)}")
@@ -78,10 +78,10 @@ class Master:
 
                 # Wait for the command to complete
                 exit_status = stdout.channel.recv_exit_status()
-                # if exit_status == 0:
-                self.__logMessage(f"Colony{colonyID}", stdout.read().decode('utf-8'))
-                self.__logMessage(f"Colony{colonyID}", stderr.read().decode('utf-8'))
-                print(f"Robot moved to colony {colonyID}.")
+                if exit_status == 0:
+                    self.__logMessage(f"Colony{colonyID}", stdout.read().decode('utf-8'))
+                    self.__logMessage(f"Colony{colonyID}", stderr.read().decode('utf-8'))
+                    print(f"Robot moved to colony {colonyID}.")
 
             except Exception as e:
                 print(f"Error: {str(e)}")
@@ -129,54 +129,52 @@ class Master:
             # Connect to RPi, get image
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
             try:
-                ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
-
                 # Trigger image capture and processing on the Raspberry Pi
-                cmd = f'python3 {RPI_PATH}/Camera/captureImage.py {colonyID}'
-                _, stdout, _ = ssh.exec_command(cmd)
+                stdin, stdout, stderr = ssh.exec_command(f'python3 /home/pi/DWARVES/RobotController/Camera/captureImage.py {colonyID}')
 
                 # Wait for the command to complete
                 exit_status = stdout.channel.recv_exit_status()
 
                 if exit_status == 0:
                     # Receive data from the Raspberry Pi
-                    remote_path = f'{RPI_PATH}/Camera/colony{colonyID}/'
-                    local_path = f'{IMAGE_PATH}/colony{colonyID}/'
-
-                    # Create a local directory if it doesn't exist
-                    os.makedirs(local_path, exist_ok=True)
-
+                    sftp = ssh.open_sftp()
+                    
                     # List files in the folder
-                    image_files = [file for file in os.listdir(remote_path) if file.endswith(('.jpg', '.txt', '.png'))]
+                    image_files = [file for file in sftp.listdir(f'/home/pi/DWARVES/RobotController/Camera/colony{colonyID}/') if file.endswith(('.jpg', '.txt', '.png'))]
                     self.__logMessage(f"Colony{colonyID}", f"Files found: {image_files}")
 
                     # Loop through the files and receive them
                     for file in image_files:
+                        remote_path = f'/home/pi/DWARVES/RobotController/Camera/colony{colonyID}'
+                        local_path = os.path.join(IMAGE_PATH, f'colony{colonyID}')
+                        
+                        # local_path = f'/home/stud/Documents/gitreps/DWARVES/Master/colony{colonyID}'
+
+                        # Make local dir if none
+                        os.makedirs(local_path, exist_ok=True)
                         try:
-                            src_path = os.path.join(remote_path, file)
-                            dest_path = os.path.join(local_path, file)
-                            ssh.scp.get(src_path, dest_path)
-                            # print(f"Extracting {file}...")
-
+                            sftp.get(f'{remote_path}/{file}', f'{local_path}/{file}')
+                        
                         except Exception as e:
-                            self.__logMessage(f"ERROR", f"Error extracting {file}: {str(e)}")
-
+                            self.__logMessage("ERROR", f"Error extracting images: {str(e)}")
+                                    
                     # Remove folders on the Raspberry Pi
-                    cmd = f'rm -rf {remote_path}'
-                    _, stdout, _ = ssh.exec_command(cmd)
+                    stdin, stdout, stderr = ssh.exec_command(f'rm -rf {remote_path}')
 
                     # Wait for the command to complete
                     exit_status = stdout.channel.recv_exit_status()
-                    
-                    if exit_status == 0:
-                        self.__logMessage(f"Colony{colonyID}", f"Extracted images.")
+
+
+                    self.__logMessage(f"Colony{colonyID}", f"Image data for colony{colonyID} successfully extracted to {local_path}.")
 
             except Exception as e:
-                print(f"Error: {str(e)}")
+                self.__logMessage("ERROR", f"Error: {str(e)}")
 
             finally:
                 # Close the connection
+                sftp.close()
                 ssh.close()
             
             self.__logMessage(f"Colony{colonyID}", f"Observed at {self.colonies[colonyID].lastObsTime}.")
@@ -196,7 +194,6 @@ class Master:
             if self.__checkTime(colonyID): # if day
                 self.serial.write(f"<setl,{colonyID},{redDay},{blueDay}>".encode("utf-8"))
 
-            
             else:  # else set night lights
                 self.serial.write(f"<setl,{colonyID},{redNight},{blueNight}>".encode("utf-8"))
 
@@ -364,11 +361,11 @@ class Master:
             self.observe_timer.cancel()
 
 
-# master = Master()
+master = Master()
 
-# # Test 1: insert colony
-# master.insertColony(1)
-# master.getObservationData(1)
+# Test 1: insert colony
+master.insertColony(1)
+master.getObservationData(1)
 
 # # Test 2: extract colony
 # master.extractColony(1)
@@ -395,9 +392,9 @@ class Master:
 # master.setObservationFrequency(2)
 # master.getObservationData(1)
 
-# # Test 8: observe colony
-# master.observeColony(1)
-# master.getObservationData(1)
+# Test 8: observe colony
+master.observeColony(1)
+master.getObservationData(1)
 
 # # Test 9: get observation data
 # master.getObservationData(1)

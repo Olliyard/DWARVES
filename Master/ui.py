@@ -29,11 +29,11 @@ class UI:
         self.minLight = 0
         self.maxLight = 100
         # Daytime hours limits
-        self.minDay = "00:00:00"
-        self.maxDay = "23:59:59"
+        self.minDay = datetime.strptime("00:00:00", "%H:%M:%S").time()
+        self.maxDay = datetime.strptime("23:59:59", "%H:%M:%S").time()
         # Nighttime hours limits
-        self.minNight = "00:00:00"
-        self.maxNight = "23:59:59"
+        self.minNight = datetime.strptime("00:00:00", "%H:%M:%S").time()
+        self.maxNight = datetime.strptime("23:59:59", "%H:%M:%S").time()
         # Observation interval limits
         self.minObs = 1
         self.maxObs = 24

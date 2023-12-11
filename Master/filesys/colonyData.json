@@ -2,8 +2,8 @@
     "colony1": {
         "id": 1,
         "startDate": "2023-12-11",
-        "lastObservation": "2023-12-11 02:30",
-        "observedTemperature": 0,
+        "lastObservation": "2023-12-11 13:35",
+        "observedTemperature": 23.31,
         "dayTemperature": 15,
         "nightTemperature": 15,
         "redDay": 0,
