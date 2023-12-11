@@ -2,7 +2,6 @@
 
 void multiplexerSetup()
 {
-    Serial.println("Initializing multiplexer");
     // put your setup code here, to run once:
     pinMode(PIN_C, OUTPUT);      // PIN-C
     pinMode(PIN_B, OUTPUT);      // PIN-B
@@ -16,7 +15,6 @@ void multiplexerSetup()
 
 void resetMultiplexer()
 {
-    // Serial.println("Resetting multiplexer...");
     delay(switchDelay);
     analogWrite(PIN_OUTPUT, 0);
     digitalWrite(PIN_INH, HIGH);
@@ -89,8 +87,8 @@ void setBrightness(uint8_t colonyID, uint8_t brightnessRed, uint8_t brightnessBl
         resetMultiplexer();
     }
 
-    Serial.print("Setting brightness for colony ");
-    Serial.println(colonyID);
+    // Serial.print("Setting brightness for colony ");
+    // Serial.println(colonyID);
 }
 
 void setTemperature(uint8_t colonyID)
@@ -123,13 +121,13 @@ void setTemperature(uint8_t colonyID)
         resetMultiplexer();
     }
 
-    Serial.print("Setting temperature for colony ");
-    Serial.println(colonyID);
+    // Serial.print("Setting temperature for colony ");
+    // Serial.println(colonyID);
 }
 
 float fluxToAnalogValue(float flux)
 {
-    Serial.println("Converting flux to analog value...");
+    // Serial.println("Converting flux to analog value...");
     if (flux == 0) // To make sure that voltage is zero when flux is zero
     {
         return 0;

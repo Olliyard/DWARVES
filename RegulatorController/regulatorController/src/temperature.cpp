@@ -5,7 +5,6 @@ DallasTemperature sensors(&oneWire);
 
 void initTemperature()
 {
-    Serial.println("Initializing temperature sensor...");
     // Set pins
     pinMode(POWER_PIN, OUTPUT);
     digitalWrite(POWER_PIN, HIGH);
@@ -17,7 +16,6 @@ void initTemperature()
 
 float getTemperature(DeviceAddress deviceAddress)
 {
-    Serial.println("Getting temperature...");
     // Start up the library
     sensors.requestTemperatures();
     return sensors.getTempC(deviceAddress);
@@ -26,7 +24,5 @@ float getTemperature(DeviceAddress deviceAddress)
 // Return address for a given colony. Use the getAddress function from DallasTemperature library
 void getAddress(int colonyID, DeviceAddress& deviceAddress)
 {
-    Serial.print("Getting address for colony ");
-    Serial.println(colonyID);
     sensors.getAddress(deviceAddress, colonyID);
 }

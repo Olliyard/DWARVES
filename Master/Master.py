@@ -7,11 +7,11 @@ import time
 import json
 import os
 
-USB_PORT = "/dev/ttyUSB0"   # "COM14"
+USB_PORT = "COM14" # "/dev/ttyUSB0"
 RPI_ADDR = "192.168.0.104"
 RPI_USERNAME = "rpi"
 RPI_PASS = "raspberry"
-RPI_PATH = "/home/pi/Documents/gitreps/DWARVES/RobotController/"
+RPI_PATH = "/home/pi/Documents/DWARVES/RobotController"
 LOGFILE_PATH = os.path.join(os.getcwd(), "filesys", "logfile.txt")
 JSON_PATH = os.path.join(os.getcwd(), "filesys", "colonyData.json")
 IMAGE_PATH = os.path.join(os.getcwd(), "images")
@@ -32,19 +32,40 @@ class Master:
 
     # insert colony
     def insertColony(self, colonyID):
-        if self.getAvailability() and not self.checkColony(colonyID):
-            self.colonies[colonyID] = Colony(colonyID)
-            # print(f"Colony {colonyID} inserted.")
+        if self.getAvailability() and not self.checkColony(colonyID) and self.checkLoadingZone():            
+            # # Move robot to colony
+            # ssh = paramiko.SSHClient()
+            # ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            # try:
+            #     ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
+
+            #     # Trigger robot movement on the Raspberry Pi
+            #     cmd = f'python3 {RPI_PATH}RobotController/motorControl.py {colonyID}'
+            #     _, stdout, _ = ssh.exec_command(cmd)
+
+            #     # Wait for the command to complete
+            #     exit_status = stdout.channel.recv_exit_status()
+            #     if exit_status == 0:
+            #         # print(f"Colony {colonyID} inserted.")
+            #         print(f"Robot moved to colony {colonyID}.")
+
+            # except Exception as e:
+            #     print(f"Error: {str(e)}")
+
+            # finally:
+            #     # Close the connection
+            #     ssh.close()
+            
+            self.colonies[colonyID] = Colony(colonyID)  # create colony object
             self.__logMessage(f"Colony{colonyID}", "Inserted.")
-            return True
+            
         else:
             # print(f"Colony {colonyID} not inserted.")
             self.__logMessage("ERROR", f"Colony{colonyID} could not be inserted.")
-            return False
   
     # extract colony  
     def extractColony(self, colonyID):
-        if self.checkColony(colonyID):
+        if self.checkColony(colonyID) and self.checkLoadingZone():
             self.colonies.pop(colonyID)
             # print(f"Colony {colonyID} extracted.")
             self.__logMessage(f"Colony{colonyID}", "Extracted.")
@@ -54,6 +75,22 @@ class Master:
             self.__logMessage("ERROR", f"Colony{colonyID} could not be extracted.")
             return False
     
+    # check loading zone
+    def checkLoadingZone(self):
+        time.sleep(DELAY)
+        self.serial.flushInput()
+        self.serial.write(f"<lz>".encode("utf-8"))
+        self.serial.readline()
+        status = self.serial.readline().decode().strip()[7:]
+        if status == "1":
+            # print("Loading zone occupied.")
+            self.__logMessage("Master", "Loading zone occupied.")
+            return False
+        else:
+            # print("Loading zone free.")
+            self.__logMessage("Master", "Loading zone free.")
+            return True
+    
     # get colony data
     def observeColony(self, colonyID):
         # connect to arduino, get temperature and note it.
@@ -62,62 +99,63 @@ class Master:
             time.sleep(DELAY)
             self.serial.flushInput()
             self.serial.write(f"<get,{colonyID}>".encode("utf-8"))
-            self.colonies[colonyID].obsTemp = int(self.serial.readline().decode().strip())
+            self.serial.readline()
+            self.colonies[colonyID].obsTemp = float(self.serial.readline().decode().strip()[7:])
             self.colonies[colonyID].lastObsTime = datetime.now().strftime("%Y-%m-%d %H:%M")
             # print(f'Temperature reading: {self.colonies[colonyID].obsTemp}')
             # print(f"Colony {colonyID} observed.")
             
-            # Connect to RPi, get image
-            ssh = paramiko.SSHClient()
-            ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            try:
-                ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
+            # # Connect to RPi, get image
+            # ssh = paramiko.SSHClient()
+            # ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            # try:
+            #     ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
 
-                # Trigger image capture and processing on the Raspberry Pi
-                cmd = f'python3 {RPI_PATH}Camera/captureImage.py {colonyID}'
-                _, stdout, _ = ssh.exec_command(cmd)
+            #     # Trigger image capture and processing on the Raspberry Pi
+            #     cmd = f'python3 {RPI_PATH}Camera/captureImage.py {colonyID}'
+            #     _, stdout, _ = ssh.exec_command(cmd)
 
-                # Wait for the command to complete
-                exit_status = stdout.channel.recv_exit_status()
+            #     # Wait for the command to complete
+            #     exit_status = stdout.channel.recv_exit_status()
 
-                if exit_status == 0:
-                    # Receive data from the Raspberry Pi
-                    remote_path = f'{RPI_PATH}Camera/colony{colonyID}/'
-                    local_path = f'{IMAGE_PATH}/colony{colonyID}/'
+            #     if exit_status == 0:
+            #         # Receive data from the Raspberry Pi
+            #         remote_path = f'{RPI_PATH}Camera/colony{colonyID}/'
+            #         local_path = f'{IMAGE_PATH}/colony{colonyID}/'
 
-                    # Create a local directory if it doesn't exist
-                    os.makedirs(local_path, exist_ok=True)
+            #         # Create a local directory if it doesn't exist
+            #         os.makedirs(local_path, exist_ok=True)
 
-                    # List files in the folder
-                    image_files = [file for file in os.listdir(remote_path) if file.endswith(('.jpg', '.txt', '.png'))]
-                    print(f'Files found: {image_files}')
+            #         # List files in the folder
+            #         image_files = [file for file in os.listdir(remote_path) if file.endswith(('.jpg', '.txt', '.png'))]
+            #         print(f'Files found: {image_files}')
 
-                    # Loop through the files and receive them
-                    for file in image_files:
-                        try:
-                            src_path = os.path.join(remote_path, file)
-                            dest_path = os.path.join(local_path, file)
-                            ssh.scp.get(src_path, dest_path)
-                            print(f"Extracting {file}...")
+            #         # Loop through the files and receive them
+            #         for file in image_files:
+            #             try:
+            #                 src_path = os.path.join(remote_path, file)
+            #                 dest_path = os.path.join(local_path, file)
+            #                 ssh.scp.get(src_path, dest_path)
+            #                 print(f"Extracting {file}...")
 
-                        except Exception as e:
-                            print(f"Error extracting {file}: {str(e)}")
+            #             except Exception as e:
+            #                 print(f"Error extracting {file}: {str(e)}")
 
-                    self.__logMessage(f"Colony{colonyID}", f"Extracted images.")
+            #         self.__logMessage(f"Colony{colonyID}", f"Extracted images.")
 
-                    # Remove folders on the Raspberry Pi
-                    cmd = f'rm -rf {remote_path}'
-                    _, stdout, _ = ssh.exec_command(cmd)
+            #         # Remove folders on the Raspberry Pi
+            #         cmd = f'rm -rf {remote_path}'
+            #         _, stdout, _ = ssh.exec_command(cmd)
 
-                    # Wait for the command to complete
-                    exit_status = stdout.channel.recv_exit_status()
+            #         # Wait for the command to complete
+            #         exit_status = stdout.channel.recv_exit_status()
 
-            except Exception as e:
-                print(f"Error: {str(e)}")
+            # except Exception as e:
+            #     print(f"Error: {str(e)}")
 
-            finally:
-                # Close the connection
-                ssh.close()
+            # finally:
+            #     # Close the connection
+            #     ssh.close()
             
             self.__logMessage(f"Colony{colonyID}", f"Observed at {self.colonies[colonyID].lastObsTime}.")
             return True
@@ -305,36 +343,54 @@ class Master:
 
 
 # master = Master()
-# Test 1: insert colony, observe, update JSON (PASSED)
-# master.insertColony(1)      
-# master.observeColony(1)     
+
+# # Test 1: insert colony
+# master.insertColony(1)
 # master.getObservationData(1)
-# time.sleep(2)
 
-# # Test 2: extract, update JSON (PASSED)
-# master.extractColony(1)     
+# # Test 2: extract colony
+# master.extractColony(1)
 # master.getObservationData(1)
-# time.sleep(2)
 
-# # Test 3: insert colony, set lights, update JSON (PASSED)
-# master.insertColony(3)             
-# master.setLights(3, 90, 80, 20, 10)
-# master.setTemperature(3, 30, 20)   
-# master.getObservationData(3)       
-# time.sleep(2)
+# # Test 3: insert colony twice
+# master.insertColony(1)
+# master.insertColony(1)
+# master.getObservationData(1)
 
-# # Test 4: update time interval, update JSON (PASSED)
-# master.setObservationInterval(3, 10, 14)
+# # Test 4: set lights
+# master.setLights(1, 90, 80, 20, 10)
+# master.getObservationData(1)
+
+# # Test 5: set temperature
+# master.setTemperature(1, 30, 20)
+# master.getObservationData(1)
+
+# # Test 6: set observation interval
+# master.setObservationInterval(1, "10:00:00", "14:00:00")
+# master.getObservationData(1)
+
+# # Test 7: set observation frequency
 # master.setObservationFrequency(2)
-# master.getObservationData(3)
-# time.sleep(2)
-
-# # Test 5: extract colony after changed settings (PASSED)
-# master.extractColony(3)
-# master.getObservationData(3)
-# time.sleep(2)
-
-# # Test 6: insert colony twice (PASSED)
-# master.insertColony(1)
-# master.insertColony(1)
 # master.getObservationData(1)
+
+# # Test 8: observe colony
+# master.observeColony(1)
+# master.getObservationData(1)
+
+# # Test 9: get observation data
+# master.getObservationData(1)
+
+# # Test 9: check colony
+# print(master.checkColony(1))
+
+# # Test 10: get availability
+# print("Available spaces:", master.getAvailability())
+
+# # Test 11: Insert 10 colonies
+# for i in range(1, 11):
+#     master.insertColony(i)
+#     master.getObservationData(i)
+
+# # Test 12: Insert 11th colony
+# master.insertColony(11)
+# master.getObservationData(11)

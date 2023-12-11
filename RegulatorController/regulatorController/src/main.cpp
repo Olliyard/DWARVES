@@ -32,14 +32,27 @@ void setup()
 {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  initTemperature();
-  multiplexerSetup();
-  hx711.initialize();
 
+  Serial.println("Initializing temperature sensor...");
+  initTemperature();
+  Serial.println("Temperature sensor initialized.");
+
+  Serial.println("Setting up multiplexer...");
+  multiplexerSetup();
+  Serial.println("Multiplexer setup complete.");
+
+  Serial.println("Initializing HX711...");
+  hx711.initialize();
+  Serial.println("HX711 initialized.");
+
+  Serial.println("Getting addresses...");
   for (int i = 0; i < COLONY_COUNT; i++)
   {
     getAddress(i, colonies[i].temperatureAddress);
   }
+  Serial.println("Addresses retrieved.");
+
+  Serial.println("Ready");
 }
 
 void loop()
@@ -51,7 +64,7 @@ void loop()
     parseData();
     newData = false;
   }
-  delay(500);
+  // delay(500);
 }
 
 /* Receive data from Serial
@@ -106,12 +119,14 @@ Overflow protected.
 */
 void parseData()
 {
-  char *strtokIndx; // this is used by strtok() as an index
+  char *strtokIndx;               // this is used by strtok() as an index
   uint8_t colonyID;
   strtokIndx = strtok(receivedChars, ",");
-  strcpy(command, strtokIndx); // copy it to command
+  strcpy(command, strtokIndx);    // copy it to command
   strtokIndx = strtok(NULL, ",");
-  colonyID = atoi(strtokIndx); // Extract colonyID from message
+  colonyID = atoi(strtokIndx);    // Extract colonyID from message
+  Serial.println(command);        // Doesnt work without lol
+  Serial.print("Value: ");        // same
 
   // SETT (set temp)
   if (strcmp(command, "sett") == 0)
@@ -119,7 +134,6 @@ void parseData()
     // Only update the setTemp value
     strtokIndx = strtok(NULL, ",");
     colonies[colonyID].temperature = atoi(strtokIndx);
-    Serial.print("Temp: ");
     Serial.print(colonies[colonyID].temperature);
     setTemperature(colonyID);
   }
@@ -133,9 +147,9 @@ void parseData()
 
     strtokIndx = strtok(NULL, ",");
     colonies[colonyID].blueBrightness = atoi(strtokIndx);
-    Serial.print("Red: ");
+    Serial.print("R");
     Serial.print(colonies[colonyID].redBrightness);
-    Serial.print(" blue: ");
+    Serial.print(" B");
     Serial.println(colonies[colonyID].blueBrightness);
     setBrightness(colonyID, colonies[colonyID].redBrightness, colonies[colonyID].blueBrightness);
   }
@@ -143,7 +157,8 @@ void parseData()
   // GET (get values)
   else if (strcmp(command, "get") == 0)
   {
-    Serial.println(getTemperature(colonies[colonyID].temperatureAddress));
+    float temperature = getTemperature(colonies[colonyID].temperatureAddress);
+    Serial.println(temperature);
     // Serial.println(colonies[colonyID].setTemp);  // Replace with get measured temperature method getTemperature(addr)
   }
 

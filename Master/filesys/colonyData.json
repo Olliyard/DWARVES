@@ -1,36 +1,8 @@
 {
     "colony1": {
         "id": 1,
-        "startDate": "2023-12-10",
-        "lastObservation": "2023-12-10 12:55",
-        "observedTemperature": 0,
-        "dayTemperature": 30,
-        "nightTemperature": 15,
-        "redDay": 0,
-        "redNight": 0,
-        "blueDay": 0,
-        "blueNight": 0,
-        "dayInterval": "13:00:00",
-        "nightInterval": "01:00:00"
-    },
-    "colony2": {
-        "id": 2,
-        "startDate": "2023-12-10",
-        "lastObservation": "2023-12-10 13:35",
-        "observedTemperature": 0,
-        "dayTemperature": 15,
-        "nightTemperature": 15,
-        "redDay": 0,
-        "redNight": 0,
-        "blueDay": 0,
-        "blueNight": 0,
-        "dayInterval": "01:00:00",
-        "nightInterval": "01:00:00"
-    },
-    "colony3": {
-        "id": 3,
-        "startDate": "2023-12-10",
-        "lastObservation": "2023-12-10 12:21",
+        "startDate": "2023-12-11",
+        "lastObservation": "2023-12-11 02:30",
         "observedTemperature": 0,
         "dayTemperature": 15,
         "nightTemperature": 15,

@@ -8,15 +8,13 @@ HX711Wrapper::HX711Wrapper(int doutPin, int sckPin, float threshold)
 
 void HX711Wrapper::initialize()
 {
-	Serial.println("Initializing HX711");
 	scale.set_scale(2280.f);
 	scale.tare();
 }
 
 int HX711Wrapper::getWeightStatus()
 {
-	Serial.println("Getting weight");
+	Serial.print("load status is ");
 	float weight = scale.get_units(5);
-	Serial.println(weight);
 	return (weight > weightThreshold ? 1 : 0);
 }

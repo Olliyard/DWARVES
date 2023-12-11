@@ -435,8 +435,7 @@ class UI:
         else:
             print(f"Colony{colonyID} folder not found in {IMAGE_PATH}.")
                 
-        
-        
+            
 if __name__ == "__main__":
     ui = UI()
     ui.run()
