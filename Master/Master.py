@@ -40,7 +40,7 @@ class Master:
             #     ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
 
             #     # Trigger robot movement on the Raspberry Pi
-            #     cmd = f'python3 {RPI_PATH}RobotController/motorControl.py {colonyID}'
+            #     cmd = f'python3 {RPI_PATH}Motor/motorControl.py {colonyID}'
             #     _, stdout, _ = ssh.exec_command(cmd)
 
             #     # Wait for the command to complete
