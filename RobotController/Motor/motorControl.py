@@ -137,28 +137,36 @@ class arm_motors:
     def pickup(self):
         # move to the corner of the colony
         rot = 2
+        print(f"Moving to x: {self.xmotor} y: {self.ymotor}")
         drive_motor(self.a1, self.b1, self.c1, self.e1, 1, self.xmotor, rot)
         drive_motor(self.a1, self.b1, self.c1, self.e1, 1, self.ymotor, rot)
         # move arm down
         rotz = 5
+        print("Moving arm down")
         drive_motor(self.a2, self.b2, self.c2, self.e2, 1, 0, rotz)
         # grab cup
+        print("Grabbing cup")
         drive_motor(self.a1, self.b1, self.c1, self.e1, 0, self.xmotor, rot)
         drive_motor(self.a1, self.b1, self.c1, self.e1, 0, self.ymotor, rot)
         # move arm up
+        print("Moving arm up")
         drive_motor(self.a2, self.b2, self.c2, self.e2, 0, 0, rotz)
 
     def putdown(self):
         # move arm down
         rotz = 5
+        print("Moving arm down")
         drive_motor(self.a2, self.b2, self.c2, self.e2, 1, 0, rotz)
         # move to the corner of the colony
         rot = 2
+        print(f"Moving to x: {self.xmotor} y: {self.ymotor}")
         drive_motor(self.a1, self.b1, self.c1, self.e1, 1, self.xmotor, rot)
         drive_motor(self.a1, self.b1, self.c1, self.e1, 1, self.ymotor, rot)
         # move arm up
+        print("Moving arm up")
         drive_motor(self.a2, self.b2, self.c2, self.e2, 0, 0, rotz)
         # move arm to the center of the colony
+        print(f"Moving to x: {self.xmotor} y: {self.ymotor}")
         drive_motor(self.a1, self.b1, self.c1, self.e1, 0, self.xmotor, rot)
         drive_motor(self.a1, self.b1, self.c1, self.e1, 0, self.ymotor, rot)
         
@@ -183,8 +191,8 @@ class arm_motors:
 if __name__ == '__main__':
     # Get commandline arguments for colonyID
     if len(sys.argv) > 3:
-        x = sys.argv[1]
-        y = sys.argv[2]
+        x = int(sys.argv[1])
+        y = int(sys.argv[2])
         updown = sys.argv[3]
         
         cam = cam_motors(x, y)
