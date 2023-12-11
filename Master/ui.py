@@ -198,6 +198,28 @@ class UI:
                 elif choice == "7":
                     self.clearScreen()
                     self.checkBoundSettings()
+                    
+                elif choice == "8":
+                    self.clearScreen()
+                    self.listColonies()
+                    while True:
+                        colonyID = input("Enter colony ID (0. Go back): ")
+
+                        # Check if '0' is pressed to go back
+                        if colonyID == '0':
+                            break
+
+                        if int(colonyID) not in self.master.colonies:
+                            print(f'{RED}Colony does not exists!{NC}')
+                        else:
+                            break
+                    if colonyID == '0':
+                        continue
+                    
+                    if colonyID.isdigit():
+                        colonyID = int(colonyID)
+                        self.master.observeColony(colonyID)
+                        self.master.getObservationData(colonyID)
 
                 # Exit
                 elif choice == "0":
@@ -258,7 +280,7 @@ class UI:
     # Display main menu    
     def displayMainMenu(self):
         self.clearScreen()
-        print("Main Menu (copy copy)")
+        print("Main Menu")
         print("1. Insert colony")
         print("2. Extract colony")
         print("3. View images")
@@ -266,6 +288,7 @@ class UI:
         print("5. Change colony settings")
         print("6. Change observation interval")
         print("7. Check bound settings")
+        print("8. Observe colony (debug)")
         print("0. Exit")
 
     # Display colony settings

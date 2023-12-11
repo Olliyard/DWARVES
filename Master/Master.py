@@ -8,10 +8,10 @@ import json
 import os
 
 USB_PORT = "COM14" # "/dev/ttyUSB0"
-RPI_ADDR = "192.168.0.104"
+RPI_ADDR = "192.168.30.231"
 RPI_USERNAME = "rpi"
 RPI_PASS = "raspberry"
-RPI_PATH = "/home/pi/Documents/DWARVES/RobotController"
+RPI_PATH = "/home/pi/DWARVES/RobotController"
 LOGFILE_PATH = os.path.join(os.getcwd(), "filesys", "logfile.txt")
 JSON_PATH = os.path.join(os.getcwd(), "filesys", "colonyData.json")
 IMAGE_PATH = os.path.join(os.getcwd(), "images")
@@ -33,45 +33,68 @@ class Master:
     # insert colony
     def insertColony(self, colonyID):
         if self.getAvailability() and not self.checkColony(colonyID) and self.checkLoadingZone():            
-            # # Move robot to colony
-            # ssh = paramiko.SSHClient()
-            # ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            # try:
-            #     ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
+            # Move colony to position
+            ssh = paramiko.SSHClient()
+            ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            try:
+                ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
 
-            #     # Trigger robot movement on the Raspberry Pi
-            #     cmd = f'python3 {RPI_PATH}Motor/motorControl.py {colonyID}'
-            #     _, stdout, _ = ssh.exec_command(cmd)
+                # Trigger robot movement on the Raspberry Pi
+                cmd = f'python3 {RPI_PATH}/Motor/motorControl.py {colonyID} {colonyID} "down"'
+                _, stdout, stderr = ssh.exec_command(cmd)
 
-            #     # Wait for the command to complete
-            #     exit_status = stdout.channel.recv_exit_status()
-            #     if exit_status == 0:
-            #         # print(f"Colony {colonyID} inserted.")
-            #         print(f"Robot moved to colony {colonyID}.")
+                # Wait for the command to complete
+                exit_status = stdout.channel.recv_exit_status()
+                if exit_status == 0:
+                    self.__logMessage(f"Colony{colonyID}", stdout.read().decode('utf-8'))
+                    self.__logMessage(f"Colony{colonyID}", stderr.read().decode('utf-8'))
+                    print(f"Robot moved to colony {colonyID}.")
 
-            # except Exception as e:
-            #     print(f"Error: {str(e)}")
+            except Exception as e:
+                print(f"Error: {str(e)}")
 
-            # finally:
-            #     # Close the connection
-            #     ssh.close()
+            finally:
+                # Close the connection
+                ssh.close()
             
             self.colonies[colonyID] = Colony(colonyID)  # create colony object
             self.__logMessage(f"Colony{colonyID}", "Inserted.")
             
         else:
-            # print(f"Colony {colonyID} not inserted.")
             self.__logMessage("ERROR", f"Colony{colonyID} could not be inserted.")
   
     # extract colony  
     def extractColony(self, colonyID):
         if self.checkColony(colonyID) and self.checkLoadingZone():
+            # Move robot to colony
+            ssh = paramiko.SSHClient()
+            ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            try:
+                ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
+
+                # Trigger robot movement on the Raspberry Pi
+                cmd = f'python3 {RPI_PATH}/Motor/motorControl.py {colonyID} {colonyID} "up"'
+                _, stdout, stderr = ssh.exec_command(cmd)
+
+                # Wait for the command to complete
+                exit_status = stdout.channel.recv_exit_status()
+                if exit_status == 0:
+                    self.__logMessage(f"Colony{colonyID}", stdout.read().decode('utf-8'))
+                    self.__logMessage(f"Colony{colonyID}", stderr.read().decode('utf-8'))
+                    print(f"Robot moved to colony {colonyID}.")
+
+            except Exception as e:
+                print(f"Error: {str(e)}")
+
+            finally:
+                # Close the connection
+                ssh.close()
+            
+            
             self.colonies.pop(colonyID)
-            # print(f"Colony {colonyID} extracted.")
             self.__logMessage(f"Colony{colonyID}", "Extracted.")
             return True
         else:
-            # print(f"Colony {colonyID} not extracted.")
             self.__logMessage("ERROR", f"Colony{colonyID} could not be extracted.")
             return False
     
@@ -102,60 +125,59 @@ class Master:
             self.serial.readline()
             self.colonies[colonyID].obsTemp = float(self.serial.readline().decode().strip()[7:])
             self.colonies[colonyID].lastObsTime = datetime.now().strftime("%Y-%m-%d %H:%M")
-            # print(f'Temperature reading: {self.colonies[colonyID].obsTemp}')
-            # print(f"Colony {colonyID} observed.")
             
-            # # Connect to RPi, get image
-            # ssh = paramiko.SSHClient()
-            # ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            # try:
-            #     ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
+            # Connect to RPi, get image
+            ssh = paramiko.SSHClient()
+            ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            try:
+                ssh.connect(RPI_ADDR, username=RPI_USERNAME, password=RPI_PASS)
 
-            #     # Trigger image capture and processing on the Raspberry Pi
-            #     cmd = f'python3 {RPI_PATH}Camera/captureImage.py {colonyID}'
-            #     _, stdout, _ = ssh.exec_command(cmd)
+                # Trigger image capture and processing on the Raspberry Pi
+                cmd = f'python3 {RPI_PATH}/Camera/captureImage.py {colonyID}'
+                _, stdout, _ = ssh.exec_command(cmd)
 
-            #     # Wait for the command to complete
-            #     exit_status = stdout.channel.recv_exit_status()
+                # Wait for the command to complete
+                exit_status = stdout.channel.recv_exit_status()
 
-            #     if exit_status == 0:
-            #         # Receive data from the Raspberry Pi
-            #         remote_path = f'{RPI_PATH}Camera/colony{colonyID}/'
-            #         local_path = f'{IMAGE_PATH}/colony{colonyID}/'
+                if exit_status == 0:
+                    # Receive data from the Raspberry Pi
+                    remote_path = f'{RPI_PATH}/Camera/colony{colonyID}/'
+                    local_path = f'{IMAGE_PATH}/colony{colonyID}/'
 
-            #         # Create a local directory if it doesn't exist
-            #         os.makedirs(local_path, exist_ok=True)
+                    # Create a local directory if it doesn't exist
+                    os.makedirs(local_path, exist_ok=True)
 
-            #         # List files in the folder
-            #         image_files = [file for file in os.listdir(remote_path) if file.endswith(('.jpg', '.txt', '.png'))]
-            #         print(f'Files found: {image_files}')
+                    # List files in the folder
+                    image_files = [file for file in os.listdir(remote_path) if file.endswith(('.jpg', '.txt', '.png'))]
+                    self.__logMessage(f"Colony{colonyID}", f"Files found: {image_files}")
 
-            #         # Loop through the files and receive them
-            #         for file in image_files:
-            #             try:
-            #                 src_path = os.path.join(remote_path, file)
-            #                 dest_path = os.path.join(local_path, file)
-            #                 ssh.scp.get(src_path, dest_path)
-            #                 print(f"Extracting {file}...")
+                    # Loop through the files and receive them
+                    for file in image_files:
+                        try:
+                            src_path = os.path.join(remote_path, file)
+                            dest_path = os.path.join(local_path, file)
+                            ssh.scp.get(src_path, dest_path)
+                            # print(f"Extracting {file}...")
 
-            #             except Exception as e:
-            #                 print(f"Error extracting {file}: {str(e)}")
+                        except Exception as e:
+                            self.__logMessage(f"ERROR", f"Error extracting {file}: {str(e)}")
 
-            #         self.__logMessage(f"Colony{colonyID}", f"Extracted images.")
+                    # Remove folders on the Raspberry Pi
+                    cmd = f'rm -rf {remote_path}'
+                    _, stdout, _ = ssh.exec_command(cmd)
 
-            #         # Remove folders on the Raspberry Pi
-            #         cmd = f'rm -rf {remote_path}'
-            #         _, stdout, _ = ssh.exec_command(cmd)
+                    # Wait for the command to complete
+                    exit_status = stdout.channel.recv_exit_status()
+                    
+                    if exit_status == 0:
+                        self.__logMessage(f"Colony{colonyID}", f"Extracted images.")
 
-            #         # Wait for the command to complete
-            #         exit_status = stdout.channel.recv_exit_status()
+            except Exception as e:
+                print(f"Error: {str(e)}")
 
-            # except Exception as e:
-            #     print(f"Error: {str(e)}")
-
-            # finally:
-            #     # Close the connection
-            #     ssh.close()
+            finally:
+                # Close the connection
+                ssh.close()
             
             self.__logMessage(f"Colony{colonyID}", f"Observed at {self.colonies[colonyID].lastObsTime}.")
             return True
