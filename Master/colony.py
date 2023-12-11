@@ -27,6 +27,7 @@ class Colony:
         return f"Colony {self.id}:\n" \
                f"Day temp: {self.dayTemp}\n" \
                f"Night temp: {self.nightTemp}\n" \
+                   f"Obs temp: {self.obsTemp}\n" \
                f"Last observation: {self.lastObsTime}\n" \
                f"Day interval: {self.dayInterval}\n" \
                f"Night interval: {self.nightInterval}\n" \

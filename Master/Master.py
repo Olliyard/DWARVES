@@ -7,7 +7,7 @@ import time
 import json
 import os
 
-USB_PORT = "COM15"#"/dev/ttyACM0"
+USB_PORT = "/dev/ttyACM0"
 RPI_ADDR = "192.168.30.231"
 RPI_USERNAME = "pi"
 RPI_PASS = "raspberry"
