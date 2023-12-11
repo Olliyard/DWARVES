@@ -17,7 +17,6 @@ boolean newData = false;
 
 struct Colony
 {
-  int id;
   int redBrightness;
   int blueBrightness;
   float temperature;
