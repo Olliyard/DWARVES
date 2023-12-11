@@ -7,7 +7,7 @@ import time
 import json
 import os
 
-USB_PORT = "COM14" # "/dev/ttyUSB0"
+USB_PORT = "/dev/ttyACM0"
 RPI_ADDR = "192.168.30.231"
 RPI_USERNAME = "rpi"
 RPI_PASS = "raspberry"
@@ -45,10 +45,10 @@ class Master:
 
                 # Wait for the command to complete
                 exit_status = stdout.channel.recv_exit_status()
-                if exit_status == 0:
-                    self.__logMessage(f"Colony{colonyID}", stdout.read().decode('utf-8'))
-                    self.__logMessage(f"Colony{colonyID}", stderr.read().decode('utf-8'))
-                    print(f"Robot moved to colony {colonyID}.")
+                # if exit_status == 0:
+                self.__logMessage(f"Colony{colonyID}", stdout.read().decode('utf-8'))
+                self.__logMessage(f"Colony{colonyID}", stderr.read().decode('utf-8'))
+                print(f"Robot moved to colony {colonyID}.")
 
             except Exception as e:
                 print(f"Error: {str(e)}")
@@ -78,10 +78,10 @@ class Master:
 
                 # Wait for the command to complete
                 exit_status = stdout.channel.recv_exit_status()
-                if exit_status == 0:
-                    self.__logMessage(f"Colony{colonyID}", stdout.read().decode('utf-8'))
-                    self.__logMessage(f"Colony{colonyID}", stderr.read().decode('utf-8'))
-                    print(f"Robot moved to colony {colonyID}.")
+                # if exit_status == 0:
+                self.__logMessage(f"Colony{colonyID}", stdout.read().decode('utf-8'))
+                self.__logMessage(f"Colony{colonyID}", stderr.read().decode('utf-8'))
+                print(f"Robot moved to colony {colonyID}.")
 
             except Exception as e:
                 print(f"Error: {str(e)}")
